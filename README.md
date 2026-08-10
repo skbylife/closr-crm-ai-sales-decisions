@@ -179,19 +179,19 @@ Closr is being built for:
 
 ### FAQ
 
-**Is Closr a CRM or a sales-intelligence tool?**  
+**Is Closr a CRM or a sales-intelligence tool?**<br>
 Both. Closr includes a practical CRM foundation and adds a customer-signal, account-judgment, and Strategic Play workflow for B2B sales decisions.
 
-**Does Closr replace human sales judgment?**  
+**Does Closr replace human sales judgment?**<br>
 No. Closr is designed to expose evidence, uncertainty, and suggested next moves for review. The team remains responsible for decisions and customer communication.
 
-**Will Closr be self-hosted?**  
+**Will Closr be self-hosted?**<br>
 Yes—the project is being prepared as a self-hosted open-source CRM. The supported deployment guide and exact configuration will be released with the first public source version.
 
-**Is the source code available now?**  
+**Is the source code available now?**<br>
 Not yet. This README is the public project introduction while the first source release, licensing, security review, and contributor materials are prepared.
 
-**Do I need Foundation Gen to use Closr?**  
+**Do I need Foundation Gen to use Closr?**<br>
 No. Closr is intended to be useful on its own. Foundation Gen is a separate future commercial product, not a locked feature of the open-source CRM.
 
 <a id="open-source-status-en"></a>
@@ -362,19 +362,19 @@ Closr 正在面向：
 
 ### 常见问题
 
-**Closr 是 CRM 还是销售情报工具？**  
+**Closr 是 CRM 还是销售情报工具？**<br>
 两者都是。Closr 提供实用 CRM 基础能力，并在其上增加客户信号、账户判断和谋局推进的工作流。
 
-**Closr 会替代人的销售判断吗？**  
+**Closr 会替代人的销售判断吗？**<br>
 不会。Closr 的目标是让证据、不确定性和建议行动可被团队复核；最终判断与客户沟通仍由人负责。
 
-**Closr 能自部署吗？**  
+**Closr 能自部署吗？**<br>
 可以。Closr 正在准备成为自部署开源 CRM。支持的部署方式和准确配置将在第一版公开源代码中发布。
 
-**现在有源代码吗？**  
+**现在有源代码吗？**<br>
 尚未。本 README 用于公开介绍项目；首版源代码、许可证、安全审查和贡献材料正在准备中。
 
-**使用 Closr 是否必须使用 Foundation Gen？**  
+**使用 Closr 是否必须使用 Foundation Gen？**<br>
 不需要。Closr 应独立有价值。Foundation Gen 是未来独立推出的商业产品，不是开源 CRM 中被锁住的功能。
 
 <a id="open-source-status"></a>
