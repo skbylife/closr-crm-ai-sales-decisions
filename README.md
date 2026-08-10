@@ -1,6 +1,6 @@
-# Closr
+# Closr CRM — AI-Powered Sales Decisions
 
-**Open-source CRM for teams that want to keep customer work simple.**
+**Open-source CRM for customer signals and AI-powered sales decisions.**
 
 Closr is being prepared as a self-hosted, open-source CRM for small and growing teams.
 
