@@ -1,7 +1,7 @@
 # Closr CRM — AI-Powered Sales Decisions
 
 <p align="center">
-  <strong>Open-source, self-hosted AI CRM for B2B sales intelligence, customer signals, and strategic sales decisions.</strong>
+  <strong>Open-source, self-hosted CRM for evidence-based B2B sales judgment.</strong>
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
   <a href="#open-source-status-en">Open-source status</a>
 </p>
 
-> **Status:** This public repository is intentionally README-only while the first full source release is prepared. The product, technical baseline, and contribution model below describe the project being released; they are not a claim that source code, Docker images, CI, or production support are available here today.
+> **Pre-release repository.** Available here today: the project introduction and design discussion. The first licensed source release, deployment guide, security guidance, and contribution process are not published yet. This repository contains no source code, Docker images, CI configuration, release artifacts, or production-support commitment.
 
 ---
 
@@ -27,7 +27,7 @@
 
 ### Read the customer. See the deal. Decide the next move.
 
-Closr is an open-source, self-hosted **AI CRM for B2B sales teams**. It combines the CRM foundation—accounts, contacts, opportunities, activities, and follow-ups—with a sales-decision layer designed for the harder part of revenue work: interpreting customer signals, seeing the account situation clearly, and choosing the next move as a team.
+Closr is an open-source, self-hosted **CRM for evidence-based B2B sales judgment**. It combines the CRM foundation—accounts, contacts, opportunities, activities, and follow-ups—with a reviewable sales-judgment layer: customer signals, supporting and conflicting evidence, missing proof, accountable next moves, and outcome feedback.
 
 Traditional CRM tells a team what was recorded. Closr is designed to help a team review **what changed, what is missing, who matters, what could block progress, and what should be validated next**.
 
@@ -70,6 +70,16 @@ Instead of asking a salesperson to reconstruct the whole situation from scattere
 Closr maintains an account and deal judgment across health, momentum, contradictions, uncertainty, risks, evidence gaps, and next moves.
 
 A useful sales decision should be challengeable. Closr is designed to keep supporting evidence, counter-evidence, missing facts, confidence, revisions, and ownership visible rather than hiding the reasoning behind a single score.
+
+#### A reviewable decision record
+
+| Every proposed move should show | Example |
+|---|---|
+| Source evidence | Email, meeting, or CRM record with timestamp |
+| Interpretation | “The budget owner has not entered the process.” |
+| Counter-evidence / missing proof | “No confirmed budget owner; validate this in the next meeting.” |
+| Confidence and review | Confidence plus a human approval or correction |
+| Accountable action and outcome | Owner, next action, and the later result |
 
 #### 4. Strategic Plays — turn judgment into a plan to move the deal
 
@@ -144,9 +154,9 @@ Closr is being prepared as a web application with an application layer, a multi-
 
 <a id="technical-baseline-en"></a>
 
-### Technical baseline
+### Planned release baseline — not yet publicly auditable
 
-The source release is being prepared from the following technical baseline. This section describes implementation direction and existing project foundations; exact installation instructions, supported versions, and operational guarantees will be published with the source release.
+This repository currently contains no source, deployment artifacts, tests, CI configuration, license, or security documentation. The following are **release targets**, not public verification evidence or production commitments. Exact installation instructions, supported versions, and operational guarantees will be published with the first licensed source release.
 
 | Layer | Baseline |
 |---|---|
@@ -191,16 +201,20 @@ Yes—the project is being prepared as a self-hosted open-source CRM. The suppor
 **Is the source code available now?**<br>
 Not yet. This README is the public project introduction while the first source release, licensing, security review, and contributor materials are prepared.
 
-**Do I need Foundation Gen to use Closr?**<br>
-No. Closr is intended to be useful on its own. Foundation Gen is a separate future commercial product, not a locked feature of the open-source CRM.
-
 <a id="open-source-status-en"></a>
 
 ### Open-source status
 
-The project will be released as a complete open-source Closr codebase. Before publishing the source, the repository will complete the necessary release work: license selection, dependency and provenance review, secret/history review, public deployment documentation, security reporting guidance, and contribution rules.
+**Watch this repository for the first licensed source release.** Until then, this is a pre-release space for project information and design discussion; code contributions will open with the licensed source release.
 
-Until then, the most useful ways to participate are to **Watch** the repository, share what a better open-source AI CRM should solve for your team, and follow the project at [closr.ing](https://www.closr.ing).
+#### What the first public release will include
+
+- complete Closr source code and an explicit open-source license;
+- reproducible self-hosting and environment documentation;
+- documented supported AI-provider and data-boundary configuration;
+- security reporting guidance, upgrade/backup guidance, and contribution rules.
+
+Follow the product at [closr.ing](https://www.closr.ing).
 
 ---
 
@@ -210,7 +224,7 @@ Until then, the most useful ways to participate are to **Watch** the repository,
 
 ### 读懂客户，看清局势，决定下一步。
 
-Closr 是一个正在准备发布的开源、自部署 **B2B AI CRM**。它具备账户、联系人、商机、活动和跟进等 CRM 基础能力，并增加一层面向复杂销售的判断能力：解读客户信号、看清账户局势、让团队共同决定下一步。
+Closr 是一个正在准备发布的开源、自部署 **B2B 销售判断 CRM**。它具备账户、联系人、商机、活动和跟进等 CRM 基础能力，并加入可复核的销售判断层：客户信号、支持证据与反向证据、待证明事项、有责任人的下一步和结果反馈。
 
 传统 CRM 告诉团队“记录了什么”；Closr 希望帮助团队复盘 **什么变了、什么还缺、谁在影响、什么会阻断推进、下一步应该验证什么**。
 
@@ -253,6 +267,16 @@ Closr 将联系人、互动、账户历史、关系变化、过往输赢经验�
 Closr 围绕健康度、推进动量、矛盾信号、不确定性、风险、证据缺口和下一步，维护账户与商机判断。
 
 有价值的销售判断必须能被挑战。Closr 希望把支持证据、反向证据、待确认事实、置信度、修订记录和责任人放在一起，而不是把推理隐藏在一个分数后面。
+
+#### 可复核的判断记录
+
+| 每一项建议都应显示 | 示例 |
+|---|---|
+| 来源证据 | 邮件、会议或 CRM 记录及时间戳 |
+| 解读 | “预算负责人尚未进入流程” |
+| 反证 / 待证明事项 | “尚无已确认预算权人；下次会议验证” |
+| 置信度与复核 | 置信度及人工批准或修订 |
+| 有责任人的行动与结果 | 负责人、下一步与后续结果 |
 
 #### 4. 谋局推进：将判断转化为能够推进商机的路径
 
@@ -327,9 +351,9 @@ Closr 正在按“应用层 + 多租户数据层 + AI 辅助销售判断层”�
 
 <a id="technical-baseline"></a>
 
-### 技术基线
+### 首版发布技术目标（尚不可由公开仓库审计）
 
-以下是正在准备公开的代码基线与实现方向。准确的安装步骤、支持版本与运行承诺会随首个源代码版本发布；在此之前，不把它们表述为当前公开仓库已经可用的功能。
+当前公开仓库不含源代码、部署制品、测试、CI 配置、许可证或安全文档。以下是**首版发布目标**，不是当前的公开验证证据或生产承诺。准确的安装步骤、支持版本与运行承诺会随首个已许可源代码版本发布。
 
 | 层 | 技术基线 |
 |---|---|
@@ -374,21 +398,20 @@ Closr 正在面向：
 **现在有源代码吗？**<br>
 尚未。本 README 用于公开介绍项目；首版源代码、许可证、安全审查和贡献材料正在准备中。
 
-**使用 Closr 是否必须使用 Foundation Gen？**<br>
-不需要。Closr 应独立有价值。Foundation Gen 是未来独立推出的商业产品，不是开源 CRM 中被锁住的功能。
-
 <a id="open-source-status"></a>
 
 ### 开源状态与参与方式
 
-Closr 将完整开源。在公开代码前，项目会完成必要的发布工作：许可证选择、依赖与来源审查、secret/Git 历史检查、公开部署文档、安全报告渠道和贡献规则。
+**请 Watch 本仓库，等待第一个已许可的源代码版本。** 在此之前，这里是项目介绍与设计讨论的预发布空间；代码贡献会在已许可源代码发布后开放。
 
-在此之前，欢迎你：
+#### 首个公开版本将包含
 
-1. **Watch** 本仓库；
-2. 访问 [Closr 官网](https://www.closr.ing) 了解产品；
-3. 分享你希望开源 AI CRM 为团队解决的真实问题；
-4. 关注第一版代码、自部署指南和贡献规范。
+- 完整 Closr 源代码与明确的开源许可证；
+- 可复现的自部署与环境配置文档；
+- 已支持 AI Provider 与数据边界配置说明；
+- 安全报告、升级/备份说明与贡献规范。
+
+访问 [Closr 官网](https://www.closr.ing) 了解产品。
 
 ---
 
