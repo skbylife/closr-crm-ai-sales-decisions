@@ -1,0 +1,8 @@
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #18212c; background: #f7f8fa; }
+body { margin: 0; }
+main, section { max-width: 880px; margin: 0 auto; padding: 20px; }
+form, article { background: white; border: 1px solid #dde2e8; border-radius: 8px; padding: 16px; }
+button, input, select, textarea { font: inherit; margin: 4px; }
+button { cursor: pointer; padding: 7px 10px; }
+label { display: block; margin: 8px 0; }
+[role="alert"] { color: #a71d2a; }

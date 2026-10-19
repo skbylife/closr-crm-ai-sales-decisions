@@ -1,0 +1,26 @@
+{
+  "status": "PUBLIC_SOURCE_CANDIDATE_NOT_PUBLISHED",
+  "source": "Supabase CLI v2.75.0 official tag; all four bundled files byte-matched to raw.githubusercontent.com/supabase/cli/v2.75.0 on 2026-10-12",
+  "files": [
+    {
+      "name": "schema.sql",
+      "bytes": 702,
+      "sha256": "3a9f39fb79d67d4fb2f5e54638dca1d06894a3e1a57419bc188e4ee09c72556f"
+    },
+    {
+      "name": "webhook.sql",
+      "bytes": 8399,
+      "sha256": "aa956b7b1f205284a524882fe0d580c72d86374aea9c9c2e93ac398df5e07d0b"
+    },
+    {
+      "name": "_supabase.sql",
+      "bytes": 421,
+      "sha256": "ced0d2dd073c86f402e409ff540ecda07455997e6a0a1e8a738c154c6b962a20"
+    },
+    {
+      "name": "LICENSE",
+      "bytes": 1088,
+      "sha256": "81f7d60afa4316010b1c0df8eb8f0c80b27586a86b72f1bde85e129bfd10d52a"
+    }
+  ]
+}

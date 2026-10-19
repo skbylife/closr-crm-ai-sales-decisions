@@ -1,0 +1,98 @@
+Closr Community Source-Available License, Version 1.0
+
+Copyright 2026 Zhaocheng Liu
+
+The person or entity identified above (the "Licensor") offers the Covered
+Software under these terms.
+
+1. Definitions
+
+"Covered Software" means the original Closr Community application source and
+object code expressly identified as licensed under this license, together with
+modifications to that code. It excludes Third-Party Materials, the separate
+proprietary Closr Engine, BABEL, private prompts, proprietary strategy logic,
+evaluation data, hosted Engine services, and any other material not expressly
+identified as Covered Software.
+
+"Third-Party Materials" means software, data, images, documentation, and other
+material included with or used by the Covered Software under a different
+license. Those materials remain governed by their own terms.
+
+"Customer-Controlled Deployment" means an instance installed in hardware or an
+infrastructure account controlled by the individual or organization using the
+instance. A third-party installer may administer that instance under the
+customer's direction without becoming its host or software licensor.
+
+2. Permission
+
+Subject to these terms, Licensor grants you a non-exclusive, worldwide,
+royalty-free permission to inspect, use, reproduce, modify, and run the Covered
+Software for your personal use or your organization’s internal business purposes,
+including internal commercial use. You may
+give unmodified or modified copies to others without charging for the Covered
+Software, provided that each copy carries this license, all applicable copyright
+and attribution notices, and a clear notice of your modifications. Recipients
+receive their rights directly under this license. You may not grant broader
+rights in the Covered Software than this license grants.
+
+3. Paid installation and maintenance
+
+You may charge a customer for installation, configuration, migration to a fresh
+customer-controlled instance, maintenance, support, training, and consulting
+services relating to the Covered Software. A customer may use a service provider
+to perform those services in its Customer-Controlled Deployment. Such service
+fees must be for the services, not for a copy, sublicense, seat, access, or use
+right in the Covered Software. The customer must receive the Covered Software
+under this license without a software license charge and must remain able to
+operate its instance without buying further services from you.
+
+4. Reserved commercial activities
+
+Without a separate written license from Licensor, you may not:
+
+  (a) sell or offer to sell copies, sublicenses, seats, access rights, or use
+      rights in the Covered Software, whether unmodified, modified, bundled,
+      rebranded, or embedded in another product; or
+
+  (b) offer third parties access to or use of the Covered Software as a paid
+      hosted, managed, SaaS, or white-label service, regardless of whose
+      infrastructure runs it and whether payment is direct, indirect,
+      subscription-based, or bundled with another offering. This does not
+      prohibit the independent services expressly permitted by Section 3.
+
+Calling a software sale or hosted access fee an installation or support fee
+does not bring it within Section 3. The restrictions in this section apply only
+to the Covered Software and do not replace any Third-Party Materials license.
+
+5. Notices, separate components, and marks
+
+Keep the license and attribution notices for Covered Software and each
+Third-Party Material you distribute. This license grants no rights to the
+private Closr Engine, its API, model providers, customer data, or the Closr name
+and logos, except factual identification of the Covered Software's origin.
+Access to an Engine service requires separate authorization and terms.
+
+6. Previously granted licenses
+
+These terms do not revoke, narrow, or replace any valid license already granted
+for an earlier copy or version, including an Apache-2.0 grant. Separately licensed contributions and Third-Party Materials remain under their own terms.
+
+7. Termination
+
+Your rights under this license end if you breach its conditions and do not cure
+the breach within 30 days after receiving written notice from Licensor. Rights
+already received by compliant downstream recipients are not terminated solely
+because of your breach. This provision does not limit any rights a recipient
+already has under a separate license for Third-Party Materials.
+
+8. No warranty; limitation of liability
+
+TO THE EXTENT PERMITTED BY APPLICABLE LAW, THE COVERED SOFTWARE IS PROVIDED
+"AS IS", WITHOUT WARRANTIES OF ANY KIND. TO THE EXTENT PERMITTED BY APPLICABLE
+LAW, LICENSOR AND CONTRIBUTORS ARE NOT LIABLE FOR INDIRECT, INCIDENTAL,
+SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM USE OF THE COVERED
+SOFTWARE. THESE TERMS DO NOT EXCLUDE LIABILITY THAT APPLICABLE LAW DOES NOT
+ALLOW TO BE EXCLUDED.
+
+This is a custom source-available license, not an OSI-approved open source
+license.

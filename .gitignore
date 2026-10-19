@@ -1,0 +1,11 @@
+.env.local
+.env.*.local
+.env.local.*
+.env.*.local.*
+node_modules/
+.next/
+.closr-local/
+*.map
+supabase/.branches/
+supabase/.profiles/
+supabase/.temp/
