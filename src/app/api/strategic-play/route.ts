@@ -48,74 +48,6 @@ function strategicPlayMutationResponse(result: StrategicPlayMutationResult) {
   return Response.json(result.body, 'init' in result ? result.init : undefined);
 }
 
-const DEMO_PLAY_PLACEHOLDER_PATTERNS = [
-  /Account analysis for this sales scenario/i,
-  /Sales-context summary/i,
-  /Customer-facing detail/i,
-  /Named account record/i,
-  /Account evidence detail/i,
-  /Evidence-backed account note/i,
-  /Sanitized customer communication excerpt/i,
-  /Stakeholder contact/i,
-  /Stakeholder owner/i,
-  /Business context detail/i,
-  /Evidence review step/i,
-  /Strategic play detail/i,
-  /customerStatus:/i,
-  /\bNEXT STEPACTION\b/i,
-  /\bCustomer value\b/i,
-  /\bCustomer signal\b/i,
-  /\bCustomer stakeholder\b/i,
-  /\bStrategic play value\b/i,
-] as const;
-
-function stringifyPlayField(value: unknown): string[] {
-  if (!value) return [];
-  if (typeof value === 'string') return [value];
-  if (Array.isArray(value)) return value.flatMap((item) => stringifyPlayField(item));
-  if (typeof value === 'object') return Object.values(value as Record<string, unknown>).flatMap((item) => stringifyPlayField(item));
-  return [];
-}
-
-function strategicPlayTextBlob(play: Record<string, unknown>): string {
-  return [
-    play.goalDescription,
-    play.goal_description,
-    play.situationJudgment,
-    play.situation_judgment,
-    play.strategicObjective,
-    play.strategic_objective,
-    play.steps,
-    play.assumptions,
-    play.evidenceBasis,
-    play.evidence_basis,
-    play.riskCounterEvidence,
-    play.risk_counter_evidence,
-    play.successCriteria,
-    play.success_criteria,
-  ].flatMap((value) => stringifyPlayField(value)).join('\n');
-}
-
-function isPlaceholderDemoPlay(play: Record<string, unknown>): boolean {
-  const blob = strategicPlayTextBlob(play);
-  const placeholderHits = DEMO_PLAY_PLACEHOLDER_PATTERNS.reduce(
-    (total, pattern) => total + (blob.match(pattern)?.length ?? 0),
-    0,
-  );
-  return placeholderHits >= 1;
-}
-
-function isCrossAccountDemoPlay(play: Record<string, unknown>): boolean {
-  const opportunityId = play.opportunityId ?? play.opportunity_id;
-  if (opportunityId !== 'opp_cmcc_5g_003') return false;
-  return /Meridian Bank|Rachel Kim|Marcus Reed|Priya Nair|bank/i.test(strategicPlayTextBlob(play));
-}
-
-function filterLowQualityDemoPlays<T extends Record<string, unknown>>(plays: T[]): T[] {
-  const cleaned = plays.filter((play) => !isPlaceholderDemoPlay(play) && !isCrossAccountDemoPlay(play));
-  return cleaned.length > 0 ? cleaned : plays;
-}
-
 function getStrategicPlayShadowModel(): string | null {
   const model = process.env.AI_STRATEGIC_SHADOW_MODEL || process.env.AI_DEEPSEEK_PRO_MODEL;
   return model && model.trim() ? model.trim() : null;
@@ -269,7 +201,7 @@ export async function GET(request: Request) {
       console.warn(`[strategic-play] GET returned 0 plays — orgId=${ctx.orgId}, accountId=${accountId ?? 'ALL'}`);
     }
 
-    const plays = filterLowQualityDemoPlays((data ?? []).map((row) => mapStrategicPlayRowToApiPlay(row as Record<string, unknown>)));
+    const plays = (data ?? []).map((row) => mapStrategicPlayRowToApiPlay(row as Record<string, unknown>));
 
     return Response.json({ plays });
   } catch (err) {

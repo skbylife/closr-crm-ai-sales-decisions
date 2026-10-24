@@ -3,13 +3,13 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 const ROOTS = ['src/app', 'src/components', 'src/lib'];
-const SEED_ROOTS = ['src/lib/demo-data', 'src/app/api/seed-data'];
+const SEED_ROOTS = ['src/scripts'];
 const AI_ROOTS = ['src/app/api', 'src/lib'];
 
 const CHINESE_RE = /[\u4e00-\u9fff]/g;
 const CHINESE_AI_PROMPT_RE = /必须.*中文|用中文|中文回复|所有输出必须为中文|请用中文/g;
 const EXT_RE = /\.(ts|tsx|js|jsx|mjs)$/;
-const IGNORE_RE = /src\/lib\/demo-data\/english(?:\.test)?\.ts$/;
+const IGNORE_RE = /$a/;
 
 function walk(dir) {
   let entries = [];
@@ -70,7 +70,7 @@ const report = {
   checks: [
     summarize('customer-visible Chinese line hits in app/components/lib', ROOTS, CHINESE_RE),
     summarize('hardcoded Chinese-only AI prompt lines', AI_ROOTS, CHINESE_AI_PROMPT_RE),
-    summarize('Chinese line hits in demo seed sources', SEED_ROOTS, CHINESE_RE),
+    summarize('Chinese line hits in general-knowledge source', SEED_ROOTS, CHINESE_RE),
   ],
 };
 

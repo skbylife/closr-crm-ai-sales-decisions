@@ -28,7 +28,6 @@ import { buildJudgmentActionPanelModel } from '@/lib/judgment/action-panel';
 import { buildRoleView, parseRoleViewRole, roleViewRoleFromJobLevel, type RoleViewRole } from '@/lib/judgment/role-view';
 import { buildJudgmentTimeline } from '@/lib/judgment/timeline';
 import { normalizePlayExecutionEventSourceRow } from '@/lib/strategic-play-execution';
-import { DEMO_USER_ID } from '@/lib/demo';
 import { normalizeOutputLocale } from '@/lib/output-locale';
 
 export const dynamic = 'force-dynamic';
@@ -537,7 +536,7 @@ function resolveRoleViewRole(ctx: Awaited<ReturnType<typeof requireAuth>>, reque
   const serverRole = roleViewRoleFromJobLevel(ctx.jobLevel);
   if (!requestedRole) return serverRole;
 
-  const canPreviewRole = ctx.userId === DEMO_USER_ID || ctx.roleLevel === 'admin' || ctx.orgRole === 'owner' || ctx.orgRole === 'admin';
+  const canPreviewRole = ctx.roleLevel === 'admin' || ctx.orgRole === 'owner' || ctx.orgRole === 'admin';
   return canPreviewRole ? requestedRole : serverRole;
 }
 

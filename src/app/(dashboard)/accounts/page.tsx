@@ -624,16 +624,7 @@ export default function AccountsPage() {
             <Plus className="h-4 w-4" />
             {t("accounts.addAccount")}
           </button>
-          <button
-            onClick={() => {
-              const { loadSampleData } = useStore.getState();
-              loadSampleData();
-              window.location.reload();
-            }}
-            className="mt-3 text-sm text-accent hover:underline"
-          >
-            {t("accounts.loadSample")}
-          </button>
+
         </div>
       )}
 

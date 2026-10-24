@@ -555,7 +555,7 @@ describe('strategy route — CIL integration', () => {
 // ─── Guard path tests ──────────────────────────────────────────────
 
 describe('decode route — CIL guard paths', () => {
-  it('orgId=demo 时不加载 CIL', async () => {
+  it('legacy organization labels follow the same authenticated CIL loading path', async () => {
     mockRequireAuth.mockResolvedValue({
       userId: 'user-1',
       orgId: 'demo',
@@ -578,7 +578,7 @@ describe('decode route — CIL guard paths', () => {
     );
 
     expect(response.status).toBe(200);
-    expect(mockLoadCILAccountContext).not.toHaveBeenCalled();
+    expect(mockLoadCILAccountContext).toHaveBeenCalledWith(expect.objectContaining({ orgId: 'demo', accountId: 'account-1' }));
     expect(mockDecodeMessages.mock.calls[0][3]).toEqual(expect.objectContaining({ cilContext: undefined }));
   });
 
@@ -747,7 +747,7 @@ describe('decode route — CIL guard paths', () => {
 });
 
 describe('strategy route — CIL guard paths', () => {
-  it('orgId=demo 时不加载 CIL', async () => {
+  it('legacy organization labels follow the same authenticated CIL loading path', async () => {
     mockRequireAuth.mockResolvedValue({
       userId: 'user-1',
       orgId: 'demo',
@@ -770,7 +770,7 @@ describe('strategy route — CIL guard paths', () => {
     );
 
     expect(response.status).toBe(200);
-    expect(mockLoadCILAccountContext).not.toHaveBeenCalled();
+    expect(mockLoadCILAccountContext).toHaveBeenCalledWith(expect.objectContaining({ orgId: 'demo', accountId: 'account-1' }));
     expect(mockGenerateStrategy.mock.calls[0][0].cilContext).toBeUndefined();
   });
 

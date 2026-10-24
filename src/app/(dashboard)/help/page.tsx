@@ -2,7 +2,6 @@
 
 import { visibleBusinessText } from "@/lib/visible-business-text";
 import { useCallback, useMemo, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpenCheck, Building2, CircleHelp, ClipboardList, GitBranch, LayoutDashboard, Lightbulb, Route, ScanSearch, Search, Settings2, Sparkles, Users, type LucideIcon } from "lucide-react";
 import { useLocale, type Locale } from "@/lib/i18n";
@@ -11,8 +10,6 @@ type GuideLink = {
   href: string;
 };
 type GuidePreview = {
-  imageSrc: string;
-  imageAlt: string;
   caption: string;
   start: string;
   done: string;
@@ -128,7 +125,7 @@ const COPY: Record<Locale, HelpCopy> = {
       secondaryCta: "新用户体验手册"
     },
     productTitle: "先理解 Closr：它不是传统 CRM",
-    productSubtitle: "传统 CRM 主要记录“发生了什么”；Closr 更关注“现在该怎么判断、下一步该怎么赢”。Enterprise 1.0 demo 聚焦3个客户：续约扩容、沟通关系风险、RFP招投标，把零散信号编译成带证据链的判断、谋局策略、RFP推进和校准闭环。谋局不是只找人推进，而是组织客户痛点、我方方案、证据、关系和时机。",
+    productSubtitle: "传统 CRM 主要记录“发生了什么”；Closr 更关注“现在该怎么判断、下一步该怎么赢”。围绕续约扩容、沟通关系风险和RFP招投标等业务场景，把零散信号编译成带证据链的判断、谋局策略、RFP推进和校准闭环。谋局不是只找人推进，而是组织客户痛点、我方方案、证据、关系和时机。",
     productPositioning: [{
       title: "从记录到判断",
       description: "CRM 帮你记录客户、商机和活动；Closr 帮你判断客户真正想什么、谁影响决策、当前风险在哪里、下一步该怎么推进。",
@@ -301,8 +298,6 @@ const COPY: Record<Locale, HelpCopy> = {
       }],
       tips: ["新账号数据少时，全景会比较空；先录入客户和沟通信号，判断会逐步丰富。"],
       preview: {
-        imageSrc: "/help/demo/horizon-overview.webp",
-        imageAlt: "Demo 登录态下的全景高管仪表盘界面",
         caption: "这是你会看到的全景界面：AI 指挥中心会把活跃商机、Pipeline 总额、风险和逾期任务放在同一屏。",
         start: "点这里开始：左侧导航「全景」→ 先看 AI 指挥中心和全局态势。",
         done: "完成后看到什么：今天最该关注的客户、风险商机和需要跟进的动作。"
@@ -353,8 +348,6 @@ const COPY: Record<Locale, HelpCopy> = {
       }],
       tips: ["不要只粘贴正文或一句话。邮件最好保留 From、To、Cc、Subject、时间、发件人 title、公司信息和当前商机背景。", "Cc 往往比正文更能暴露决策链：采购、财务、技术评审、领导是否被拉进来，会直接影响联系人和关系判断。", "解读不是简单摘要，重点看：客户真实意图、潜在顾虑、沟通风险、下一步动作和推荐回复。", "如果 AI 判断不准，回到客户页用「修正判断」补充你的真实判断。"],
       preview: {
-        imageSrc: "/help/demo/decode-workspace.webp",
-        imageAlt: "Demo 登录态下的 Decode 信号录入界面",
         caption: "这是你会看到的解读界面：选择信号类型、关联客户，再粘贴客户邮件、会议纪要或聊天记录。",
         start: "点这里开始：左侧导航「解读」→ 在信号录入区粘贴客户沟通内容。",
         done: "完成后看到什么：真实意图、风险信号、机会信号、推荐回复和下一步行动。"
@@ -410,8 +403,6 @@ const COPY: Record<Locale, HelpCopy> = {
       }],
       tips: ["客户判断有时需要加载几秒；如果刚保存 Decode，刷新或稍等后再看。", "建议把客户页当作每个大客户的客户增长工作台，而不是资料库。"],
       preview: {
-        imageSrc: "/help/demo/account-overview.webp",
-        imageAlt: "Demo 登录态下的客户详情概览界面",
         caption: "这是你会看到的客户页：顶部是客户状态和快捷动作，下方按概览、谋局、联系人、动态、任务组织所有判断。",
         start: "点这里开始：左侧导航「客户」→ 选择一个客户 → 先看「概览」。",
         done: "完成后看到什么：客户当前阶段、关键风险、下一步动作和可继续钻取的判断证据。"
@@ -502,8 +493,6 @@ const COPY: Record<Locale, HelpCopy> = {
       }],
       tips: ["客户页谋局入口在 tab「谋局」里；如果从全局谋局进入，也可以按客户查找。", "谋局不是一次性计划，客户信号变化后要回来更新假设和下一步动作。"],
       preview: {
-        imageSrc: "/help/demo/strategic-plays.webp",
-        imageAlt: "Demo 登录态下的客户谋局界面",
         caption: "这是你会看到的谋局界面：先看采购委员会覆盖率和组织结构，再把关键关系、阻力和推进路径拆成策略。",
         start: "点这里开始：进入客户页「谋局」tab，或从左侧导航「谋局」按客户查找。",
         done: "完成后看到什么：围绕该客户的推进路径、关键假设、关系缺口和后续行动。"
@@ -596,10 +585,10 @@ const COPY: Record<Locale, HelpCopy> = {
       id: "forge",
       eyebrow: "08 / 设置",
       title: "设置 Forge / 组织 Organization：企业启用 Closr 的第一步",
-      summary: "设置和组织页集中管理组织、团队成员、角色权限、数据范围、审计、销售流程、产品报价、Demo Seed 和高级工具。",
+      summary: "设置和组织页集中管理组织、团队成员、角色权限、数据范围、审计、销售流程、产品报价、数据导入导出和高级工具。",
       icon: Settings2,
       why: "企业使用 Closr 前，必须先统一组织边界、角色权限、销售阶段、产品报价和基础数据。否则后续客户判断、管线、任务和报表会因为口径不一致而失真。",
-      steps: ["点击左侧导航「设置」。", "先完成组织信息：公司名称、默认语言、币种和基础偏好。", "进入「组织」管理团队成员：邀请成员，设置 owner / admin / member 平台角色。", "为每个成员设置职级：AE / Manager / VP，用来决定默认数据范围和管理视图。", "如团队规模较大，创建团队分组，并把成员分配到对应团队。", "确认客户负责人规则：客户、商机、任务要有明确 owner；交接时使用转移/回收能力，避免客户悬空。", "统一销售流程：商机阶段、健康度、forecast、赢输复盘和任务优先级。", "维护产品与报价：产品线、服务项、报价口径、ROI 常用表达。", "准备基础数据：导入真实客户，或加载 Demo Seed 做团队培训。", "上线前检查审计入口，确认成员、权限、AI 使用和关键操作可追溯。", "需要重新学习页面时，点击功能引导或回到帮助中心。"],
+      steps: ["点击左侧导航「设置」。", "先完成组织信息：公司名称、默认语言、币种和基础偏好。", "进入「组织」管理团队成员：邀请成员，设置 owner / admin / member 平台角色。", "为每个成员设置职级：AE / Manager / VP，用来决定默认数据范围和管理视图。", "如团队规模较大，创建团队分组，并把成员分配到对应团队。", "确认客户负责人规则：客户、商机、任务要有明确 owner；交接时使用转移/回收能力，避免客户悬空。", "统一销售流程：商机阶段、健康度、forecast、赢输复盘和任务优先级。", "维护产品与报价：产品线、服务项、报价口径、ROI 常用表达。", "准备基础数据：确认来源和使用权限，再录入或导入客户、联系人和商机。", "上线前检查审计入口，确认成员、权限、AI 使用和关键操作可追溯。", "需要重新学习页面时，点击功能引导或回到帮助中心。"],
       result: "你会得到一个适合企业团队共同使用的 Closr 工作区，而不是只适合个人试用的空白工具。",
       modules: [{
         name: "个人设置",
@@ -640,7 +629,7 @@ const COPY: Record<Locale, HelpCopy> = {
         name: "销售流程",
         purpose: "配置阶段、流程语言、管线习惯和团队统一定义。",
         helps: "让机会阶段、forecast 和复盘使用同一套标准。",
-        useWhen: "团队已有固定销售流程，或 demo 后准备真实落地时。"
+        useWhen: "团队已有固定销售流程，或准备正式启用时。"
       }, {
         name: "产品与报价",
         purpose: "维护产品、服务项、报价口径和可复用方案信息。",
@@ -651,11 +640,6 @@ const COPY: Record<Locale, HelpCopy> = {
         purpose: "查看关键系统行为、权限相关记录和高级配置入口。",
         helps: "让团队在正式使用时具备治理和排查能力。",
         useWhen: "上线前检查配置、排查数据问题、或需要管理员治理时。"
-      }, {
-        name: "Demo Seed",
-        purpose: "加载或检查演示数据，用于培训、演示或验证功能链路。",
-        helps: "在真实数据不足时，仍能看到客户、联系人、Decode、谋局、管线和任务如何串起来。",
-        useWhen: "做内部培训、客户演示、QA 回归，或验证某条 guide 是否跑通时。"
       }],
       tips: ["设置页偏治理和配置；日常查功能时重点看模块职责、入口、权限和字段含义。"],
       links: [{
@@ -708,7 +692,7 @@ const COPY: Record<Locale, HelpCopy> = {
         name: "导入 Import",
         purpose: "批量导入客户、联系人、商机或其他基础数据。",
         helps: "让团队不用从零手动录入，能更快进入真实业务场景。",
-        useWhen: "从旧 CRM、表格或 demo seed 迁移数据时。"
+        useWhen: "从旧 CRM 或已获授权的表格迁移数据时。"
       }, {
         name: "通知 Notifications",
         purpose: "提醒你风险变化、任务逾期、客户更新和系统建议。",
@@ -717,7 +701,7 @@ const COPY: Record<Locale, HelpCopy> = {
       }, {
         name: "组织 / 产品 / 渠道",
         purpose: "管理团队结构、产品服务、渠道伙伴和基础业务配置。",
-        helps: "把 Closr 从个人 demo 变成团队可长期使用的系统。",
+        helps: "让 Closr 支持团队持续协作和长期使用。",
         useWhen: "团队试用转正式使用，或需要统一产品报价、权限和业务结构时。"
       }],
       tips: ["这些入口是主导航以外的补充能力；遇到具体场景时再打开对应模块。"],
@@ -1366,11 +1350,8 @@ export default function HelpPage() {
 
                     {section.preview && <div className="mt-4 overflow-hidden rounded-xl border border-border-subtle bg-background/60">
                         <div className="border-b border-border-subtle px-4 py-3">
-                          <h4 className="text-sm font-semibold text-foreground">{tx("界面预览")}</h4>
+                          <h4 className="text-sm font-semibold text-foreground">{en ? "Workflow walkthrough" : "操作说明"}</h4>
                           <p className="mt-1 text-sm leading-relaxed text-secondary">{section.preview.caption}</p>
-                        </div>
-                        <div className="bg-card/70 p-2 sm:p-3">
-                          <Image src={section.preview.imageSrc} alt={section.preview.imageAlt} width={1280} height={853} sizes="(max-width: 768px) 100vw, (max-width: 1280px) 75vw, 920px" className="h-auto w-full rounded-lg border border-border-subtle object-cover shadow-sm" />
                         </div>
                         <div className="grid gap-2 border-t border-border-subtle p-4 text-sm leading-relaxed text-secondary md:grid-cols-2">
                           <p><span className="font-semibold text-foreground">{tx("点这里开始：")}</span>{section.preview.start.replace(/^点这里开始：/, "")}</p>

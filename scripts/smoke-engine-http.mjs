@@ -196,13 +196,13 @@ async function smokeInvalidPayload(baseUrl) {
   const { response, body } = await fetchJson(baseUrl, endpoint, {
     method: 'POST',
     body: JSON.stringify({
-      tenantId: 'tenant_demo',
+      tenantId: 'tenant_example',
       accountId: 'acct_invalid_http_smoke',
       persist: false,
       sources: [
         {
           id: 'src_invalid_http_smoke',
-          tenantId: 'tenant_demo',
+          tenantId: 'tenant_example',
           sourceType: 'email',
           accountId: 'acct_invalid_http_smoke',
           occurredAt: 'not-a-date',

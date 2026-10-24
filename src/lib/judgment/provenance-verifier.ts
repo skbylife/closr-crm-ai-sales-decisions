@@ -17,7 +17,7 @@ const JUDGMENT_SOURCE_KIND_TO_SOURCE_RECORD_KIND: Record<JudgmentMemorySourceKin
   strategic_play: 'strategic_play',
 };
 
-export interface ProvenanceDemoAccount {
+export interface ProvenanceAccount {
   id: string;
   key: string;
   name: string;
@@ -117,7 +117,7 @@ export interface JudgmentProvenanceVerificationResult {
 
 export interface VerifyJudgmentProvenanceParams {
   orgId: string | null;
-  accounts: ProvenanceDemoAccount[];
+  accounts: ProvenanceAccount[];
   sourceRecords: ProvenanceSourceRecordRow[];
   emailDecodes: ProvenanceAccountScopedRow[];
   strategicPlays: ProvenanceAccountScopedRow[];
@@ -432,7 +432,7 @@ function validateSourcePointer(params: {
     issues.push({
       ...issueBase,
       code: 'source_row_account_mismatch',
-      message: `来源行 account_id=${match.accountId ?? 'missing'} 与 demo account=${params.accountId} 不一致。`,
+      message: `来源行 account_id=${match.accountId ?? 'missing'} 与 account=${params.accountId} 不一致。`,
     });
   }
 
@@ -500,7 +500,7 @@ export function verifyJudgmentProvenance(params: VerifyJudgmentProvenanceParams)
     if (accountSourceRecords.length === 0) {
       issues.push({
         code: 'source_records_missing',
-        message: `demo account ${account.id} 没有任何 source_records。`,
+        message: `account ${account.id} 没有任何 source_records。`,
       });
     }
 
@@ -533,7 +533,7 @@ export function verifyJudgmentProvenance(params: VerifyJudgmentProvenanceParams)
         if (row.account_id !== account.id) {
           rowIssues.push({
             code: 'source_record_account_mismatch',
-            message: `source_record account_id=${row.account_id ?? 'missing'} 与 demo account=${account.id} 不一致。`,
+            message: `source_record account_id=${row.account_id ?? 'missing'} 与 account=${account.id} 不一致。`,
             sourceRecordId: row.id,
             sourceKind,
             expectedSourceRowId: expected.sourceRowId,

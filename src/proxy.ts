@@ -13,8 +13,6 @@ const PUBLIC_PATHS = [
   '/api/integration/webhook',
   '/api/integration/oauth/microsoft/callback',
   '/api/invite/accept',
-  '/api/verify-demo',
-  '/api/demo-login',
   '/api/health',
   '/api/agent/daily-analysis',
   '/api/agent/intelligence/scan',

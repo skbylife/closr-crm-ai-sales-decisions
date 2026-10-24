@@ -340,46 +340,6 @@ type HorizonDecisionItem = {
 
 const OPEN_PLAY_STATUSES = new Set(["active", "in_progress"]);
 const EXECUTABLE_STEP_STATUSES = new Set(["blocked", "invalidated", "in_progress", "planned", "pending"]);
-const STANDARD_DEMO_DECISION_OVERRIDES: Record<string, { problem: string; risk: string; nextAction: string }> = {
-  opp_platform_cloud_001: {
-    problem: "续约表面健康，但 CTO 何总追问 AIOps 与自研 iMaster 的边界，采购又用年降 5% 和低价竞品压价。",
-    risk: "如果今天不把 iMaster 互补边界、P1 根因链路和 92% 自愈率路线图讲清楚，三年框架会被打回年度低价续约。",
-    nextAction: "由林岚推动李总转交一页互补架构图 + iMaster 边界说明给何总，并同步周总的 ROI 口径。",
-  },
-  opp_cmcc_5g_003: {
-    problem: "POC 指标已经超标，但集团采购链和省级试点授权没有锁定，机会卡在采购路径而不是技术能力。",
-    risk: "如果 48 小时内不确认赵总、孙总和集团采购中心的真实审批关系，省级试点可能变成没有复制权的小单。",
-    nextAction: "让周晨锁定赵总 + 孙总三方会议，确认两省试点负责人、数据源范围和集团复制条款。",
-  },
-  opp_bank_app_003: {
-    problem: "孙宁回归后风险从沉默转为安全评审校准，手机银行重构仍要过周总的安全条件和 POC 资源确认。",
-    risk: "如果不把周总的安全边界、POC 验收标准和资源承诺一次确认，商机会继续看似推进但 forecast 不可信。",
-    nextAction: "让许洁向孙宁确认 POC 资源、验收标准和周总的三条安全条件，并把客户反馈回写到商机。",
-  },
-};
-
-const STANDARD_DEMO_DECISION_OVERRIDES_EN: Record<string, { problem: string; risk: string; nextAction: string }> = {
-  opp_platform_cloud_001: {
-    problem: "The renewal looks healthy, but the CTO is pressing on AIOps versus in-house iMaster boundaries while procurement is using a 5% annual reduction and lower-cost competitors as leverage.",
-    risk: "If the iMaster complementarity, P1 root-cause path, and 92% self-healing roadmap are not clarified today, the three-year frame may be pushed back into a yearly low-price renewal.",
-    nextAction: "Have Lynn Lin send Li a one-page complementary architecture and iMaster boundary note for the CTO, aligned with Zhou's ROI narrative.",
-  },
-  opp_cmcc_5g_003: {
-    problem: "The POC metrics are above target, but procurement chain ownership and province-level pilot authorization are not locked.",
-    risk: "If the real approval path across Zhao, Sun, and group procurement is not confirmed within 48 hours, the pilot may become a small deal with no replication rights.",
-    nextAction: "Have Chen Zhou lock a three-party meeting with Zhao and Sun to confirm province owners, data-source scope, and group replication terms.",
-  },
-  opp_bank_app_003: {
-    problem: "After Sun Ning re-engaged, the risk moved from silence to security-review calibration; the mobile banking rebuild still depends on Zhou's security conditions and POC resources.",
-    risk: "If Zhou's security boundaries, POC acceptance criteria, and resource commitment are not confirmed together, the deal will look active while the forecast remains weak.",
-    nextAction: "Have Jie Xu confirm POC resources, acceptance criteria, and Zhou's three security conditions with Sun Ning, then write the customer feedback back to the opportunity.",
-  },
-};
-
-function decisionOverrides(locale: Locale): Record<string, { problem: string; risk: string; nextAction: string }> {
-  return locale === "en" ? STANDARD_DEMO_DECISION_OVERRIDES_EN : STANDARD_DEMO_DECISION_OVERRIDES;
-}
-
 function cleanDashboardText(value: unknown, locale: Locale): string {
   return typeof value === "string" ? visibleBusinessText(value, locale).replace(/\s+/g, " ").trim() : "";
 }
@@ -439,9 +399,6 @@ function pickPrimaryStep(play?: StrategicPlay): StrategicPlay["steps"][number] |
 
 function horizonStatusLabel(item: HorizonDecisionItem | undefined | null, locale: Locale): string {
   if (!item) return l(locale, "等待反馈", "Waiting for feedback");
-  if (decisionOverrides(locale)[item.opportunity.id] && item.moujuState.status === "no_plan") {
-    return l(locale, "需要反馈校准", "Needs feedback calibration");
-  }
   return visibleBusinessText(item.moujuState.label, locale);
 }
 
@@ -494,7 +451,6 @@ function HorizonDecisionHomepage({
       const owner = ownerId ? orgMembers.find((member) => member.userId === ownerId) : undefined;
       const ownerName = owner?.displayName || owner?.email || opp.owner || l(locale, "未分配", "Unassigned");
       const evidenceScore = opp.meddicc?.overallScore ?? 0;
-      const demoOverride = decisionOverrides(locale)[opp.id];
       const moujuState = buildMoujuStateForTarget({
         plays,
         accountId: account.id,
@@ -515,7 +471,6 @@ function HorizonDecisionHomepage({
         locale,
         primaryStep?.blockerReason,
         primaryStep?.risk,
-        demoOverride?.risk,
         moujuState.risk,
         play?.riskCounterEvidence?.[0],
         opp.meddicc?.competition?.find((competitor) => competitor.threatLevel === "high")?.ourAdvantage,
@@ -525,7 +480,6 @@ function HorizonDecisionHomepage({
         locale,
         primaryStep?.nextAction,
         primaryStep?.action,
-        demoOverride?.nextAction,
         nextTask?.title,
         moujuState.nextAction,
         primaryStep?.title,
@@ -533,7 +487,6 @@ function HorizonDecisionHomepage({
       );
       const problemText = firstDashboardText(
         locale,
-        demoOverride?.problem,
         moujuState.status === "no_plan" ? l(locale, `${opp.name} 还没有活跃谋局承接，风险、下一步和 owner 判断容易停留在人脑里。`, `${opp.name} does not have an active play, so risk, next move, and owner judgment may stay implicit.`) : "",
         moujuState.situation,
         primaryStep?.purpose,
@@ -1164,7 +1117,7 @@ export default function DashboardPage() {
   const currency = useStore((s) => s.currencyCode);
   const { accounts, intelItems, emailDecodes, composedEmails, opportunities, tasks } = useRoleFilteredData();
   const { t, locale } = useLocale();
-  const { orgId, orgName, orgRole, orgMembers, isDemo } = useAuth();
+  const { orgId, orgName, orgRole, orgMembers } = useAuth();
   const jobLevel = useEffectiveJobLevel();
   const roleLevel: UserRoleLevel = jobLevel >= 2 ? 'executive' : jobLevel >= 1 ? 'director' : 'ae';
   const dashboardRole = resolveDashboardRole(orgRole ?? 'member', jobLevel);
@@ -1202,13 +1155,7 @@ export default function DashboardPage() {
   }, [orgId]);
 
   // ── Computed data ──────────────────────────────────────────────
-  const scopeKey: TranslationKey = isDemo
-    ? jobLevel >= 2
-      ? "dashboard.orgScope.all"
-      : jobLevel >= 1
-        ? "dashboard.orgScope.team"
-        : "dashboard.orgScope.mine"
-    : !orgRole || orgRole === "owner" || orgRole === "admin"
+  const scopeKey: TranslationKey = !orgRole || orgRole === "owner" || orgRole === "admin"
     ? "dashboard.orgScope.all"
     : jobLevel >= 1
       ? "dashboard.orgScope.team"

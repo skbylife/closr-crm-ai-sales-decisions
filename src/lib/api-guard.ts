@@ -30,7 +30,7 @@ export class ApiError extends Error {
 
 /**
  * 认证 + 获取 UserContext。
- * 所有用户（含 demo）必须有真实 Supabase session + org membership。
+ * 所有用户必须有有效会话与组织成员身份。
  */
 export async function requireAuth(): Promise<UserContext> {
   const authUser = await getAuthUser();

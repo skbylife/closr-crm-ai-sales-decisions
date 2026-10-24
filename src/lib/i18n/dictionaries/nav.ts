@@ -129,10 +129,8 @@ export const navDict = {
 
   // Topbar
   "topbar.personalSettings": { zh: "个人设置", en: "Settings" },
-  "topbar.exitDemo": { zh: "退出 Demo", en: "Exit Demo" },
   "topbar.signOut": { zh: "退出登录", en: "Sign Out" },
   "topbar.demoUser": { zh: "Demo 用户", en: "Demo User" },
-  "topbar.demoMode": { zh: "体验模式", en: "Demo Mode" },
 
   // Compass tabs
   "compass.tabs.overview": { zh: "全景", en: "Overview" },

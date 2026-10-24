@@ -53,7 +53,7 @@ export function HydrationProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const lastUserIdRef = useRef<string | null>(null);
 
-  // Hydrate from Supabase (both demo and real users — demo is now a real Supabase user)
+  // Load only the authenticated user’s organization-scoped records.
   useEffect(() => {
     if (!isHydrated) {
       hydrate();

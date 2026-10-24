@@ -72,7 +72,6 @@ export const crmDict = {
   "accounts.noMatch": { zh: "没有匹配的客户", en: "No matching accounts" },
   "accounts.addFirstTitle": { zh: "添加你的第一个客户", en: "Add Your First Account" },
   "accounts.addFirstHint": { zh: "开始管理你的销售机会和客户关系", en: "Start managing your opportunities and relationships" },
-  "accounts.loadSample": { zh: "或加载示例数据", en: "or load sample data" },
   "accounts.modal.title": { zh: "添加客户", en: "Add Account" },
   "accounts.modal.companyName": { zh: "公司名称 *", en: "Company Name *" },
   "accounts.modal.companyPlaceholder": { zh: "例如：华为", en: "e.g., Huawei" },

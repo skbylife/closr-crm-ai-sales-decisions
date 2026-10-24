@@ -233,4 +233,14 @@ describe('/api/decode/play-impact', () => {
     expect(JSON.stringify(writes.insights[0].data)).not.toContain('错误客户判断');
     expect(JSON.stringify(writes.insights[0].data)).not.toContain('不应被当前 account 使用');
   });
+  it('derives budget/competition impact from actual input without inventing named people or numerical constraints', async () => {
+    tables.strategic_plays.push({ id: 'play', org_id: 'org_1', account_id: 'acc_1', opportunity_id: null, status: 'active', user_id: 'owner_1', goal_description: 'Confirm evaluation scope', assumptions: [{ text: 'Budget approval remains pending', status: 'pending' }], steps: [] });
+    const response = await POST(request({ accountId: 'acc_1', emailText: '预算需要财务评审，竞品已有报价，需要确认ROI。' }));
+    expect(response.status).toBe(200);
+    expect(writes.insights).toHaveLength(1);
+    const alert = writes.insights[0].data;
+    expect(alert).toMatchObject({ impact_level: 'high', affectedAssumptions: ['Budget approval remains pending'] });
+    expect(JSON.stringify(alert)).not.toMatch(/陈晓峰|TCS|年降 5%|一年回本/);
+  });
+
 });

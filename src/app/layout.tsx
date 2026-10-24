@@ -8,9 +8,9 @@ import "@fontsource-variable/geist-mono/wght.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Closr — 解读客户，赢得订单",
+  title: "Closr — B2B Sales Judgment",
   description:
-    "AI 驱动的销售情报工具，解读每一封客户邮件背后的真实意图。",
+    "Understand customer signals, review the evidence, and plan the next sales move.",
 };
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="zh-CN"
+      lang="en"
       className="h-full antialiased"
     >
       <body className="min-h-full bg-background text-foreground">

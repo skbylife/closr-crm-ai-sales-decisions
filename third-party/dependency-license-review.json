@@ -1,0 +1,1209 @@
+{
+  "lockSha256": "c57dc480b1d34876b026a6c76fc4850a8d57005324a05faba4068dcd40edbd2f",
+  "totalEntries": 715,
+  "changedOrNewCount": 129,
+  "newPaths": 34,
+  "licenseCounts": {
+    "MIT": 543,
+    "Apache-2.0": 52,
+    "OFL-1.1": 3,
+    "LGPL-3.0-or-later": 10,
+    "Apache-2.0 AND LGPL-3.0-or-later AND MIT": 1,
+    "Apache-2.0 AND LGPL-3.0-or-later": 3,
+    "Apache 2.0": 1,
+    "MIT AND ISC": 2,
+    "BlueOak-1.0.0": 1,
+    "ISC": 44,
+    "Python-2.0": 1,
+    "MPL-2.0": 25,
+    "Unlicense": 1,
+    "BSD-3-Clause": 8,
+    "MISSING": 1,
+    "CC-BY-4.0": 1,
+    "MIT/X11": 2,
+    "BSD-2-Clause": 11,
+    "BSD": 1,
+    "(MIT OR GPL-3.0-or-later)": 1,
+    "CC0-1.0": 1,
+    "(MIT AND Zlib)": 1,
+    "0BSD": 1
+  },
+  "registryChecks": [
+    {
+      "path": "node_modules/@azure/msal-node",
+      "name": "@azure/msal-node",
+      "version": "7.1.1",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40azure%2Fmsal-node/7.1.1"
+    },
+    {
+      "path": "node_modules/@azure/msal-node/node_modules/@azure/msal-common",
+      "name": "@azure/msal-common",
+      "version": "16.14.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40azure%2Fmsal-common/16.14.3"
+    },
+    {
+      "path": "node_modules/@babel/code-frame",
+      "name": "@babel/code-frame",
+      "version": "7.29.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fcode-frame/7.29.7"
+    },
+    {
+      "path": "node_modules/@babel/compat-data",
+      "name": "@babel/compat-data",
+      "version": "7.29.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fcompat-data/7.29.7"
+    },
+    {
+      "path": "node_modules/@babel/core",
+      "name": "@babel/core",
+      "version": "7.29.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fcore/7.29.7"
+    },
+    {
+      "path": "node_modules/@babel/generator",
+      "name": "@babel/generator",
+      "version": "7.29.8",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fgenerator/7.29.8"
+    },
+    {
+      "path": "node_modules/@babel/helper-compilation-targets",
+      "name": "@babel/helper-compilation-targets",
+      "version": "7.29.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fhelper-compilation-targets/7.29.7"
+    },
+    {
+      "path": "node_modules/@babel/helper-globals",
+      "name": "@babel/helper-globals",
+      "version": "7.29.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fhelper-globals/7.29.7"
+    },
+    {
+      "path": "node_modules/@babel/helper-module-imports",
+      "name": "@babel/helper-module-imports",
+      "version": "7.29.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fhelper-module-imports/7.29.7"
+    },
+    {
+      "path": "node_modules/@babel/helper-module-transforms",
+      "name": "@babel/helper-module-transforms",
+      "version": "7.29.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fhelper-module-transforms/7.29.7"
+    },
+    {
+      "path": "node_modules/@babel/helper-string-parser",
+      "name": "@babel/helper-string-parser",
+      "version": "7.29.11",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fhelper-string-parser/7.29.11"
+    },
+    {
+      "path": "node_modules/@babel/helper-validator-identifier",
+      "name": "@babel/helper-validator-identifier",
+      "version": "7.29.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fhelper-validator-identifier/7.29.7"
+    },
+    {
+      "path": "node_modules/@babel/helper-validator-option",
+      "name": "@babel/helper-validator-option",
+      "version": "7.29.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fhelper-validator-option/7.29.7"
+    },
+    {
+      "path": "node_modules/@babel/helpers",
+      "name": "@babel/helpers",
+      "version": "7.29.10",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fhelpers/7.29.10"
+    },
+    {
+      "path": "node_modules/@babel/parser",
+      "name": "@babel/parser",
+      "version": "7.29.11",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Fparser/7.29.11"
+    },
+    {
+      "path": "node_modules/@babel/template",
+      "name": "@babel/template",
+      "version": "7.29.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Ftemplate/7.29.7"
+    },
+    {
+      "path": "node_modules/@babel/traverse",
+      "name": "@babel/traverse",
+      "version": "7.29.10",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Ftraverse/7.29.10"
+    },
+    {
+      "path": "node_modules/@babel/types",
+      "name": "@babel/types",
+      "version": "7.29.11",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40babel%2Ftypes/7.29.11"
+    },
+    {
+      "path": "node_modules/@emnapi/runtime",
+      "name": "@emnapi/runtime",
+      "version": "1.11.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40emnapi%2Fruntime/1.11.3"
+    },
+    {
+      "path": "node_modules/@humanfs/core",
+      "name": "@humanfs/core",
+      "version": "0.19.2",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40humanfs%2Fcore/0.19.2"
+    },
+    {
+      "path": "node_modules/@humanfs/node",
+      "name": "@humanfs/node",
+      "version": "0.16.8",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40humanfs%2Fnode/0.16.8"
+    },
+    {
+      "path": "node_modules/@humanfs/types",
+      "name": "@humanfs/types",
+      "version": "0.15.0",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40humanfs%2Ftypes/0.15.0"
+    },
+    {
+      "path": "node_modules/@img/sharp-darwin-arm64",
+      "name": "@img/sharp-darwin-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-darwin-arm64/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-darwin-x64",
+      "name": "@img/sharp-darwin-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-darwin-x64/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-freebsd-wasm32",
+      "name": "@img/sharp-freebsd-wasm32",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-freebsd-wasm32/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-libvips-darwin-arm64",
+      "name": "@img/sharp-libvips-darwin-arm64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-libvips-darwin-arm64/1.3.4"
+    },
+    {
+      "path": "node_modules/@img/sharp-libvips-darwin-x64",
+      "name": "@img/sharp-libvips-darwin-x64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-libvips-darwin-x64/1.3.4"
+    },
+    {
+      "path": "node_modules/@img/sharp-libvips-linux-arm",
+      "name": "@img/sharp-libvips-linux-arm",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-libvips-linux-arm/1.3.4"
+    },
+    {
+      "path": "node_modules/@img/sharp-libvips-linux-arm64",
+      "name": "@img/sharp-libvips-linux-arm64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-libvips-linux-arm64/1.3.4"
+    },
+    {
+      "path": "node_modules/@img/sharp-libvips-linux-ppc64",
+      "name": "@img/sharp-libvips-linux-ppc64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-libvips-linux-ppc64/1.3.4"
+    },
+    {
+      "path": "node_modules/@img/sharp-libvips-linux-riscv64",
+      "name": "@img/sharp-libvips-linux-riscv64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-libvips-linux-riscv64/1.3.4"
+    },
+    {
+      "path": "node_modules/@img/sharp-libvips-linux-s390x",
+      "name": "@img/sharp-libvips-linux-s390x",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-libvips-linux-s390x/1.3.4"
+    },
+    {
+      "path": "node_modules/@img/sharp-libvips-linux-x64",
+      "name": "@img/sharp-libvips-linux-x64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-libvips-linux-x64/1.3.4"
+    },
+    {
+      "path": "node_modules/@img/sharp-libvips-linuxmusl-arm64",
+      "name": "@img/sharp-libvips-linuxmusl-arm64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-libvips-linuxmusl-arm64/1.3.4"
+    },
+    {
+      "path": "node_modules/@img/sharp-libvips-linuxmusl-x64",
+      "name": "@img/sharp-libvips-linuxmusl-x64",
+      "version": "1.3.4",
+      "license": "LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-libvips-linuxmusl-x64/1.3.4"
+    },
+    {
+      "path": "node_modules/@img/sharp-linux-arm",
+      "name": "@img/sharp-linux-arm",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-linux-arm/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-linux-arm64",
+      "name": "@img/sharp-linux-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-linux-arm64/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-linux-ppc64",
+      "name": "@img/sharp-linux-ppc64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-linux-ppc64/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-linux-riscv64",
+      "name": "@img/sharp-linux-riscv64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-linux-riscv64/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-linux-s390x",
+      "name": "@img/sharp-linux-s390x",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-linux-s390x/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-linux-x64",
+      "name": "@img/sharp-linux-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-linux-x64/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-linuxmusl-arm64",
+      "name": "@img/sharp-linuxmusl-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-linuxmusl-arm64/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-linuxmusl-x64",
+      "name": "@img/sharp-linuxmusl-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-linuxmusl-x64/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-wasm32",
+      "name": "@img/sharp-wasm32",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later AND MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-wasm32/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-webcontainers-wasm32",
+      "name": "@img/sharp-webcontainers-wasm32",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-webcontainers-wasm32/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-win32-arm64",
+      "name": "@img/sharp-win32-arm64",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-win32-arm64/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-win32-ia32",
+      "name": "@img/sharp-win32-ia32",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-win32-ia32/0.35.5"
+    },
+    {
+      "path": "node_modules/@img/sharp-win32-x64",
+      "name": "@img/sharp-win32-x64",
+      "version": "0.35.5",
+      "license": "Apache-2.0 AND LGPL-3.0-or-later",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40img%2Fsharp-win32-x64/0.35.5"
+    },
+    {
+      "path": "node_modules/@next/env",
+      "name": "@next/env",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40next%2Fenv/16.4.3"
+    },
+    {
+      "path": "node_modules/@next/eslint-plugin-next",
+      "name": "@next/eslint-plugin-next",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40next%2Feslint-plugin-next/16.4.3"
+    },
+    {
+      "path": "node_modules/@next/swc-darwin-arm64",
+      "name": "@next/swc-darwin-arm64",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40next%2Fswc-darwin-arm64/16.4.3"
+    },
+    {
+      "path": "node_modules/@next/swc-darwin-x64",
+      "name": "@next/swc-darwin-x64",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40next%2Fswc-darwin-x64/16.4.3"
+    },
+    {
+      "path": "node_modules/@next/swc-linux-arm64-gnu",
+      "name": "@next/swc-linux-arm64-gnu",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40next%2Fswc-linux-arm64-gnu/16.4.3"
+    },
+    {
+      "path": "node_modules/@next/swc-linux-arm64-musl",
+      "name": "@next/swc-linux-arm64-musl",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40next%2Fswc-linux-arm64-musl/16.4.3"
+    },
+    {
+      "path": "node_modules/@next/swc-linux-x64-gnu",
+      "name": "@next/swc-linux-x64-gnu",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40next%2Fswc-linux-x64-gnu/16.4.3"
+    },
+    {
+      "path": "node_modules/@next/swc-linux-x64-musl",
+      "name": "@next/swc-linux-x64-musl",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40next%2Fswc-linux-x64-musl/16.4.3"
+    },
+    {
+      "path": "node_modules/@next/swc-win32-arm64-msvc",
+      "name": "@next/swc-win32-arm64-msvc",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40next%2Fswc-win32-arm64-msvc/16.4.3"
+    },
+    {
+      "path": "node_modules/@next/swc-win32-x64-msvc",
+      "name": "@next/swc-win32-x64-msvc",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40next%2Fswc-win32-x64-msvc/16.4.3"
+    },
+    {
+      "path": "node_modules/@oxc-project/types",
+      "name": "@oxc-project/types",
+      "version": "0.155.0",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40oxc-project%2Ftypes/0.155.0"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-android-arm-eabi",
+      "name": "@rolldown/binding-android-arm-eabi",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-android-arm-eabi/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-android-arm64",
+      "name": "@rolldown/binding-android-arm64",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-android-arm64/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-darwin-arm64",
+      "name": "@rolldown/binding-darwin-arm64",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-darwin-arm64/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-darwin-x64",
+      "name": "@rolldown/binding-darwin-x64",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-darwin-x64/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-freebsd-x64",
+      "name": "@rolldown/binding-freebsd-x64",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-freebsd-x64/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm-gnueabihf",
+      "name": "@rolldown/binding-linux-arm-gnueabihf",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm-gnueabihf/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm64-gnu",
+      "name": "@rolldown/binding-linux-arm64-gnu",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm64-gnu/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm64-musl",
+      "name": "@rolldown/binding-linux-arm64-musl",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-arm64-musl/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-ppc64-gnu",
+      "name": "@rolldown/binding-linux-ppc64-gnu",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-ppc64-gnu/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-s390x-gnu",
+      "name": "@rolldown/binding-linux-s390x-gnu",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-s390x-gnu/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-x64-gnu",
+      "name": "@rolldown/binding-linux-x64-gnu",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-x64-gnu/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-x64-musl",
+      "name": "@rolldown/binding-linux-x64-musl",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-linux-x64-musl/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-openharmony-arm64",
+      "name": "@rolldown/binding-openharmony-arm64",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-openharmony-arm64/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-win32-arm64-msvc",
+      "name": "@rolldown/binding-win32-arm64-msvc",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-win32-arm64-msvc/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-win32-x64-msvc",
+      "name": "@rolldown/binding-win32-x64-msvc",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fbinding-win32-x64-msvc/1.2.15"
+    },
+    {
+      "path": "node_modules/@rolldown/pluginutils",
+      "name": "@rolldown/pluginutils",
+      "version": "1.0.1",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40rolldown%2Fpluginutils/1.0.1"
+    },
+    {
+      "path": "node_modules/@swc/helpers",
+      "name": "@swc/helpers",
+      "version": "0.5.23",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40swc%2Fhelpers/0.5.23"
+    },
+    {
+      "path": "node_modules/@typescript-eslint/typescript-estree/node_modules/brace-expansion",
+      "name": "brace-expansion",
+      "version": "5.0.12",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/brace-expansion/5.0.12"
+    },
+    {
+      "path": "node_modules/@vitest/expect",
+      "name": "@vitest/expect",
+      "version": "4.1.12",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40vitest%2Fexpect/4.1.12"
+    },
+    {
+      "path": "node_modules/@vitest/mocker",
+      "name": "@vitest/mocker",
+      "version": "4.1.12",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40vitest%2Fmocker/4.1.12"
+    },
+    {
+      "path": "node_modules/@vitest/pretty-format",
+      "name": "@vitest/pretty-format",
+      "version": "4.1.12",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40vitest%2Fpretty-format/4.1.12"
+    },
+    {
+      "path": "node_modules/@vitest/runner",
+      "name": "@vitest/runner",
+      "version": "4.1.12",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40vitest%2Frunner/4.1.12"
+    },
+    {
+      "path": "node_modules/@vitest/snapshot",
+      "name": "@vitest/snapshot",
+      "version": "4.1.12",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40vitest%2Fsnapshot/4.1.12"
+    },
+    {
+      "path": "node_modules/@vitest/spy",
+      "name": "@vitest/spy",
+      "version": "4.1.12",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40vitest%2Fspy/4.1.12"
+    },
+    {
+      "path": "node_modules/@vitest/utils",
+      "name": "@vitest/utils",
+      "version": "4.1.12",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40vitest%2Futils/4.1.12"
+    },
+    {
+      "path": "node_modules/@xmldom/xmldom",
+      "name": "@xmldom/xmldom",
+      "version": "0.9.12",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/%40xmldom%2Fxmldom/0.9.12"
+    },
+    {
+      "path": "node_modules/baseline-browser-mapping",
+      "name": "baseline-browser-mapping",
+      "version": "2.11.32",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/baseline-browser-mapping/2.11.32"
+    },
+    {
+      "path": "node_modules/brace-expansion",
+      "name": "brace-expansion",
+      "version": "1.1.21",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/brace-expansion/1.1.21"
+    },
+    {
+      "path": "node_modules/browserslist",
+      "name": "browserslist",
+      "version": "4.29.4",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/browserslist/4.29.4"
+    },
+    {
+      "path": "node_modules/caniuse-lite",
+      "name": "caniuse-lite",
+      "version": "1.0.30001819",
+      "license": "CC-BY-4.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/caniuse-lite/1.0.30001819"
+    },
+    {
+      "path": "node_modules/chai",
+      "name": "chai",
+      "version": "6.3.0",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/chai/6.3.0"
+    },
+    {
+      "path": "node_modules/electron-to-chromium",
+      "name": "electron-to-chromium",
+      "version": "1.5.464",
+      "license": "ISC",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/electron-to-chromium/1.5.464"
+    },
+    {
+      "path": "node_modules/es-module-lexer",
+      "name": "es-module-lexer",
+      "version": "2.3.2",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/es-module-lexer/2.3.2"
+    },
+    {
+      "path": "node_modules/eslint-config-next",
+      "name": "eslint-config-next",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/eslint-config-next/16.4.3"
+    },
+    {
+      "path": "node_modules/eslint-plugin-react-hooks",
+      "name": "eslint-plugin-react-hooks",
+      "version": "7.1.1",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/eslint-plugin-react-hooks/7.1.1"
+    },
+    {
+      "path": "node_modules/fastq",
+      "name": "fastq",
+      "version": "1.20.3",
+      "license": "ISC",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/fastq/1.20.3"
+    },
+    {
+      "path": "node_modules/js-yaml",
+      "name": "js-yaml",
+      "version": "4.3.2",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/js-yaml/4.3.2"
+    },
+    {
+      "path": "node_modules/nanoid",
+      "name": "nanoid",
+      "version": "3.3.20",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/nanoid/3.3.20"
+    },
+    {
+      "path": "node_modules/next",
+      "name": "next",
+      "version": "16.4.3",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/next/16.4.3"
+    },
+    {
+      "path": "node_modules/node-releases",
+      "name": "node-releases",
+      "version": "2.0.60",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/node-releases/2.0.60"
+    },
+    {
+      "path": "node_modules/obug",
+      "name": "obug",
+      "version": "2.2.1",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/obug/2.2.1"
+    },
+    {
+      "path": "node_modules/postcss",
+      "name": "postcss",
+      "version": "8.5.31",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/postcss/8.5.31"
+    },
+    {
+      "path": "node_modules/react",
+      "name": "react",
+      "version": "19.2.9",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/react/19.2.9"
+    },
+    {
+      "path": "node_modules/react-dom",
+      "name": "react-dom",
+      "version": "19.2.9",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/react-dom/19.2.9"
+    },
+    {
+      "path": "node_modules/readdir-glob/node_modules/brace-expansion",
+      "name": "brace-expansion",
+      "version": "2.1.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/brace-expansion/2.1.7"
+    },
+    {
+      "path": "node_modules/rolldown",
+      "name": "rolldown",
+      "version": "1.2.15",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/rolldown/1.2.15"
+    },
+    {
+      "path": "node_modules/sharp",
+      "name": "sharp",
+      "version": "0.35.5",
+      "license": "Apache-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/sharp/0.35.5"
+    },
+    {
+      "path": "node_modules/sharp/node_modules/semver",
+      "name": "semver",
+      "version": "7.8.5",
+      "license": "ISC",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/semver/7.8.5"
+    },
+    {
+      "path": "node_modules/source-map-js",
+      "name": "source-map-js",
+      "version": "1.2.2",
+      "license": "BSD-3-Clause",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/source-map-js/1.2.2"
+    },
+    {
+      "path": "node_modules/std-env",
+      "name": "std-env",
+      "version": "4.3.0",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/std-env/4.3.0"
+    },
+    {
+      "path": "node_modules/tinyexec",
+      "name": "tinyexec",
+      "version": "1.3.1",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/tinyexec/1.3.1"
+    },
+    {
+      "path": "node_modules/tinyglobby",
+      "name": "tinyglobby",
+      "version": "0.2.17",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/tinyglobby/0.2.17"
+    },
+    {
+      "path": "node_modules/tinyrainbow",
+      "name": "tinyrainbow",
+      "version": "3.2.0",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/tinyrainbow/3.2.0"
+    },
+    {
+      "path": "node_modules/update-browserslist-db",
+      "name": "update-browserslist-db",
+      "version": "1.3.4",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/update-browserslist-db/1.3.4"
+    },
+    {
+      "path": "node_modules/vite",
+      "name": "vite",
+      "version": "8.3.5",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/vite/8.3.5"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss",
+      "name": "lightningcss",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-android-arm64",
+      "name": "lightningcss-android-arm64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-android-arm64/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-darwin-arm64",
+      "name": "lightningcss-darwin-arm64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-darwin-arm64/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-darwin-x64",
+      "name": "lightningcss-darwin-x64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-darwin-x64/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-freebsd-x64",
+      "name": "lightningcss-freebsd-x64",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-freebsd-x64/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-linux-arm-gnueabihf",
+      "name": "lightningcss-linux-arm-gnueabihf",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-linux-arm-gnueabihf/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-linux-arm64-gnu",
+      "name": "lightningcss-linux-arm64-gnu",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-linux-arm64-gnu/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-linux-arm64-musl",
+      "name": "lightningcss-linux-arm64-musl",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-linux-arm64-musl/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-linux-x64-gnu",
+      "name": "lightningcss-linux-x64-gnu",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-linux-x64-gnu/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-linux-x64-musl",
+      "name": "lightningcss-linux-x64-musl",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-linux-x64-musl/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-win32-arm64-msvc",
+      "name": "lightningcss-win32-arm64-msvc",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-win32-arm64-msvc/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/lightningcss-win32-x64-msvc",
+      "name": "lightningcss-win32-x64-msvc",
+      "version": "1.33.0",
+      "license": "MPL-2.0",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/lightningcss-win32-x64-msvc/1.33.0"
+    },
+    {
+      "path": "node_modules/vite/node_modules/picomatch",
+      "name": "picomatch",
+      "version": "4.0.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/picomatch/4.0.7"
+    },
+    {
+      "path": "node_modules/vitest",
+      "name": "vitest",
+      "version": "4.1.12",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/vitest/4.1.12"
+    },
+    {
+      "path": "node_modules/zod",
+      "name": "zod",
+      "version": "4.6.7",
+      "license": "MIT",
+      "licenseMatchesLock": true,
+      "integrityMatchesLock": true,
+      "registrySource": "https://registry.npmjs.org/zod/4.6.7"
+    }
+  ],
+  "reviewDate": "2026-10-24",
+  "scope": "Exact locked npm metadata, including optional and development packages; not a legal assurance or binary component audit.",
+  "unresolvedRegistryLicenseDeclarations": [
+    {
+      "path": "node_modules/buffers",
+      "version": "0.1.1",
+      "resolution": "See buffers-0.1.1-NOTICE.md for identical-source fixed-commit MIT/X11 grant."
+    }
+  ],
+  "copyleftReview": {
+    "GPLOnlyOrAGPLOnlyDeclarations": 0,
+    "jszip": "MIT option selected under (MIT OR GPL-3.0-or-later).",
+    "LGPL": "14 platform-package declarations include LGPL-3.0-or-later. Separate binary distribution obligations remain.",
+    "MPL": "25 package declarations retain MPL-2.0 file-level obligations."
+  }
+}

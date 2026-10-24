@@ -7,7 +7,6 @@ import { useHighlightScroll } from '@/lib/hooks/use-highlight-scroll';
 import { useLocale } from '@/lib/i18n';
 import { tPlay } from './strategic-play/labels';
 import { buildStrategicSignalImpactInsight } from './strategic-play/signal-impact';
-import { filterLowQualityDemoPlays } from './strategic-play/demo-play-quality';
 import { NewPlayForm } from './strategic-play/new-play-form';
 import { PlayListItem } from './strategic-play/play-list-item';
 import { PlayDetail } from './strategic-play/play-detail';
@@ -108,7 +107,7 @@ export function StrategicPlayTab({
       if (data._debug) {
         console.warn('[strategic-play] API debug:', data._debug, data._error);
       }
-      let fetchedPlays: StrategicPlay[] = filterLowQualityDemoPlays(data.plays ?? []);
+      let fetchedPlays: StrategicPlay[] = data.plays ?? [];
       // Filter to specific opportunity if requested
       if (filterOpportunityId) {
         fetchedPlays = fetchedPlays.filter(p => p.opportunityId === filterOpportunityId);

@@ -385,15 +385,13 @@ export async function POST(request: Request) {
     if (body.accountId && ctx.orgId) {
       const [cilResult, memResult, kbResult] = await Promise.all([
         // Phase 3 (CIL)
-        (ctx.orgId !== 'demo')
-          ? loadCILAccountContextScoped({ orgId: ctx.orgId, accountId: body.accountId, limitEvidence: 8, limitClaims: 10, ctx })
-              .then(cilData => {
-                const block = buildCILForAccountStrategy(cilData) || '';
-                if (block) console.log(`[account-strategy] CIL 上下文已注入，account=${body.accountId}`);
-                return block;
-              })
-              .catch(err => { console.warn('[account-strategy] CIL 加载失败，回退到现有逻辑', err); return ''; })
-          : Promise.resolve(''),
+        loadCILAccountContextScoped({ orgId: ctx.orgId, accountId: body.accountId, limitEvidence: 8, limitClaims: 10, ctx })
+          .then(cilData => {
+            const block = buildCILForAccountStrategy(cilData) || '';
+            if (block) console.log(`[account-strategy] CIL 上下文已注入，account=${body.accountId}`);
+            return block;
+          })
+          .catch(err => { console.warn('[account-strategy] CIL 加载失败，回退到现有逻辑', err); return ''; }),
         // Evidence Memory V1
         getAccountMemoryPayload(body.accountId, body.account.name, ctx.orgId, ctx)
           .then((memoryPayload) => {

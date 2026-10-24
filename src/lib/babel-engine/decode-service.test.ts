@@ -1,6 +1,19 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { runDecodePipeline, type PersistEmailDecodeRecordInput } from './decode-service';
 import type { DecodeOutput } from './types';
+
+const dependencies = vi.hoisted(() => ({
+  requireAdmin: vi.fn(),
+  from: vi.fn(),
+  emitEvent: vi.fn().mockResolvedValue('synthetic-event'),
+}));
+vi.mock('@/lib/api-guard', () => ({ requireAdmin: dependencies.requireAdmin }));
+vi.mock('@/lib/ai-event-hub', () => ({ emitEvent: dependencies.emitEvent }));
+beforeEach(() => {
+  vi.clearAllMocks();
+  dependencies.requireAdmin.mockReturnValue({ from: dependencies.from });
+});
+
 
 function sampleDecode(): DecodeOutput {
   return {
@@ -24,17 +37,25 @@ function sampleDecode(): DecodeOutput {
 }
 
 describe('decode-service', () => {
-  it('runs manual decode through the shared decode seam without persistence', async () => {
+  it('runs authenticated manual decode without saving the decode record while retaining normal event handling', async () => {
     const decodeMessagesFn = vi.fn().mockResolvedValue(sampleDecode());
+    const persistDecodeRecord = vi.fn();
 
     const result = await runDecodePipeline(
-      { emailText: 'Can you send pricing by Friday?', actor: { userId: 'user_1', orgId: 'demo' }, persist: false },
-      { decodeMessagesFn },
+      { emailText: 'Can you send pricing by Friday?', actor: { userId: 'user_1', orgId: 'org_1' }, persist: false },
+      { decodeMessagesFn, persistDecodeRecord },
     );
 
     expect(result.duplicate).toBe(false);
     expect(result.decode?.threadAnalysis.keySignal).toBe('客户要求周五前报价');
     expect(decodeMessagesFn).toHaveBeenCalledOnce();
+    expect(persistDecodeRecord).not.toHaveBeenCalled();
+    expect(dependencies.requireAdmin).toHaveBeenCalledOnce();
+    // No account/contact/opportunity means there is no matching-history query.
+    expect(dependencies.from).not.toHaveBeenCalled();
+    expect(dependencies.emitEvent).toHaveBeenCalledWith(expect.objectContaining({
+      orgId: 'org_1', userId: 'user_1', eventType: 'decode.completed',
+    }));
   });
 
   it('skips AI decode when a forwarded email fingerprint already exists', async () => {

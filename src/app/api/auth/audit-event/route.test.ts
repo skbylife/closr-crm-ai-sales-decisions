@@ -18,4 +18,11 @@ describe('auth audit response semantics', () => {
     const response = await POST(new Request('http://localhost/api/auth/audit-event', { method: 'POST', body: JSON.stringify({ event: 'login_success' }) }));
     expect(response.status).toBe(200); expect(guards.audit).toHaveBeenCalledWith(expect.objectContaining({ action: 'login_success', ctx: { userId: 'fictional-user', orgId: 'fictional-org' } }));
   });
+  it('rejects the retired demonstration login event without writing an audit record', async () => {
+    guards.auth.mockResolvedValue({ userId: 'fictional-user', orgId: 'fictional-org' });
+    const response = await POST(new Request('http://localhost/api/auth/audit-event', { method: 'POST', body: JSON.stringify({ event: 'demo_login_success' }) }));
+    expect(response.status).toBe(400);
+    expect(guards.audit).not.toHaveBeenCalled();
+  });
+
 });

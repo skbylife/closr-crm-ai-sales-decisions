@@ -1,6 +1,5 @@
 export const settingsDict = {
   "notifications.open": { zh: "打开通知", en: "Open notifications" },
-  "role.switch": { zh: "切换职级", en: "Switch role" },
   "role.ae.short": { zh: "销售代表", en: "Account Executive" },
   "role.manager.short": { zh: "销售主管", en: "Sales Manager" },
   "role.executive.short": { zh: "高管", en: "Executive" },
@@ -47,7 +46,6 @@ export const settingsDict = {
   "settings.importJSONHint": { zh: "从 JSON 备份文件恢复数据", en: "Restore data from JSON backup" },
   "settings.importCSV": { zh: "导入客户+联系人 (CSV)", en: "Import Contacts (CSV)" },
   "settings.importCSVHint": { zh: "从 CSV 文件导入客户和联系人", en: "Import contacts from CSV file" },
-  "settings.loadSample": { zh: "加载示例数据（含客户、机会、联系人）", en: "Load Sample Data (accounts, deals, contacts)" },
   "settings.clearAll": { zh: "清除所有数据", en: "Clear All Data" },
   "settings.about": { zh: "关于", en: "About" },
   "settings.loginToSeeAddress": { zh: "登录后显示专属地址", en: "Sign in to see your address" },

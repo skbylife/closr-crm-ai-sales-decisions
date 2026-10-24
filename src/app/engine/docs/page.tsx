@@ -447,11 +447,11 @@ BASE=http://localhost:3109`} />
             <CodeBlock code={`curl -X POST http://localhost:3109/api/engine/judgment/snapshot \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "tenantId": "tenant_demo",
+    "tenantId": "tenant_example",
     "accountId": "acct_customer_a",
     "sources": [{
       "id": "src_001",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "sourceType": "email",
       "accountId": "acct_customer_a",
       "occurredAt": "2026-06-20T12:00:00.000Z",
@@ -460,7 +460,7 @@ BASE=http://localhost:3109`} />
 CFO 需要看到 AIOps 一年回本证明。"
     }, {
       "id": "src_002",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "sourceType": "meeting",
       "accountId": "acct_customer_a",
       "occurredAt": "2026-06-18T15:30:00.000Z",
@@ -485,7 +485,7 @@ CFO 需要看到 AIOps 一年回本证明。"
   "sources": [
     {
       "id": "src_001",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "sourceType": "email",
       "accountId": "acct_customer_a",
       "occurredAt": "2026-06-20T12:00:00.000Z",
@@ -494,7 +494,7 @@ CFO 需要看到 AIOps 一年回本证明。"
     },
     {
       "id": "src_002",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "sourceType": "meeting",
       "accountId": "acct_customer_a",
       "occurredAt": "2026-06-18T15:30:00.000Z",
@@ -552,7 +552,7 @@ CFO 需要看到 AIOps 一年回本证明。"
   "judgments": [
     {
       "id": "judg_001",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "accountId": "acct_customer_a",
       "dimension": "finance",
       "answer": "\u9884\u7b97\u5ba1\u6279\u5361\u5728 CFO \u5c42\u9762\uff0cCFO \u9700\u8981\u770b\u5230\u4e00\u5e74\u56de\u672c\u7684 ROI \u8bc1\u660e",
@@ -566,7 +566,7 @@ CFO 需要看到 AIOps 一年回本证明。"
     },
     {
       "id": "judg_002",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "accountId": "acct_customer_a",
       "dimension": "competition",
       "answer": "TCS \u5728\u4ef7\u683c\u4e0a\u6709\u4f18\u52bf\uff0c\u91c7\u8d2d\u90e8\u95e8\u6b63\u5728\u6bd4\u4ef7",
@@ -582,7 +582,7 @@ CFO 需要看到 AIOps 一年回本证明。"
   "winGaps": [
     {
       "id": "gap_001",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "accountId": "acct_customer_a",
       "dimension": "finance/roi_proof",
       "currentState": "CFO \u5df2\u8981\u6c42 ROI \u8bc1\u660e\uff0c\u9500\u552e\u56e2\u961f\u672a\u63d0\u4f9b",
@@ -594,7 +594,7 @@ CFO 需要看到 AIOps 一年回本证明。"
     },
     {
       "id": "gap_002",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "accountId": "acct_customer_a",
       "dimension": "competition/price",
       "currentState": "TCS \u62a5\u4ef7\u66f4\u4f4e\uff0c\u91c7\u8d2d\u5728\u6bd4\u4ef7",
@@ -703,11 +703,11 @@ CFO 需要看到 AIOps 一年回本证明。"
             <CodeBlock code={`curl -X POST http://localhost:3109/api/engine/decode \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "tenantId": "tenant_demo",
+    "tenantId": "tenant_example",
     "accountId": "acct_customer_a",
     "sources": [{
       "id": "src_001",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "sourceType": "email",
       "accountId": "acct_customer_a",
       "occurredAt": "2026-06-20T12:00:00.000Z",
@@ -725,7 +725,7 @@ CFO 需要看到 AIOps 一年回本证明。"
   "sources": [
     {
       "id": "src_001",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "sourceType": "email",
       "accountId": "acct_customer_a",
       "occurredAt": "2026-06-20T12:00:00.000Z",
@@ -821,10 +821,10 @@ CFO 需要看到 AIOps 一年回本证明。"
 SNAPSHOT=$(curl -s -X POST http://localhost:3109/api/engine/judgment/snapshot \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "tenantId": "tenant_demo",
+    "tenantId": "tenant_example",
     "accountId": "acct_customer_a",
     "sources": [{
-      "id":"src_001","tenantId":"tenant_demo","sourceType":"email",
+      "id":"src_001","tenantId":"tenant_example","sourceType":"email",
       "accountId":"acct_customer_a",
       "occurredAt":"2026-06-20T12:00:00.000Z",
       "content":"CFO 要求看一年回本证明，采购说TCS报价更低。"
@@ -847,12 +847,12 @@ echo "$SNAPSHOT" | jq '{
             <CodeBlock code={`curl -X POST http://localhost:3109/api/engine/strategic-play \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "tenantId": "tenant_demo",
+    "tenantId": "tenant_example",
     "accountId": "acct_customer_a",
     "playGoal": "两个月内让 CFO 批准预算，并清除采购层面的比价风险",
     "judgments": [{
       "id": "judg_001",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "accountId": "acct_customer_a",
       "dimension": "finance",
       "answer": "预算审批卡在 CFO 层面，
@@ -867,7 +867,7 @@ CFO 需要看到一年回本的 ROI 证明",
     }],
     "winGaps": [{
       "id": "gap_001",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "accountId": "acct_customer_a",
       "dimension": "finance/roi_proof",
       "currentState": "CFO 已要求 ROI 证明，销售团队未提供",
@@ -887,7 +887,7 @@ CFO 需要看到一年回本的 ROI 证明",
   "judgments": [
     {
       "id": "judg_001",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "accountId": "acct_customer_a",
       "dimension": "finance",
       "answer": "\u9884\u7b97\u5ba1\u6279\u5361\u5728 CFO \u5c42\u9762\uff0cCFO \u9700\u8981\u770b\u5230\u4e00\u5e74\u56de\u672c\u7684 ROI \u8bc1\u660e",
@@ -903,7 +903,7 @@ CFO 需要看到一年回本的 ROI 证明",
   "winGaps": [
     {
       "id": "gap_001",
-      "tenantId": "tenant_demo",
+      "tenantId": "tenant_example",
       "accountId": "acct_customer_a",
       "dimension": "finance/roi_proof",
       "currentState": "CFO \u5df2\u8981\u6c42 ROI \u8bc1\u660e\uff0c\u9500\u552e\u56e2\u961f\u672a\u63d0\u4f9b",
@@ -1001,11 +1001,11 @@ CFO 需要看到一年回本的 ROI 证明",
 import requests, json
 
 resp = requests.post("http://localhost:3109/api/engine/judgment/snapshot", json={
-    "tenantId": "tenant_demo",
+    "tenantId": "tenant_example",
     "accountId": "acct_customer_a",
     "sources": [{
         "id": "src_001",
-        "tenantId": "tenant_demo",
+        "tenantId": "tenant_example",
         "sourceType": "email",
         "accountId": "acct_customer_a",
         "occurredAt": "2026-06-20T12:00:00.000Z",
@@ -1069,7 +1069,7 @@ moves = requests.post(
 resp = requests.post(
     "http://localhost:3109/api/engine/strategic-play",
     json={
-        "tenantId": "tenant_demo",
+        "tenantId": "tenant_example",
         "accountId": "acct_customer_a",
         "judgments": [...],
         "winGaps": [...],

@@ -60,3 +60,12 @@ describe('judgment trace narrative', () => {
     expect(model.nextCalibrationAction).toContain('写回客户判断');
   });
 });
+
+it('does not inject a customer narrative based only on a legacy account identifier', () => {
+  const input = { evidenceSourceCount: 0, conflictCount: 0, openQuestionCount: 0, activeOpportunityCount: 0, activeTaskCount: 0 };
+  const ordinary = buildAccountTraceNarrative({ ...input, accountId: 'ordinary' });
+  const legacy = buildAccountTraceNarrative({ ...input, accountId: 'acc_eastchina_platform_001' });
+  expect(legacy.currentJudgment).toBe(ordinary.currentJudgment);
+  expect(legacy.uncertainty).toBe(ordinary.uncertainty);
+  expect(legacy.nextCalibrationAction).toBe(ordinary.nextCalibrationAction);
+});

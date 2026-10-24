@@ -4,10 +4,10 @@
 
 ## Languages
 
-- Chinese public landing: https://supabase.example.invalid/
-- English public landing: https://supabase.example.invalid/?lang=en
-- Chinese login/demo entry: https://supabase.example.invalid/login
-- English login/demo entry: https://supabase.example.invalid/login?lang=en
+- Chinese public landing: https://www.closr.ing/?lang=zh
+- English public landing (default): https://www.closr.ing/
+- Chinese login entry: https://www.closr.ing/login?lang=zh
+- English login entry: https://www.closr.ing/login?lang=en
 
 ## Core product concepts
 
@@ -21,9 +21,9 @@
 
 ## Agent-readable docs
 
-- Full agent-readable product guide: https://supabase.example.invalid/llms-full.txt
-- Help center for signed-in users: https://supabase.example.invalid/help
-- Public homepage: https://supabase.example.invalid/
+- Full agent-readable product guide: https://www.closr.ing/llms-full.txt
+- Help center for signed-in users: https://www.closr.ing/help
+- Public homepage: https://www.closr.ing/
 
 ## Safe interpretation notes
 

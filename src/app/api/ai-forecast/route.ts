@@ -286,7 +286,7 @@ export async function POST(req: Request) {
   ).join('\n');
 
   let cilContext = '';
-  if (opp.account_id && ctx.orgId && ctx.orgId !== 'demo') {
+  if (opp.account_id && ctx.orgId) {
     try {
       const cilData = await loadCILAccountContextScoped({
         orgId: ctx.orgId,

@@ -405,4 +405,17 @@ describe('/api/strategic-play schema v1', () => {
     await expect(response.json()).resolves.toMatchObject({ error: 'Failed to save replanned play' });
     expect(tables.strategic_plays[0].steps).toEqual([{ index: 1, title: '旧步骤', description: '旧描述', status: 'done' }]);
   });
+  it('GET preserves authorized records regardless of legacy placeholder phrases or fixed opportunity IDs', async () => {
+    for (const row of [
+      { id: 'play_plain', goal_description: 'Normal strategy' },
+      { id: 'play_phrase', goal_description: 'Customer value assessment' },
+      { id: 'play_bank', opportunity_id: 'opp_cmcc_5g_003', goal_description: 'Bank review' },
+    ]) tables.strategic_plays.push({ ...row, org_id: 'org_1', account_id: 'acc_1', status: 'active', steps: [] });
+    tables.strategic_plays.push({ id: 'foreign', org_id: 'other-org', account_id: 'acc_1', status: 'active' });
+    const response = await GET(jsonRequest('GET'));
+    expect(response.status).toBe(200);
+    const payload = await response.json();
+    expect(payload.plays.map((play: { id: string }) => play.id).sort()).toEqual(['play_bank', 'play_phrase', 'play_plain']);
+  });
+
 });

@@ -13,7 +13,7 @@ export function DocumentLangSync() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const urlLocale = searchParams.get("lang") === "en" ? "en" : searchParams.get("lang") === "zh" ? "zh" : null;
-  const effectiveLocale = urlLocale ?? locale;
+  const effectiveLocale = urlLocale ?? (pathname === "/" ? "en" : locale);
 
   useEffect(() => {
     document.documentElement.lang = documentLangForLocale(effectiveLocale);

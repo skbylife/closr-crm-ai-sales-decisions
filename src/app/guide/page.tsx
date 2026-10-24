@@ -40,7 +40,7 @@ const systemSetupSample = `企业首次使用 Closr 前，建议先完成这些�
 
 1. 组织信息
 - 公司名称、行业、默认币种、团队使用语言
-- 是否使用 Demo Seed 做培训，还是导入真实客户数据
+- 准备哪些已获授权的客户、联系人和商机数据用于初始化
 
 2. 成员与权限
 - 管理员：负责组织设置、成员、审计和基础配置
@@ -61,7 +61,7 @@ const systemSetupSample = `企业首次使用 Closr 前，建议先完成这些�
 5. 基础数据
 - 至少准备 1 个客户、1 个商机、3 个联系人、1 封客户邮件或会议纪要
 - 为客户、商机和任务确认负责人 owner
-- 如果团队还没准备真实数据，先用 Demo Seed 或手册样本跑完第一遍
+- 如果团队尚未准备已获授权的数据，先完成组织、成员与权限配置；工作区可以保持为空
 
 6. 交接与治理
 - 约定客户认领、转移、回收规则，避免重点客户无人负责
@@ -215,13 +215,13 @@ const quickPath = [
       "统一商机阶段、健康度、forecast、赢输复盘和任务优先级口径。",
       "录入产品、服务线、报价口径和常用 ROI 表达。",
       "确认客户 owner、商机 owner 和任务负责人规则；人员变化时使用转移/回收。",
-      "决定使用 Demo Seed 培训，还是导入第一批真实客户、联系人和商机。",
+      "确认数据来源与使用权限，再导入第一批客户、联系人和商机。",
     ],
     result: "企业级 onboarding 的地基先搭好：团队看到同一套权限、流程、产品口径和数据结构，后面的客户判断才不会各说各话。",
     capability: {
       title: "系统设置",
       label: "建立企业使用 Closr 的组织和流程基础",
-      useWhen: "企业第一次试用、团队正式启用、或要从 demo 转为真实业务数据时。",
+      useWhen: "企业第一次使用、团队正式启用、或从其他系统迁移已获授权的业务数据时。",
       input: "组织信息、成员角色、职级、团队分组、权限边界、销售阶段、产品/报价、基础客户数据。",
       output: "一套团队可共同使用的 Closr 工作区配置。",
       next: "创建或导入第一个客户，再开始 Decode 和客户判断闭环。",
@@ -512,12 +512,6 @@ export default function GuidePage() {
                 className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/16 px-5 py-3 text-sm font-semibold text-white/90 transition-colors hover:border-white/32 hover:text-white"
               >
                 已登录，直接去解读
-              </Link>
-              <Link
-                href="/guide/demo"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/16 px-5 py-3 text-sm font-semibold text-white/90 transition-colors hover:border-white/32 hover:text-white"
-              >
-                看 Demo 用户路径
               </Link>
             </div>
           </div>

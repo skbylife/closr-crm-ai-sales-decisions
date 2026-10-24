@@ -14,7 +14,6 @@ import { ToastContainer } from "@/components/ui/toast";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { TourProvider } from "@/components/onboarding/SpotlightTour";
 import { useAuth } from "@/lib/auth-context";
-import { EnglishLocaleIntegrityGuard } from "@/components/i18n/english-locale-integrity-guard";
 import { LanguageChoiceModal } from "@/components/i18n/language-choice-modal";
 
 export default function DashboardLayout({
@@ -22,7 +21,7 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user, isDemo, isLoading, needsOnboarding } = useAuth();
+  const { user, isLoading, needsOnboarding } = useAuth();
   const router = useRouter();
   const [cmdOpen, setCmdOpen] = useState(false);
 
@@ -41,14 +40,14 @@ export default function DashboardLayout({
   const closeCmdPalette = useCallback(() => setCmdOpen(false), []);
 
   useEffect(() => {
-    if (!isLoading && !user && !isDemo) {
+    if (!isLoading && !user) {
       router.push('/login');
     }
     // 未完成 onboarding 的用户重定向到引导页
-    if (!isLoading && user && !isDemo && needsOnboarding) {
+    if (!isLoading && user && needsOnboarding) {
       router.push('/onboarding');
     }
-  }, [user, isDemo, isLoading, needsOnboarding, router]);
+  }, [user, isLoading, needsOnboarding, router]);
 
   // Show loading while checking auth
   if (isLoading) {
@@ -62,13 +61,13 @@ export default function DashboardLayout({
     );
   }
 
-  // Not authenticated and not demo — will redirect
-  if (!user && !isDemo) {
+  // Not authenticated — will redirect
+  if (!user) {
     return null;
   }
 
   // Needs onboarding — will redirect, don't render dashboard (prevents 403 API calls)
-  if (needsOnboarding && !isDemo) {
+  if (needsOnboarding) {
     return null;
   }
 
@@ -85,7 +84,6 @@ export default function DashboardLayout({
         </div>
       </SidebarProvider>
       <ChatBubble />
-      <EnglishLocaleIntegrityGuard />
       <LanguageChoiceModal />
       <CommandPalette open={cmdOpen} onClose={closeCmdPalette} />
       <ToastContainer />

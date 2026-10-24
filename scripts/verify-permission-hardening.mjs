@@ -51,14 +51,6 @@ const checks = [
     patterns: ['export async function recordComplianceAudit', "from('audit_log').insert", 'ip_address'],
   },
   {
-    file: 'src/app/api/seed-data/route.ts',
-    patterns: ['const ctx = await requireAuth()', 'requireOwnerForDestructiveOrgData(ctx)', 'recordComplianceAudit', 'demo_seed_loaded', 'demo_data_cleared', 'export async function DELETE(request: Request)'],
-  },
-  {
-    file: 'src/app/(dashboard)/settings/page.tsx',
-    patterns: ['const canManageOrgData = orgRole === "owner"', 'Demo Seed 重置和清除全部数据仅限组织 Owner 操作', 'destructive data clearing are restricted to the organization owner'],
-  },
-  {
     file: 'src/app/api/organization/members/route.ts',
     patterns: ['recordComplianceAudit', 'permission_changed', 'member_removed'],
   },

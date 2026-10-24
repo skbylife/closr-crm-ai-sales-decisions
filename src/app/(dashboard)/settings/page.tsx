@@ -1,19 +1,15 @@
 "use client";
 
 import { useState, useEffect, useRef, Suspense } from "react";
-import { createPortal } from "react-dom";
-import { ConfirmationCard, type PendingAction } from "@/components/chat/ConfirmationCard";
 import { useSearchParams, useRouter } from "next/navigation";
 import { toast } from "@/lib/toast-store";
 import { appConfirm } from '@/lib/confirm-store';
 import {
   Save,
   Download,
-  Trash2,
   User,
   Info,
   Shield,
-  Package,
   Upload,
   Wrench,
   Mail,
@@ -47,37 +43,6 @@ const inputFieldClass = "form-input";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type SettingsTab = "general" | "security" | "notifications" | "pipeline" | "data" | "ai" | "about";
-type DemoSeedVariant = "seed-a" | "seed-b-retail";
-type DemoSeedLocale = "zh" | "en";
-const DEMO_SEED_VARIANT_STORAGE_KEY = "closr-demo-seed-variant";
-const DEMO_SEED_LOCALE_STORAGE_KEY = "closr-demo-seed-locale";
-
-const DEMO_SEED_OPTIONS: Array<{
-  id: DemoSeedVariant;
-  title: Record<Locale, string>;
-  description: Record<Locale, string>;
-  badge: Record<Locale, string>;
-}> = [
-  {
-    id: "seed-a",
-    title: { zh: "Seed A · 标准 Demo", en: "Seed A · Standard Demo" },
-    description: {
-      zh: "3 个企业级场景，覆盖续约扩展、客户沉默、招投标推进，适合通用 Closr 演示。",
-      en: "Three enterprise scenarios covering renewal expansion, customer silence, and RFP pursuit for the standard Closr demo.",
-    },
-    badge: { zh: "默认", en: "Default" },
-  },
-  {
-    id: "seed-b-retail",
-    title: { zh: "Seed B · 零售 Demo", en: "Seed B · Retail Demo" },
-    description: {
-      zh: "独立 3 客户零售版：突出真实机会、竞品锁定和高管判断。",
-      en: "Separate three-account retail demo focused on live opportunities, competitor pressure, and executive judgment.",
-    },
-    badge: { zh: "零售", en: "Retail" },
-  },
-];
-
 const SETTINGS_TABS: { key: SettingsTab; label: Record<Locale, string>; icon: typeof User }[] = [
   { key: "general", label: { zh: "通用", en: "General" }, icon: User },
   { key: "security", label: { zh: "安全", en: "Security" }, icon: Shield },
@@ -95,14 +60,12 @@ function EmailForwardingSection() {
   const { t } = useLocale();
   const [copied, setCopied] = useState(false);
   const [copiedActual, setCopiedActual] = useState(false);
-  const { user, isDemo } = useAuth();
+  const { user } = useAuth();
 
   // Generate user-specific display address
   const displayAddress = user?.id
     ? generateForwardAddress(user.id)
-    : isDemo
-      ? "example-dd3492fb9f@example.invalid"
-      : t("settings.loginToSeeAddress");
+    : t("settings.loginToSeeAddress");
 
   // Actual inbox address (AgentMail) for current phase
   const actualAddress = getActualInboxAddress();
@@ -140,7 +103,7 @@ function EmailForwardingSection() {
             </div>
             <button
               onClick={handleCopyDisplay}
-              disabled={!user && !isDemo}
+              disabled={!user}
               className={`flex items-center gap-1.5 rounded-lg px-4 py-3 text-sm font-medium transition-colors ${
                 copiedActual
                   ? "bg-positive/10 text-positive border border-positive/20"
@@ -411,7 +374,7 @@ const READINESS_STATUS_LABEL: Record<string, string> = {
   manual: '人工确认',
 };
 
-function CommercialReadinessSection({ accountCount, isDemo }: { accountCount: number; isDemo: boolean }) {
+function CommercialReadinessSection({ accountCount }: { accountCount: number }) {
   const [readinessData, setReadinessData] = useState<SelfHostedReadinessResponse | null>(null);
   const [readinessError, setReadinessError] = useState('');
 
@@ -452,8 +415,8 @@ function CommercialReadinessSection({ accountCount, isDemo }: { accountCount: nu
     },
     {
       label: '数据卫生',
-      status: isDemo ? 'Demo 模式' : accountCount > 0 ? '已有真实数据' : '待初始化',
-      detail: '示例数据、导入、导出和清理已经在数据页；下一步要让 demo/真实工作区边界更显性。',
+      status: accountCount > 0 ? '已有数据' : '待初始化',
+      detail: '在数据页导入和导出组织数据；在对应业务页面按权限管理单项记录。',
     },
   ];
 
@@ -537,21 +500,6 @@ function SettingsPageInner() {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const [saved, setSaved] = useState(false);
-  const [cleared, setCleared] = useState(false);
-  const [sampleLoaded, setSampleLoaded] = useState(false);
-  const [seedLoading, setSeedLoading] = useState(false);
-  const [demoSeedVariant, setDemoSeedVariant] = useState<DemoSeedVariant>(() => {
-    if (typeof window === "undefined") return "seed-a";
-    const saved = window.localStorage.getItem(DEMO_SEED_VARIANT_STORAGE_KEY);
-    return saved === "seed-b-retail" ? "seed-b-retail" : "seed-a";
-  });
-  const [seedBPassword, setSeedBPassword] = useState("");
-  const [clearLoading, setClearLoading] = useState(false);
-  const [pendingConfirm, setPendingConfirm] = useState<PendingAction[] | null>(null);
-  const [confirmBusy, setConfirmBusy] = useState(false);
-  const [confirmStatusMessage, setConfirmStatusMessage] = useState("");
-  const [confirmErrorMessage, setConfirmErrorMessage] = useState("");
-  const [isMounted, setIsMounted] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -565,32 +513,7 @@ function SettingsPageInner() {
   // Theme & Locale
   const { mode: themeMode, setMode: setThemeMode } = useTheme();
   const { locale, setLocale, t } = useLocale();
-  const [demoSeedLocale, setDemoSeedLocale] = useState<DemoSeedLocale>(() => {
-    if (typeof window === "undefined") return locale;
-    const saved = window.localStorage.getItem(DEMO_SEED_LOCALE_STORAGE_KEY);
-    return saved === "zh" || saved === "en" ? saved : locale;
-  });
-  const demoSeedOptions = DEMO_SEED_OPTIONS.map((option) => ({
-    id: option.id,
-    title: option.title[locale],
-    description: option.description[locale],
-    badge: option.badge[locale],
-  }));
-  const { isDemo, isLoading: authLoading, signOut, exitDemo, jobTitle: roleLevel, jobLevel, setJobLevel, orgId, orgRole, refreshOrg } = useAuth();
-  const canManageOrgData = orgRole === "owner";
-  const demoSeedLocaleOptions: Array<{ id: DemoSeedLocale; title: string; description: string }> = [
-    {
-      id: "zh",
-      title: locale === "en" ? "Chinese seed" : "中文 Seed",
-      description: locale === "en" ? "Load the original Chinese demo dataset." : "导入原始中文版演示数据。",
-    },
-    {
-      id: "en",
-      title: locale === "en" ? "English seed" : "英文 Seed",
-      description: locale === "en" ? "Load the customer-ready English demo dataset." : "导入客户可用的英文版演示数据。",
-    },
-  ];
-
+  const { isLoading: authLoading, signOut, orgId } = useAuth();
 
   const { exportData, importData, addAccount, addContact, currencyCode, setCurrencyCode } = useStore();
   const jsonImportRef = useRef<HTMLInputElement>(null);
@@ -621,11 +544,6 @@ function SettingsPageInner() {
     setEmail(userSettings.email);
     setRole(userSettings.roleDescription);
   }, [userSettings]);
-
-  useEffect(() => {
-    setIsMounted(true);
-    return () => setIsMounted(false);
-  }, []);
 
   function showSaved() {
     setSaved(true);
@@ -816,115 +734,6 @@ function SettingsPageInner() {
       }
     };
     reader.readAsText(file);
-  }
-
-  async function handleClearData() {
-    setConfirmErrorMessage("");
-    setConfirmStatusMessage("");
-    setPendingConfirm([
-      {
-        toolName: 'clear-data',
-        displayName: '清除全部数据',
-        requiresConfirmation: true,
-        fields: [
-          {
-            field: '操作',
-            value: '清除当前账号全部数据',
-            confidence: 'explicit',
-            source_quote: '确定要清除所有数据吗？此操作不可恢复。',
-          },
-        ],
-      },
-    ]);
-  }
-
-  async function executeClearData() {
-    setConfirmBusy(true);
-    setConfirmErrorMessage("");
-    setConfirmStatusMessage("正在清除数据，请稍候...");
-    setClearLoading(true);
-    try {
-      const res = await fetch("/api/seed-data", { method: "DELETE" });
-      if (!res.ok) {
-        setConfirmErrorMessage("清除失败，请稍后重试");
-        return;
-      }
-      localStorage.removeItem("closr-store");
-      setCleared(true);
-      setConfirmStatusMessage("数据已清除，页面即将刷新...");
-      setTimeout(() => window.location.reload(), 1500);
-    } catch {
-      setConfirmErrorMessage("清除失败，请检查网络后重试");
-    } finally {
-      setClearLoading(false);
-      setConfirmBusy(false);
-    }
-  }
-
-  function confirmLoadSample() {
-    setConfirmErrorMessage("");
-    setConfirmStatusMessage("");
-    if (demoSeedVariant === "seed-b-retail" && seedBPassword.trim() !== "EXAMPLE_ONLY_NOT_A_PASSWORD") {
-      setConfirmErrorMessage(locale === "en" ? "Seed B Retail Demo requires the correct password." : "加载 Seed B 零售 Demo 需要输入正确密码。");
-      return;
-    }
-    const selectedSeed = demoSeedOptions.find((option) => option.id === demoSeedVariant);
-    const selectedSeedLocale = demoSeedLocaleOptions.find((option) => option.id === demoSeedLocale);
-    setPendingConfirm([
-      {
-        toolName: 'load-sample',
-        displayName: locale === "en" ? `Load sample data · ${selectedSeed?.badge ?? 'Demo'} · ${selectedSeedLocale?.title ?? 'Seed language'}` : `加载示例数据 · ${selectedSeed?.badge ?? 'Demo'} · ${selectedSeedLocale?.title ?? 'Seed 语言'}`,
-        requiresConfirmation: true,
-        fields: [
-          {
-            field: locale === "en" ? "Action" : "操作",
-            value: accounts.length > 0
-              ? (locale === "en" ? `Replace current data and rebuild ${selectedSeed?.title ?? 'Demo Seed'}` : `覆盖当前数据并重建 ${selectedSeed?.title ?? 'Demo Seed'}`)
-              : (locale === "en" ? `Initialize ${selectedSeed?.title ?? 'Demo Seed'}` : `初始化 ${selectedSeed?.title ?? 'Demo Seed'}`),
-            confidence: 'explicit',
-            source_quote: accounts.length > 0
-              ? (locale === "en" ? 'Current data exists. Loading sample data will replace it. Continue?' : '当前已有数据，加载示例数据将覆盖现有数据。确定继续？')
-              : selectedSeed?.description ?? (locale === "en" ? 'Load sample data' : '加载示例数据'),
-          },
-          {
-            field: locale === "en" ? "Seed language" : "Seed 语言",
-            value: selectedSeedLocale?.title ?? demoSeedLocale,
-            confidence: 'explicit',
-            source_quote: selectedSeedLocale?.description ?? demoSeedLocale,
-          },
-        ],
-      },
-    ]);
-  }
-
-  async function executeLoadSample() {
-    setConfirmBusy(true);
-    setConfirmErrorMessage("");
-    setConfirmStatusMessage(locale === "en" ? "Initializing sample data. Please wait..." : "正在初始化示例数据，请稍候...");
-    setSeedLoading(true);
-    try {
-      const res = await fetch("/api/seed-data", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ variant: demoSeedVariant, seedPassword: seedBPassword.trim(), seedLocale: demoSeedLocale }),
-      });
-      if (!res.ok) {
-        const body = await res.json().catch(() => null) as { error?: string } | null;
-        setConfirmErrorMessage(body?.error ?? (locale === "en" ? "Load failed. Please try again later." : "加载失败，请稍后重试"));
-        return;
-      }
-      setSampleLoaded(true);
-      localStorage.setItem(DEMO_SEED_VARIANT_STORAGE_KEY, demoSeedVariant);
-      localStorage.setItem(DEMO_SEED_LOCALE_STORAGE_KEY, demoSeedLocale);
-      localStorage.removeItem("closr-store");
-      setConfirmStatusMessage(locale === "en" ? "Sample data loaded. The page will refresh shortly..." : "示例数据已加载，页面即将刷新...");
-      setTimeout(() => window.location.reload(), 1500);
-    } catch {
-      setConfirmErrorMessage(locale === "en" ? "Load failed. Check the network and try again." : "加载失败，请检查网络后重试");
-    } finally {
-      setSeedLoading(false);
-      setConfirmBusy(false);
-    }
   }
 
   if (authLoading) {
@@ -1155,135 +964,14 @@ function SettingsPageInner() {
 
           {importMessage && <p className="mb-3 text-xs text-accent font-medium">{importMessage}</p>}
 
-          <div className={`${canManageOrgData ? "mb-4" : "hidden"} rounded-lg border border-border bg-background/60 p-3`}>
-            <div className="mb-3 flex items-center gap-2">
-              <Package className="h-4 w-4 text-muted" />
-              <div>
-                <p className="text-xs font-semibold text-foreground">Demo Seed</p>
-                <p className="text-xs text-muted">
-                  {locale === "en" ? "Choose which sample data set and language to load. Loading will replace the current demo data." : "选择要加载的演示数据版本和语言；加载会覆盖当前 demo 数据。"}
-                </p>
-              </div>
-            </div>
-            <div className="grid gap-2 md:grid-cols-2">
-              {demoSeedOptions.map((option) => {
-                const selected = demoSeedVariant === option.id;
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    disabled={seedLoading}
-                    onClick={() => setDemoSeedVariant(option.id)}
-                    className={`min-h-[104px] rounded-lg border p-3 text-left transition-colors ${
-                      selected
-                        ? "border-accent bg-accent/10 text-foreground"
-                        : "border-border bg-card text-secondary hover:border-accent/30 hover:bg-accent/5"
-                    } disabled:opacity-50`}
-                  >
-                    <div className="mb-2 flex items-center justify-between gap-2">
-                      <span className="text-sm font-semibold text-foreground">{option.title}</span>
-                      <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${selected ? "bg-accent text-white" : "bg-sidebar text-muted"}`}>
-                        {option.badge}
-                      </span>
-                    </div>
-                    <p className="text-xs leading-5 text-muted">{option.description}</p>
-                  </button>
-                );
-              })}
-            </div>
-            <div className="mt-3 rounded-lg border border-border bg-card p-3">
-              <p className="mb-2 text-xs font-semibold text-foreground">{locale === "en" ? "Seed language" : "Seed 语言"}</p>
-              <div className="grid gap-2 sm:grid-cols-2">
-                {demoSeedLocaleOptions.map((option) => {
-                  const selected = demoSeedLocale === option.id;
-                  return (
-                    <button
-                      key={option.id}
-                      type="button"
-                      disabled={seedLoading}
-                      onClick={() => setDemoSeedLocale(option.id)}
-                      className={`rounded-lg border px-3 py-2 text-left transition-colors ${
-                        selected
-                          ? "border-accent bg-accent/10 text-foreground"
-                          : "border-border bg-background text-secondary hover:border-accent/30 hover:bg-accent/5"
-                      } disabled:opacity-50`}
-                    >
-                      <span className="block text-sm font-semibold text-foreground">{option.title}</span>
-                      <span className="mt-0.5 block text-xs leading-5 text-muted">{option.description}</span>
-                    </button>
-                  );
-                })}
-              </div>
-              <p className="mt-2 text-xs text-muted">
-                {locale === "en"
-                  ? "This controls the language of UI-facing seed content, AI analysis fixtures, and sample records at import time."
-                  : "这里控制导入时 UI 可见 seed 内容、AI 分析样例和示例记录的语言。"}
-              </p>
-            </div>
-            {demoSeedVariant === "seed-b-retail" && (
-              <div className="mt-3 rounded-lg border border-warning/25 bg-warning/[0.06] p-3">
-                <label htmlFor="seed-b-password" className="text-xs font-semibold text-foreground">
-                  {locale === "en" ? "Seed B Retail Demo password" : "Seed B 零售 Demo 密码"}
-                </label>
-                <input
-                  id="seed-b-password"
-                  type="password"
-                  value={seedBPassword}
-                  onChange={(event) => {
-                    setSeedBPassword(event.target.value);
-                    if (confirmErrorMessage) setConfirmErrorMessage("");
-                  }}
-                  placeholder={locale === "en" ? "Enter password to load Seed B" : "输入密码后加载 Seed B"}
-                  autoComplete="off"
-                  className="mt-2 w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-accent"
-                />
-                <p className="mt-1.5 text-xs text-muted">
-                  {locale === "en" ? "Enter the correct password before replacing current demo data with the retail sample." : "只有输入正确密码后，才能覆盖当前 demo 数据并加载零售版样例。"}
-                </p>
-              </div>
-            )}
-          </div>
 
-          {/* Other actions */}
-          <div className="flex flex-wrap gap-3 border-t border-border pt-4">
-            {!canManageOrgData && (
-              <p className="text-xs leading-6 text-muted">
-                {locale === "en"
-                  ? "Demo seed reset and destructive data clearing are restricted to the organization owner."
-                  : "Demo Seed 重置和清除全部数据仅限组织 Owner 操作。"}
-              </p>
-            )}
-            <button
-              disabled={seedLoading}
-              onClick={confirmLoadSample}
-              className={`${canManageOrgData ? "flex" : "hidden"} items-center gap-1.5 rounded-lg border border-accent/20 bg-accent/5 px-5 py-3 text-sm font-medium text-accent transition-colors hover:bg-accent/10 disabled:opacity-50`}
-            >
-              {seedLoading ? (
-                <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-accent border-t-transparent" />
-              ) : (
-                <Package className="h-3.5 w-3.5" />
-              )}
-              {seedLoading ? "正在加载..." : t("settings.loadSample")}
-            </button>
-            <button disabled={clearLoading} onClick={handleClearData} className={`${canManageOrgData ? "flex" : "hidden"} items-center gap-1.5 rounded-lg border border-danger/20 bg-danger/5 px-5 py-3 text-sm font-medium text-danger transition-colors hover:bg-danger/10 disabled:opacity-50`}>
-              {clearLoading ? (
-                <div className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-danger border-t-transparent" />
-              ) : (
-                <Trash2 className="h-3.5 w-3.5" />
-              )}
-              {clearLoading ? "正在清除..." : t("settings.clearAll")}
-            </button>
-          </div>
-          {sampleLoaded && <p className="mt-2 text-xs text-accent">{locale === "en" ? "Sample data loaded. The page will refresh shortly..." : "示例数据已加载，页面即将刷新..."}</p>}
-          {cleared && <p className="mt-2 text-xs text-danger">数据已清除，页面即将刷新...</p>}
-          {confirmErrorMessage && !pendingConfirm && <p className="mt-2 text-xs font-medium text-danger">{confirmErrorMessage}</p>}
         </div>
       )}
 
       {/* ── Tab: AI Usage ── */}
       {activeTab === "ai" && (
         <>
-          <CommercialReadinessSection accountCount={accounts.length} isDemo={isDemo} />
+          <CommercialReadinessSection accountCount={accounts.length} />
           <AIUsageSection />
         </>
       )}
@@ -1300,46 +988,14 @@ function SettingsPageInner() {
           </div>
           <div className="mt-4 pt-4 border-t border-border">
             <button
-              onClick={() => { if (isDemo) { exitDemo(); } else { signOut(); } }}
+              onClick={() => { void signOut(); }}
               className="flex items-center gap-2 rounded-lg border border-danger/30 px-4 py-2.5 text-sm font-medium text-danger hover:bg-danger/5 transition-colors"
             >
               <LogOut className="h-4 w-4" />
-              {isDemo ? "退出 Demo" : "退出登录"}
+              {locale === "en" ? "Sign out" : "退出登录"}
             </button>
           </div>
         </div>
-      )}
-
-      {pendingConfirm && isMounted && createPortal(
-        <div className="fixed inset-0 z-[100] bg-black/50">
-          <div className="flex min-h-dvh items-center justify-center px-4 py-6">
-            <div className="w-full max-w-xl">
-              <ConfirmationCard
-                actions={pendingConfirm}
-                onCancel={() => {
-                  if (confirmBusy) return;
-                  setPendingConfirm(null);
-                  setConfirmErrorMessage("");
-                  setConfirmStatusMessage("");
-                }}
-                onModify={() => {}}
-                onConfirm={(actions) => {
-                  const action = actions[0]?.toolName;
-                  if (action === 'clear-data') {
-                    void executeClearData();
-                  } else if (action === 'load-sample') {
-                    void executeLoadSample();
-                  }
-                }}
-                isConfirming={confirmBusy}
-                confirmingLabel="处理中..."
-                statusMessage={confirmStatusMessage}
-                errorMessage={confirmErrorMessage}
-              />
-            </div>
-          </div>
-        </div>,
-        document.body,
       )}
 
       {/* Toast */}

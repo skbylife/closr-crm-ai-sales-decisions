@@ -18,7 +18,6 @@ import {
   Trash2,
   Sparkles,
 } from "lucide-react";
-import { useAuth } from "@/lib/auth-context";
 import { appConfirm } from '@/lib/confirm-store';
 import type { LinkedInResearchResult } from "@/types/linkedin-research";
 import { Search, Loader2 } from "lucide-react";
@@ -112,7 +111,6 @@ export default function ContactDetailPage({ params }: ContactDetailPageProps) {
   const updateContact = useStore((s) => s.updateContact);
   const deleteContact = useStore((s) => s.deleteContact);
   const { locale, t } = useLocale();
-  const { isDemo } = useAuth();
   const [activeTab, setActiveTab] = useState<TabKey>("overview");
   const [isEditing, setIsEditing] = useState(false);
   const [editForm, setEditForm] = useState({ name: '', title: '', email: '', phone: '', mobilePhone: '', department: '', linkedin: '', wechat: '', location: '', preferredChannel: '', personalNotes: '' });

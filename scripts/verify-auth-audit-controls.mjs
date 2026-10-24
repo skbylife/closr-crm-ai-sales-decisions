@@ -25,7 +25,7 @@ const checks = [
   },
   {
     file: 'src/app/(auth)/login/page.tsx',
-    patterns: ['recordAuthAuditEvent', 'login_success', 'demo_login_success'],
+    patterns: ['recordAuthAuditEvent', 'login_success'],
   },
   {
     file: 'src/app/(auth)/reset-password/page.tsx',

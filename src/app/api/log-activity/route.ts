@@ -7,10 +7,9 @@ export async function POST(request: Request) {
     const admin = requireAdmin();
 
     // Always use authoritative server-side org_id. Never trust client-supplied orgId
-    // (previously demo users could inject activity logs into any org).
     await admin.from('activity_logs').insert({
       user_id: ctx.userId,
-      org_id: ctx.orgId !== 'demo' ? ctx.orgId : null,
+      org_id: ctx.orgId,
       user_display_name: params.userDisplayName ?? null,
       action_type: params.actionType,
       entity_type: params.entityType ?? null,

@@ -20,7 +20,6 @@ const classifiedDeleteRoutes = {
   'src/app/api/rfps/documents/route.ts': 'resource-scoped RFP document delete',
   'src/app/api/rfps/milestones/route.ts': 'resource-scoped RFP milestone delete',
   'src/app/api/rfps/route.ts': 'resource-scoped RFP delete',
-  'src/app/api/seed-data/route.ts': 'owner-only organization destructive action with audit_log evidence',
   'src/app/api/strategic-play/route.ts': 'resource-scoped strategic play delete',
 };
 

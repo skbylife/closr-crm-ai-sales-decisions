@@ -5,7 +5,6 @@ import { recordComplianceAudit } from '@/lib/compliance-audit';
 const AUTH_AUDIT_EVENTS = new Set([
   'login_success',
   'logout',
-  'demo_login_success',
   'password_reset_completed',
   'invitation_accepted',
   'auth_callback_success',

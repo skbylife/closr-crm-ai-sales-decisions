@@ -1,3 +1,5 @@
+import { isNativeDatabase } from '@/lib/database-backend';
+import { transferNativeAccount } from '@/lib/native-db/account-transfer';
 import { requireAuth, requireRole, requireOwnership, requireAdmin, guardResponse } from '@/lib/api-guard';
 
 export async function POST(request: Request) {
@@ -6,7 +8,7 @@ export async function POST(request: Request) {
     const admin = requireAdmin();
 
     const { accountId, toUserId, reason, notes } = await request.json();
-    if (!accountId) return Response.json({ error: 'Missing accountId' }, { status: 400 });
+    if (typeof accountId !== 'string' || !accountId || (toUserId != null && typeof toUserId !== 'string') || (reason != null && (typeof reason !== 'string' || reason.length > 2000)) || (notes != null && (typeof notes !== 'string' || notes.length > 10000))) return Response.json({ error: 'Invalid transfer input' }, { status: 400 });
 
     // 验证 toUserId 属于当前 org（避免写入跨组织/无效 owner）
     if (toUserId) {
@@ -41,6 +43,11 @@ export async function POST(request: Request) {
 
     if (sourceOwnerId) {
       requireOwnership(ctx, sourceOwnerId);
+    }
+
+    if (isNativeDatabase()) {
+      const contextPack = await transferNativeAccount(ctx, { accountId, toUserId: toUserId || null, reason, notes }, account);
+      return Response.json({ success: true, contextPack });
     }
 
     // ── 生成上下文包（Context Pack）── 给新 AE 完整历史视图 ──
@@ -113,7 +120,7 @@ export async function POST(request: Request) {
     contextPack.activities = activities || [];
 
     // ── 更新 owner ──
-    const { error: updateErr } = await admin
+    let ownerUpdate = admin
       .from('accounts')
       .update({
         owner_id: toUserId || null,
@@ -124,21 +131,28 @@ export async function POST(request: Request) {
       .eq('id', accountId)
       .eq('org_id', ctx.orgId);
 
-    if (updateErr) return Response.json({ error: updateErr.message }, { status: 500 });
+    // Compare both ownership columns with the guarded snapshot. Two concurrent
+    // claimants must never both succeed or overwrite the first claimant.
+    ownerUpdate = account.owner_id == null ? ownerUpdate.is('owner_id', null) : ownerUpdate.eq('owner_id', account.owner_id);
+    ownerUpdate = account.user_id == null ? ownerUpdate.is('user_id', null) : ownerUpdate.eq('user_id', account.user_id);
+    const { data: updatedOwners, error: updateErr } = await ownerUpdate.select('id');
+    if (updateErr) return Response.json({ error: 'Unable to update account owner' }, { status: 500 });
+    if (!updatedOwners?.length) return Response.json({ error: 'Account ownership changed; reload and retry' }, { status: 409 });
 
     // 同步更新关联商机的 owner（transfer 和 reclaim 都要闭环）
     if (opportunities?.length) {
       const oppIds = opportunities.map((o: { id: string }) => o.id);
-      await admin
+      const { error: opportunityUpdateError } = await admin
         .from('opportunities')
         .update({ assigned_to: toUserId || null, user_id: toUserId || null })
         .in('id', oppIds)
         .eq('org_id', ctx.orgId);
+      if (opportunityUpdateError) return Response.json({ error: 'Owner changed, but opportunity handoff failed; administrator repair is required' }, { status: 500 });
     }
 
     // ── Handoff 上下文同步：更新关联数据的 user_id，确保新 owner 可见 ──
     const newUserId = toUserId || null;
-    await Promise.all([
+    const handoffResults = await Promise.all([
       admin.from('contacts').update({ user_id: newUserId }).eq('account_id', accountId).eq('org_id', ctx.orgId),
       admin.from('meeting_preps').update({ user_id: newUserId }).eq('account_id', accountId).eq('org_id', ctx.orgId),
       admin.from('intel_items').update({ user_id: newUserId }).eq('account_id', accountId).eq('org_id', ctx.orgId),
@@ -147,8 +161,10 @@ export async function POST(request: Request) {
       admin.from('tasks').update({ user_id: newUserId, assigned_to: newUserId }).eq('account_id', accountId).eq('org_id', ctx.orgId).neq('status', 'done'),
     ]);
 
+    if (handoffResults.some(result => result.error)) return Response.json({ error: 'Owner changed, but related-record handoff failed; administrator repair is required' }, { status: 500 });
+
     // ── 记录交接日志（含上下文包 + 备注）──
-    await admin.from('ownership_transfers').insert({
+    const { error: transferLogError } = await admin.from('ownership_transfers').insert({
       org_id: ctx.orgId,
       object_type: 'account',
       record_id: accountId,
@@ -160,8 +176,10 @@ export async function POST(request: Request) {
       transferred_by: ctx.userId,
     });
 
+    if (transferLogError) return Response.json({ error: 'Owner changed, but handoff history could not be saved; administrator repair is required' }, { status: 500 });
+
     // 审计日志
-    await admin.from('audit_log').insert({
+    const { error: auditError } = await admin.from('audit_log').insert({
       org_id: ctx.orgId,
       user_id: ctx.userId,
       action: toUserId ? 'transfer' : 'reclaim',
@@ -175,6 +193,7 @@ export async function POST(request: Request) {
       },
     });
 
+    if (auditError) return Response.json({ error: 'Owner changed, but audit logging failed; administrator repair is required' }, { status: 500 });
     return Response.json({ success: true, contextPack });
   } catch (err) {
     return guardResponse(err);
@@ -202,9 +221,7 @@ export async function GET(request: Request) {
 
     // 非 admin+：只能查看自己可见范围内的账户交接历史
     const accountOwnerId = account.owner_id ?? account.user_id;
-    if (ctx.userId !== 'demo') {
-      requireOwnership(ctx, accountOwnerId ?? '');
-    }
+    requireOwnership(ctx, accountOwnerId ?? '');
 
     const { data, error } = await admin
       .from('ownership_transfers')

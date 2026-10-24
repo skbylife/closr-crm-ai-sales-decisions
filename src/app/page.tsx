@@ -176,7 +176,7 @@ const LANDING_COPY: Record<LandingLocale, {
   subtitle: string;
   description: string;
   primaryCta: string;
-  demoCta: string;
+  deploymentCta: string;
   finalEyebrow: string;
   finalTitle: string;
   finalDesc: string;
@@ -195,7 +195,7 @@ const LANDING_COPY: Record<LandingLocale, {
     subtitle: "Closr 帮你读懂客户没说出口的话，锁定关键决策人，踩准每一步推进节奏。",
     description: "邮件、会议、IM、CRM 备注——所有跟客户的互动汇到一起，变成实时更新的局势判断：谁在推动、谁在犹豫、下一步该推进谁。复杂大单里，看得准才赢得下。",
     primaryCta: "立即体验",
-    demoCta: "体验演示",
+    deploymentCta: "自部署指南",
     finalEyebrow: "开始行动",
     finalTitle: "CRM 负责记住过去，Closr 帮你赢下接下来最重要的单。",
     finalDesc: "让团队真正围绕客户意图、组织关系与推进路径来行动，每一步都有据可依。",
@@ -214,7 +214,7 @@ const LANDING_COPY: Record<LandingLocale, {
     subtitle: "Closr turns scattered customer conversations into the account intelligence your team needs to protect momentum and close complex deals.",
     description: "Bring emails, meetings, chats, and CRM notes into one living read of every account: real intent, stakeholder power, deal risk, and the actions most likely to move the opportunity forward.",
     primaryCta: "Start free",
-    demoCta: "View demo",
+    deploymentCta: "Deployment guide",
     finalEyebrow: "Start now",
     finalTitle: "Your CRM records the past. Closr helps your team win what comes next.",
     finalDesc: "Align every account team around buyer intent, stakeholder coverage, deal evidence, and priority actions.",
@@ -226,7 +226,7 @@ const LANDING_COPY: Record<LandingLocale, {
 
 function parseLandingLocale(searchParams: Record<string, string | string[] | undefined> | undefined): LandingLocale {
   const lang = Array.isArray(searchParams?.lang) ? searchParams?.lang[0] : searchParams?.lang;
-  return lang === "en" ? "en" : "zh";
+  return lang === "zh" ? "zh" : "en";
 }
 
 function AccountCommandPanel({ panel, className = "" }: { panel: AccountPanelCopy; className?: string }) {
@@ -815,7 +815,7 @@ export default async function Home({ searchParams }: { searchParams?: LandingSea
   const copy = LANDING_COPY[locale];
   const alternateLocale = locale === "zh" ? "en" : "zh";
   const loginHref = locale === "en" ? "/login?lang=en" : "/login";
-  const demoHref = locale === "en" ? "/login?demo=true&lang=en" : "/login?demo=true";
+  const deploymentHref = "https://github.com/skbylife/closr-crm-ai-sales-decisions/blob/main/SELF_HOSTING.md";
   const panel = locale === "en" ? {
     console: "CLOSR // Account workspace",
     live: "Live",
@@ -971,10 +971,10 @@ export default async function Home({ searchParams }: { searchParams?: LandingSea
                   {copy.primaryCta}
                 </Link>
                 <Link
-                  href={demoHref}
+                  href={deploymentHref}
                   className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-7 py-3.5 text-sm font-semibold text-white/92 transition-all hover:bg-white/[0.06] hover:text-white"
                 >
-                  {copy.demoCta}
+                  {copy.deploymentCta}
                   <ArrowRight className="h-4 w-4 text-white/40" />
                 </Link>
               </div>
@@ -1688,10 +1688,10 @@ export default async function Home({ searchParams }: { searchParams?: LandingSea
                 {copy.primaryCta}
               </Link>
               <Link
-                href={demoHref}
+                href={deploymentHref}
                 className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-8 py-3.5 text-sm font-semibold text-white/92 transition-all hover:bg-white/[0.06] hover:text-white"
               >
-                {copy.demoCta}
+                {copy.deploymentCta}
                 <Target className="h-4 w-4 text-white/92" />
               </Link>
             </div>

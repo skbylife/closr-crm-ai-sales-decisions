@@ -38,24 +38,6 @@ function uniqueLabels(labels: string[]): string[] {
 
 const SHARED_SUBTITLE = '把零散信号整理成可验证的销售判断：现在怎么看、依据是什么、哪里不确定、下一步怎么校准。';
 
-const STANDARD_DEMO_ACCOUNT_NARRATIVE: Record<string, { currentJudgment: string; uncertainty: string; nextAction: string }> = {
-  acc_eastchina_platform_001: {
-    currentJudgment: '华东某头部互联网平台当前不是单纯续约健康，而是要把年度低价续约升级成三年框架 + AIOps 扩张。',
-    uncertainty: '关键风险是 CTO 何总仍在验证 AIOps 与自研 iMaster 的互补边界；采购周总同时用年降 5% 和低价竞品压价。',
-    nextAction: '由林岚推动李总转交一页互补架构图、P1 根因链路和 92% 自愈率路线图，并同步周总可接受的 ROI 口径。',
-  },
-  acc_chinamobile_002: {
-    currentJudgment: '某全国性通信运营商集团的机会不缺技术证明，真正卡点是省级试点授权能否转成集团复制路径。',
-    uncertainty: '关键风险是集团采购中心真实经济买家和评分权重不清；如果只讲平台能力，会被平台厂商品牌带节奏。',
-    nextAction: '让周晨锁定赵总、孙总和集团采购中心的三方路径，确认两省试点范围、数据源清单和集团复制条款。',
-  },
-  acc_national_bank_003: {
-    currentJudgment: '某全国性股份制银行的沉默风险已经被修正为安全评审校准，手机银行重构仍有推进窗口。',
-    uncertainty: '关键风险是周总的安全边界、POC 验收标准和资源承诺没有一次确认，forecast 容易看起来推进但不可信。',
-    nextAction: '让许洁向孙宁确认 POC 资源、验收标准和周总三条安全条件，并把客户反馈回写到商机判断。',
-  },
-};
-
 export function buildAccountTraceNarrative(params: {
   currentJudgment?: string | null;
   evidenceSourceCount: number;
@@ -67,9 +49,7 @@ export function buildAccountTraceNarrative(params: {
   nextAction?: string | null;
   accountId?: string;
 }): JudgmentTraceNarrativeModel {
-  const demoNarrative = params.accountId ? STANDARD_DEMO_ACCOUNT_NARRATIVE[params.accountId] : undefined;
   const currentJudgment = cleanText(params.currentJudgment)
-    || demoNarrative?.currentJudgment
     || (params.activeOpportunityCount > 0
       ? `当前有 ${countLabel(params.activeOpportunityCount, '个活跃商机')}，需要把机会状态和客户互动放在一起判断。`
       : '当前还没有稳定客户判断，先补一条客户沟通或会议记录。');
@@ -83,7 +63,7 @@ export function buildAccountTraceNarrative(params: {
   if (params.openQuestionCount > 0) uncertaintyParts.push(`${countLabel(params.openQuestionCount, '个待验证问题')}`);
   const uncertainty = uncertaintyParts.length > 0
     ? `${uncertaintyParts.join('、')}还没有被校准，先不要把这单当成确定结论。`
-    : demoNarrative?.uncertainty ?? '暂未发现明显矛盾；仍需用下一次客户反馈确认判断没有过期。';
+    : '暂未发现明显矛盾；仍需用下一次客户反馈确认判断没有过期。';
 
   return {
     context: 'account',
@@ -92,7 +72,7 @@ export function buildAccountTraceNarrative(params: {
     currentJudgment,
     evidenceTrace,
     uncertainty,
-    nextCalibrationAction: cleanText(params.nextAction) || demoNarrative?.nextAction || `优先推进 ${params.activeTaskCount > 0 ? countLabel(params.activeTaskCount, '个未完成任务') : '下一次客户触达'}，并把结果回写到客户判断。`,
+    nextCalibrationAction: cleanText(params.nextAction) || `优先推进 ${params.activeTaskCount > 0 ? countLabel(params.activeTaskCount, '个未完成任务') : '下一次客户触达'}，并把结果回写到客户判断。`,
     evidenceLabels: uniqueLabels(params.evidenceLabels ?? []),
     cta: params.accountId ? { label: '查看判断工作台', href: `/accounts/${encodeURIComponent(params.accountId)}?tab=overview` } : undefined,
   };

@@ -10,7 +10,6 @@ import { buildSignalLoopAssumption, hasSignalLoopAssumption } from '@/lib/strate
 import { toast } from '@/lib/toast-store';
 import { patchStrategicPlay } from './api';
 import { normalizeSignalText, isGenericEnglishPlayText, truncateSignalText, specificSignalText, currentClientLocale, displayText, signalLoopLabel } from './text';
-import { ENGLISH_PLACEHOLDER_PLAY_PATTERNS } from './demo-play-quality';
 import type {
   StrategicPlay,
   PlayAssumption,
@@ -58,21 +57,6 @@ export const RELATION_TONE_CLASS: Record<SignalImpactRelation, string> = {
 
 export const GAP_KEYWORDS = ['审批', '安全', '法务', '预算', '采购', '上线', '窗口', '否决', '风险', '阻力', '不确定', '缺口', '延迟', '合规'];
 
-export function isGenericEnglishSignalMemory(item: JudgmentMemorySourceItem): boolean {
-  const blob = [
-    item.title,
-    item.currentJudgment,
-    item.risk,
-    item.nextAction,
-    item.uncertainty,
-  ].filter(Boolean).join('\n');
-  const placeholderHits = ENGLISH_PLACEHOLDER_PLAY_PATTERNS.reduce(
-    (total, pattern) => total + (blob.match(pattern)?.length ?? 0),
-    0,
-  );
-  return placeholderHits >= 1;
-}
-
 export function keywordHits(signal: string, candidates: string[]): string[] {
   const normalizedSignal = signal.toLowerCase();
   const tokens = candidates
@@ -108,7 +92,6 @@ export function buildStrategicSignalImpactInsight(play: StrategicPlay, judgmentM
 
   const latestSignal = judgmentMemories
     .filter((item) => item.sourceKind === 'decode' || item.sourceKind === 'rfp_analysis')
-    .filter((item) => currentClientLocale() !== 'en' || !isGenericEnglishSignalMemory(item))
     .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())[0];
   if (!latestSignal) return null;
 

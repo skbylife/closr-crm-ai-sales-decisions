@@ -390,7 +390,7 @@ export async function runDecodePipeline(
 
   let cilContext: string | undefined;
   let knowledgeContext: string | undefined;
-  if (resolvedAccountId && orgId && orgId !== 'demo') {
+  if (resolvedAccountId && orgId) {
     const queryHint = `${input.clientName || ''} ${input.dealStage || ''} 邮件沟通分析`.trim();
     const cilPromise = input.requestContext
       ? loadCILAccountContextScoped({ orgId, accountId: resolvedAccountId, limitEvidence: 8, limitClaims: 10, ctx: input.requestContext })
@@ -463,7 +463,7 @@ export async function runDecodePipeline(
   });
 
   let previousDecode: PreviousDecodeForDiff | null = null;
-  if (orgId && userId && orgId !== 'demo') {
+  if (orgId && userId) {
     previousDecode = await loadPreviousMatchingDecode(requireAdmin(), {
       orgId,
       userId,
@@ -489,7 +489,7 @@ export async function runDecodePipeline(
     );
   }
 
-  if (orgId && orgId !== 'demo') {
+  if (orgId) {
     void emitEvent({
       orgId,
       userId: userId ?? undefined,
@@ -507,7 +507,7 @@ export async function runDecodePipeline(
     }).catch(safeCatch('decode-service', 'event-emit', { contactId: input.matchedContactId }));
   }
 
-  if (orgId && orgId !== 'demo' && contactForIntel?.account_id && userId) {
+  if (orgId && contactForIntel?.account_id && userId) {
     const admin = requireAdmin();
     const emailSubject = input.emailText.match(/(?:Subject|主题)[:：]\s*(.+)/i)?.[1]?.trim();
     const intelTitle = emailSubject
@@ -537,7 +537,7 @@ export async function runDecodePipeline(
       });
   }
 
-  if (orgId && orgId !== 'demo' && resolvedAccountId) {
+  if (orgId && resolvedAccountId) {
     const decodeTitle = contactForIntel?.name
       ? `邮件解读洞察：与${contactForIntel.name}的沟通`
       : `邮件解读洞察：${input.clientName || '客户邮件'}`;
@@ -562,7 +562,7 @@ export async function runDecodePipeline(
     });
   }
 
-  if (orgId && orgId !== 'demo' && input.matchedContactId) {
+  if (orgId && input.matchedContactId) {
     const decodeText = [
       output.threadAnalysis?.keySignal,
       output.threadAnalysis?.sentimentTrend,

@@ -1,10 +1,10 @@
-# Closr — B2B 销售判断系统
+# Closr：面向复杂 B2B 销售的自部署 AI CRM
 
 **理解客户，看清局面，确定下一步。**
 
 [官方网站](https://www.closr.ing) · [English](README.md) · [自部署指南](SELF_HOSTING.md) · [许可](LICENSE)
 
-Closr 是面向 B2B 团队的自部署 CRM 与销售判断工作台，将客户沟通、客户历史、关键人物和招投标信息连接起来，形成可复核的判断与可执行的下一步行动。
+Closr 是面向复杂 B2B 销售的自部署 AI CRM，将销售情报与商机洞察融入团队日常工作台。销售判断（Sales Judgment）连接客户沟通和客户历史，通过 BABEL 分析关键人物与决策关系，用谋局（Strategic Plays）形成可执行的销售行动手册，并支持 RFP 投标／不投标评估，让团队能够对照证据复核判断、确定下一步。
 
 围绕一笔复杂交易，团队可以一起审视：**发生了什么变化、还缺什么证据、谁影响决策、下一步应该验证什么**，再将判断组织成有步骤、负责人和后续行动的谋局计划。
 
@@ -74,9 +74,11 @@ Closr 将这些信号放到同一个客户工作台，帮助团队对照原始�
 
 默认架构为 **PostgreSQL + pgvector**、应用自有账号／会话／MFA，以及保存私有附件的 Docker 卷，**不需要 Supabase 账号或服务**。源码保留可选的旧 Supabase 后端。
 
-安装 Docker Compose v2 与 Node.js 22+，在全新 checkout 中运行：
+安装 Git、Docker（含 Compose v2）和 Node.js 22。如果网络使用企业 TLS 代理，先按自部署指南中的替代构建命令操作。直连网络运行：
 
 ```sh
+git clone https://github.com/skbylife/closr-crm-ai-sales-decisions.git
+cd closr-crm-ai-sales-decisions
 node scripts/native-init.mjs
 docker compose --env-file .env.self-hosted -f docker-compose.self-hosted.yml up --build -d
 ```
@@ -95,9 +97,9 @@ AI 功能需要部署者自行配置模型供应商。默认 Compose 关闭 AI�
 | 附件 | 通过鉴权访问的私有本地卷存储 |
 | 模型接入 | 可配置的服务端模型调用与可选 embedding 生成 |
 
-已发布原生版本通过 920 项单元测试、生产构建、空库初始化、浏览器 CRM／附件检查和容器重建持久化验收。这些检查不代表模型准确性、全部外部集成行为或现有生产数据库迁移已验证；具体范围见[发行说明](RELEASE_NOTES.md)。
+构建、测试、空库初始化及浏览器验收的实际记录见[发行说明](RELEASE_NOTES.md)。这些检查不代表模型准确性、全部外部集成行为或现有生产数据库迁移已验证；请按自部署指南完成自己安装环境的不调用模型验收。
 
-仓库不含私有 Git 历史、生产配置、凭据、客户数据库、私有 embedding 或内部客户评估数据。来源未核实的演示记录不分发，旧演示填充接口返回 HTTP 410；通用知识库独立提供。请仅使用自己有权处理的数据。
+仓库不含私有 Git 历史、生产配置、凭据、客户数据库、私有 embedding 或内部客户评估数据。官网演示是独立制品；本仓库安装正常鉴权、可编辑的应用。通用知识库独立提供。请仅使用自己有权处理的数据。
 
 ## 反馈
 

@@ -67,13 +67,9 @@ export async function POST(request: Request) {
 
       const [intelResult, cilResult, kbResult, playsResult] = await Promise.allSettled([
         fetchRecentIntel(ctx.orgId, body.accountId),
-        ctx.orgId !== 'demo'
-          ? loadCILAccountContextScoped({ orgId: ctx.orgId, accountId: body.accountId, limitEvidence: 8, limitClaims: 10, ctx })
-              .then((cilData) => buildCILForStrategy(cilData) || undefined)
-          : Promise.resolve(undefined),
-        ctx.orgId !== 'demo'
-          ? injectKnowledgeContextScoped(ctx, body.accountId, queryHint, 5)
-          : Promise.resolve(''),
+        loadCILAccountContextScoped({ orgId: ctx.orgId, accountId: body.accountId, limitEvidence: 8, limitClaims: 10, ctx })
+          .then((cilData) => buildCILForStrategy(cilData) || undefined),
+        injectKnowledgeContextScoped(ctx, body.accountId, queryHint, 5),
         admin
           .from('strategic_plays')
           .select('goal_description, confidence, status, steps')
@@ -117,7 +113,7 @@ export async function POST(request: Request) {
     });
 
     // Fire-and-forget: 回写策略建议到知识库
-    if (ctx.orgId && ctx.orgId !== 'demo' && body.accountId && result?.strategies?.length) {
+    if (ctx.orgId && body.accountId && result?.strategies?.length) {
       const recommended = result.strategies[result.recommended ?? 0];
       const strategyContent = [
         `推荐策略: ${recommended?.name ?? ''}`,

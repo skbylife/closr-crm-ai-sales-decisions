@@ -70,7 +70,7 @@ const COPY = {
     title: "Closr 的 ROI是减少销售里的错误判断。",
     subtitle:
       "当团队看不清客户真实意图、关键关系、采购风险和下一步动作时，损失通常不会出现在 CRM 里。Closr 的价值，是把这些隐性损失提前暴露，并让团队用同一套证据推进。",
-    primaryCta: "体验 Demo",
+    primaryCta: "进入工作区",
     secondaryCta: "登录",
     heroMetricLabel: "按当前保守假设，预计年度可量化价值",
     conditionLabel: "计算条件",
@@ -123,7 +123,7 @@ const COPY = {
     title: "Closr ROI is not about saving a few hours. It is about reducing wrong judgment in strategic sales.",
     subtitle:
       "When teams miss buyer intent, relationship gaps, procurement risk, or the next best move, the loss rarely shows up cleanly in CRM. Closr makes those hidden losses visible earlier and turns them into evidence-based action.",
-    primaryCta: "View demo",
+    primaryCta: "Open workspace",
     secondaryCta: "Log in",
     heroMetricLabel: "Estimated annual value under conservative assumptions",
     conditionLabel: "Conditions",
@@ -270,7 +270,6 @@ export function RoiCalculator({ locale }: { locale: Locale }) {
 
   const update = (key: keyof Inputs, value: number) => setInputs((current) => ({ ...current, [key]: value }));
   const loginHref = locale === "en" ? "/login?lang=en" : "/login";
-  const demoHref = locale === "en" ? "/login?demo=true&lang=en" : "/login?demo=true";
   const alternateHref = locale === "en" ? "/roi" : "/roi?lang=en";
   const currencyPrefix = locale === "zh" ? "¥" : "$";
   const conditionText = formatCondition(inputs, locale);
@@ -305,7 +304,7 @@ export function RoiCalculator({ locale }: { locale: Locale }) {
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-8 text-stone-700 sm:text-lg">{copy.subtitle}</p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href={demoHref} className="inline-flex items-center gap-2 bg-red-800 px-5 py-3 text-sm font-semibold text-white hover:bg-red-900">
+                <a href={loginHref} className="inline-flex items-center gap-2 bg-red-800 px-5 py-3 text-sm font-semibold text-white hover:bg-red-900">
                   {copy.primaryCta}
                   <ArrowRight className="h-4 w-4" />
                 </a>

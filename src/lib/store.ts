@@ -65,14 +65,7 @@ import { getCached, setCache, invalidatePrefix, clearAll as clearFetchCache, FRE
 import { getSupabase } from '@/lib/supabase';
 import { toast } from '@/lib/toast-store';
 
-import {
-  sampleAccounts,
-  sampleOpportunities,
-  sampleIntelItems,
-  sampleEmailDecodes,
-  sampleKnowledgeItems,
-  sampleTasks,
-} from '@/lib/sample-data';
+
 
 // ─── Hydrate 代次 & Realtime 订阅引用 ──────────────────────────────
 // 用于防止旧 hydrate 覆盖新状态，以及避免重复订阅累积
@@ -107,7 +100,6 @@ interface ClosrStore {
 
   // Job Level (determines dashboard view)
   jobLevel: number;
-  setJobLevel: (level: number) => void;
 
   // Currency
   currencyCode: CurrencyCode;
@@ -217,7 +209,6 @@ interface ClosrStore {
   importData: (data: ExportData) => void;
 
   // Sample Data
-  loadSampleData: () => void;
 
   // Dashboard module collapse state (UI preference)
   dashboardCollapseState: Record<string, boolean>;
@@ -322,7 +313,6 @@ function invalidateHydrationCache() {
 }
 
 // Fire-and-forget DB write (no await in store mutations)
-// Demo mode now uses real Supabase auth, so writes go through normally
 function bg(fn: () => Promise<void>) {
   fn().catch((e) => {
     console.error('[store→db] 持久化失败:', e);
@@ -479,10 +469,6 @@ export const useStore = create<ClosrStore>()(
       },
 
       jobLevel: 0, // Hydrated from Supabase user_settings
-      setJobLevel: (level) => {
-        set({ jobLevel: level });
-        get().setUserSettings({ jobLevel: level });
-      },
 
       currencyCode: 'CNY' as CurrencyCode,
       setCurrencyCode: (code) => {
@@ -1517,32 +1503,6 @@ export const useStore = create<ClosrStore>()(
         for (const e of newEmails) bgInvalidate(() => dbSaveComposedEmail(e));
         for (const k of newKb) bgInvalidate(() => dbSaveKnowledge(k));
         for (const t of newTasks) bgInvalidate(() => dbSaveTask(t, { updateAssignee: true }));
-      },
-
-      // ── Sample Data ─────────────────────────────────────────────
-
-      loadSampleData: () => {
-        // Set all data locally from sample-data.ts
-        set({
-          accounts: sampleAccounts,
-          intelItems: sampleIntelItems,
-          emailDecodes: sampleEmailDecodes,
-          opportunities: sampleOpportunities,
-          knowledgeItems: sampleKnowledgeItems,
-          composedEmails: [],
-          tasks: sampleTasks,
-          leads: loadStoredLeads(),
-          aiAdvices: [],
-          eventNotifications: [],
-        });
-
-        // Persist all sample data to Supabase
-        for (const a of sampleAccounts) bgInvalidate(() => dbSaveAccount(a));
-        for (const o of sampleOpportunities) bgInvalidate(() => dbSaveOpportunity(o));
-        for (const i of sampleIntelItems) bgInvalidate(() => dbSaveIntel(i));
-        for (const d of sampleEmailDecodes) bgInvalidate(() => dbSaveDecode(d));
-        for (const k of sampleKnowledgeItems) bgInvalidate(() => dbSaveKnowledge(k));
-        for (const t of sampleTasks) bgInvalidate(() => dbSaveTask(t, { updateAssignee: true }));
       },
 
       // ── Dashboard module collapse state ──

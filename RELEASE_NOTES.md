@@ -10,7 +10,7 @@ Public predecessor: `ddeea3328d7cfb54afc009ae616863ca82817792`.
   earlier-license protection, and third-party carveout.
 - Removed external case records of unverified provenance, backup source, internal
   documents/evaluation artifacts, screenshots, deployment workflows, and production config.
-  The demo seed endpoint is disabled; dataset processing interfaces remain available.
+  At that release, the demo seed endpoint was disabled; the later refinement below removes the legacy Demo interfaces entirely.
 - Replaced the embedded demo credential and non-reserved example email identities; removed
   internal deployment endpoint defaults. Configuration templates contain names/descriptions
   and blank values. Operators supply their own settings.
@@ -31,7 +31,7 @@ Public predecessor: `ddeea3328d7cfb54afc009ae616863ca82817792`.
 Source availability does not include customer records, production vector exports, hosted API access,
 external model licenses, trademark rights, or operational secrets.
 
-## Native deployment validation
+## Original full-source release validation (267c3842)
 
 The release candidate passed 920 unit tests across 164 files and a production Docker
 build (including TypeScript). Real PostgreSQL checks covered 13 fresh migrations,
@@ -59,3 +59,38 @@ the corresponding test files and `database/native/README.md`. Never point these 
 production. Model semantic quality, paid providers, external mail/chat integrations,
 existing production database upgrades, and unavailable external strategy datasets
 are outside this validation. No production deployment or database access occurred.
+
+
+## Public product refinement — 2026-10-24
+
+- Removed legacy Demo routes, embedded sample datasets, sample-loading controls,
+  fabricated role overrides and fixed-customer fallback narratives from the normal
+  application. The official website's anonymous demonstration is a separate static
+  artifact and is not included in this distribution.
+- The public landing page now defaults to English and preserves explicit Chinese.
+  Business content remains unchanged by UI translation; no DOM rewriting replaces
+  customer text with generic English. Expanded both README introductions and the
+  first-install configuration/backup/restore guide.
+- Products and quotes use authenticated, tenant-scoped persisted catalog APIs.
+  The account pool lists actual unassigned organization accounts. Native account
+  transfer/claim/reclaim checks membership under lock and commits related ownership,
+  history and audit changes in one transaction. Migration 120 adds handoff history
+  fields. Unsupported automatic pool-rule execution and quotation sending are not
+  presented as completed features.
+- Updated Next.js, React, Vitest and MSAL and refreshed the third-party inventory.
+  The revision's dependency audit reports zero known advisories at review time;
+  this is a point-in-time result, not a security guarantee.
+- This revision passed 920 unit tests in 164 files, TypeScript, and a new production
+  Docker build. Five additional real-PostgreSQL account-transfer cases cover rollback,
+  concurrent claim, reclaim, cross-organization access and membership revocation.
+- An independent operator followed SELF_HOSTING.md in a fresh clone/candidate export
+  and new Compose database: all 14 migrations and the 58 knowledge entries/eight
+  strategy patterns loaded. First-owner setup, CRM and private attachments, cross-origin
+  rejection, logout/login and browser rendering passed. Recreating the application
+  preserved sessions, records and exact attachment bytes. No model keys or calls were
+  used. A first build attempt exhausted the cloud executor's accumulated VFS cache;
+  after clearing this task's obsolete build cache, the documented build succeeded.
+
+The new checks do not claim live model quality, all external integrations, or a
+production upgrade has been verified. The earlier 13-migration evidence above belongs
+only to the original release, not this revision's 14-migration baseline.

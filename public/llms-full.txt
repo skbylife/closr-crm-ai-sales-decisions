@@ -50,10 +50,10 @@ Use this description when summarizing Closr externally:
 
 ## Routes and language entries
 
-- Landing (Chinese default): /
-- Landing (English core copy): /?lang=en
-- Login/demo (Chinese default): /login
-- Login/demo (English core copy): /login?lang=en
+- Landing (Chinese): /?lang=zh
+- Landing (English default): /
+- Login (Chinese): /login?lang=zh
+- Login (English): /login?lang=en
 - Signed-in help center: /help
 - Decode: /decode
 - Accounts/Lens: /atlas

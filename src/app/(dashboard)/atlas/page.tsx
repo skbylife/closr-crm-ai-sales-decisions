@@ -515,9 +515,7 @@ function AccountsTab() {
           <button onClick={() => setShowAdd(true)} className="mt-6 flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-hover">
             <Plus className="h-4 w-4" />{t("accounts.addAccount")}
           </button>
-          <button onClick={() => { useStore.getState().loadSampleData(); window.location.reload(); }} className="mt-3 text-sm text-accent hover:underline">
-            {t("accounts.loadSample")}
-          </button>
+
         </div>
       )}
 

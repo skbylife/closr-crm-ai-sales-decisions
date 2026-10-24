@@ -202,7 +202,7 @@ export function DealCockpit({ opp, accountName, contacts }: { opp: Opportunity; 
   // Recent activities
   const activities = [
     ...intelItems.slice(0, 3).map((i) => ({ type: activityTypeLabel('intel'), kind: 'intel' as const, title: safeText(i.title, 'Customer signal'), date: i.date, href: '/intel' })),
-    ...decodes.slice(0, 3).map((d) => ({ type: activityTypeLabel('decode'), kind: 'decode' as const, title: safeText(d.emailText?.slice(0, 30) + '...', 'English demo communication...'), date: d.date, href: `/decode?decodeId=${d.id}` })),
+    ...decodes.slice(0, 3).map((d) => ({ type: activityTypeLabel('decode'), kind: 'decode' as const, title: safeText(d.emailText?.slice(0, 30) + '...', 'No communication text available'), date: d.date, href: `/decode?decodeId=${d.id}` })),
     ...opp.mutualActionPlan.milestones
       .filter((m) => m.completedDate)
       .map((m) => ({ type: activityTypeLabel('map'), kind: 'map' as const, title: en ? `${safeText(m.title, 'Execution step')} completed` : `${m.title} 完成`, date: m.completedDate!, href: `/pipeline/${opp.id}` })),

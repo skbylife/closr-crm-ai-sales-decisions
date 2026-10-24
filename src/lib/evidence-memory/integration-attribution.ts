@@ -20,7 +20,9 @@ export interface IntegrationEmail {
 export interface AccountHint {
   id: string;
   name: string;
-  /** 已知的联系人 email 域名，如 ['huawei.com'] */
+  /** Explicitly recorded contact email domains. */
+  website?: string | null;
+  domain?: string | null;
   knownDomains?: string[];
 }
 
@@ -43,13 +45,15 @@ function extractSenderDomain(sender: string | null | undefined): string | null {
   return match?.[1]?.toLowerCase() ?? null;
 }
 
-/** 已知的企业域名 → account name 关键词映射（hardcoded for demo, extensible） */
-const DOMAIN_ACCOUNT_KEYWORDS: Record<string, string[]> = {
-  'huawei.com': ['华为', 'huawei'],
-  'chinamobile.com': ['某全国性通信运营商', 'chinamobile', 'cmcc'],
-  'cmbchina.com': ['某全国性股份制银行', 'cmb', '招行'],
-  'cmb.com': ['某全国性股份制银行', 'cmb', '招行'],
-};
+/** Normalize recorded account websites/domains; never infer a company from a fixed name map. */
+function normalizeDomain(value: string | null | undefined): string | null {
+  if (!value?.trim()) return null;
+  try {
+    const url = new URL(value.includes('://') ? value.trim() : `https://${value.trim()}`);
+    if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) return null;
+    return url.hostname.toLowerCase().replace(/^www\./, '').replace(/\.$/, '') || null;
+  } catch { return null; }
+}
 
 /**
  * 推断单封 integration email 所属的 account
@@ -71,29 +75,21 @@ export function inferEmailAccount(
   // 2. Sender domain matching
   const domain = extractSenderDomain(email.sender);
   if (domain) {
-    // Check against known domain keywords
-    const keywords = DOMAIN_ACCOUNT_KEYWORDS[domain];
-    if (keywords) {
-      const matched = accounts.find((a) =>
-        keywords.some((kw) => a.name.toLowerCase().includes(kw.toLowerCase())),
-      );
-      if (matched) {
-        return { ...base, accountId: matched.id, matchMethod: 'sender_domain', confidence: 0.9 };
-      }
-    }
-    // Check against account knownDomains
-    const domainMatch = accounts.find((a) =>
-      a.knownDomains?.some((d) => d.toLowerCase() === domain),
+    const normalizedSender = normalizeDomain(domain);
+    const matches = accounts.filter((account) =>
+      [account.website, account.domain, ...(account.knownDomains ?? [])]
+        .some((value) => Boolean(normalizedSender) && normalizeDomain(value) === normalizedSender),
     );
-    if (domainMatch) {
-      return { ...base, accountId: domainMatch.id, matchMethod: 'sender_domain', confidence: 0.85 };
+    // Shared domains cannot establish account identity on their own.
+    if (matches.length === 1) {
+      return { ...base, accountId: matches[0].id, matchMethod: 'sender_domain', confidence: 0.85 };
     }
   }
 
   // 3. Subject matching — account name appears in subject
   if (email.subject) {
     const subjectLower = email.subject.toLowerCase();
-    const subjectMatch = accounts.find((a) => subjectLower.includes(a.name.toLowerCase()));
+    const subjectMatch = accounts.find((a) => Boolean(a.name.trim()) && subjectLower.includes(a.name.trim().toLowerCase()));
     if (subjectMatch) {
       return { ...base, accountId: subjectMatch.id, matchMethod: 'subject_match', confidence: 0.75 };
     }
@@ -102,7 +98,7 @@ export function inferEmailAccount(
   // 4. Summary matching — account name appears in summary
   if (email.summary) {
     const summaryLower = email.summary.toLowerCase();
-    const summaryMatch = accounts.find((a) => summaryLower.includes(a.name.toLowerCase()));
+    const summaryMatch = accounts.find((a) => Boolean(a.name.trim()) && summaryLower.includes(a.name.trim().toLowerCase()));
     if (summaryMatch) {
       return { ...base, accountId: summaryMatch.id, matchMethod: 'summary_match', confidence: 0.7 };
     }
@@ -114,8 +110,7 @@ export function inferEmailAccount(
     if (conn?.config?.label) {
       const label = String(conn.config.label).toLowerCase();
       const connMatch = accounts.find((a) =>
-        label.includes(a.name.toLowerCase()) ||
-        DOMAIN_ACCOUNT_KEYWORDS[domain ?? '']?.some((kw) => label.includes(kw.toLowerCase())),
+        Boolean(a.name.trim()) && label.includes(a.name.trim().toLowerCase()),
       );
       if (connMatch) {
         return { ...base, accountId: connMatch.id, matchMethod: 'connection_label', confidence: 0.6 };

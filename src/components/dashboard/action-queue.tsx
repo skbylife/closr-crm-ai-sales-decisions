@@ -16,8 +16,6 @@ import {
   Swords,
   HelpCircle,
 } from "lucide-react";
-import { useEffectiveJobLevel } from "@/hooks/use-effective-job-level";
-import { useAuth } from "@/lib/auth-context";
 import type { DailyAction } from "@/types/daily-action";
 
 // ── Visual config per action type ─────────────────────────────────
@@ -71,8 +69,6 @@ function priorityLabel(p: number): string {
 type ActionStatus = "pending" | "done" | "snoozed" | "dismissed";
 
 export function ActionQueue({ embedded = false, scope }: { embedded?: boolean; scope?: 'personal' | 'team' | 'global' } = {}) {
-  const { isDemo } = useAuth();
-  const jobLevel = useEffectiveJobLevel();
   const [actions, setActions] = useState<DailyAction[]>([]);
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState(true);
@@ -82,7 +78,6 @@ export function ActionQueue({ embedded = false, scope }: { embedded?: boolean; s
     let cancelled = false;
     const params = new URLSearchParams();
     if (scope) params.set('scope', scope);
-    if (isDemo && jobLevel < 2) params.set('demoJobLevel', String(jobLevel));
     const query = params.toString();
     const url = query ? `/api/daily-actions?${query}` : "/api/daily-actions";
     fetch(url)
@@ -97,7 +92,7 @@ export function ActionQueue({ embedded = false, scope }: { embedded?: boolean; s
     return () => {
       cancelled = true;
     };
-  }, [scope, isDemo, jobLevel]);
+  }, [scope]);
 
   const setStatus = useCallback((key: string, status: ActionStatus) => {
     setStatuses((prev) => ({ ...prev, [key]: status }));

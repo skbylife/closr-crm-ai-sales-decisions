@@ -1,10 +1,10 @@
-# Closr — B2B Sales Judgment System
+# Closr: Self-Hosted AI CRM for Complex B2B Sales
 
 **Read the customer. See the deal. Decide the next move.**
 
 [Official website](https://www.closr.ing) · [简体中文](README.zh-CN.md) · [Self-hosting](SELF_HOSTING.md) · [License](LICENSE)
 
-Closr is a self-hosted CRM and sales judgment workspace for B2B teams. It connects customer conversations, account history, stakeholder context, and RFP signals to reviewable judgments and concrete next actions.
+Closr is a self-hosted AI CRM for complex B2B sales, bringing B2B sales intelligence and deal intelligence into the team’s daily workspace. Its Sales Judgment workflow connects customer conversations and account history with BABEL-powered stakeholder analysis, Strategic Plays that turn judgment into actionable sales playbooks, and RFP bid/no-bid review—so teams can trace decisions to evidence and agree on the next move.
 
 Use it to examine **what changed, what evidence is missing, who matters to the decision, and what to validate next**—then organize that judgment into a strategic play with steps, owners, and follow-up.
 
@@ -72,9 +72,11 @@ PostgreSQL **pgvector** supports vector retrieval. The default import requires n
 
 The default stack uses **PostgreSQL + pgvector**, application-owned accounts, sessions and MFA, and a Docker volume for private attachments. **No Supabase account or service is required.** Supabase remains an optional legacy backend.
 
-With Docker Compose v2 and Node.js 22+ installed, start from a fresh checkout:
+Install Git, Docker with Compose v2, and Node.js 22. For a corporate TLS proxy, follow the alternative build command in the self-hosting guide before starting. For a direct connection:
 
 ```sh
+git clone https://github.com/skbylife/closr-crm-ai-sales-decisions.git
+cd closr-crm-ai-sales-decisions
 node scripts/native-init.mjs
 docker compose --env-file .env.self-hosted -f docker-compose.self-hosted.yml up --build -d
 ```
@@ -93,9 +95,9 @@ AI features require an operator-configured model provider. The default Compose c
 | Files | Private local-volume storage with authenticated access |
 | Model integration | Configurable server-side model calls and optional embedding generation |
 
-The published native baseline passed 920 unit tests, a production Docker build, fresh-database initialization, browser CRM/attachment checks, and persistence after container recreation. These checks do not establish model accuracy, all external integration behavior, or compatibility with an existing production database. See [release notes](RELEASE_NOTES.md) for the tested scope.
+See [release notes](RELEASE_NOTES.md) for recorded build, test, fresh-database and browser validation evidence. This does not establish model accuracy, every external integration, or compatibility with an existing production database. Follow the guide’s model-free acceptance check on your installation.
 
-The repository excludes private Git history, production configuration, credentials, customer databases, private embeddings, and internal customer evaluation data. Unverified bundled demo records are omitted; the old demo-seed endpoint returns HTTP 410. The generic knowledge corpus is included separately. Supply only data you are authorized to use.
+The repository excludes private Git history, production configuration, credentials, customer databases, private embeddings, and internal customer evaluation data. The official website demonstration is a separate artifact; this repository installs the normal authenticated, editable application. The generic knowledge corpus is included separately. Supply only data you are authorized to use.
 
 ## Feedback
 

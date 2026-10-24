@@ -151,8 +151,8 @@ export async function loadEvidenceRecordsUnsafeInternal(accountId: string, orgId
 
   // Org-wide hints are cached separately (10 min TTL) — needed by inferEmailAccount()
   const accountHintsPromise = withCache(accountHintsCache, `hints:accounts:${orgId}`, ACCOUNT_HINTS_TTL, async () => {
-    const rows = await safeSelect('accounts', admin.from('accounts').select('id, name').eq('org_id', orgId).limit(50));
-    return (rows as { id: string; name?: string | null }[]).map((a) => ({ id: a.id, name: a.name ?? '' }));
+    const rows = await safeSelect('accounts', admin.from('accounts').select('id, name, website').eq('org_id', orgId).limit(50));
+    return (rows as { id: string; name?: string | null; website?: string | null }[]).map((a) => ({ id: a.id, name: a.name ?? '', website: a.website ?? null }));
   });
   const connectionHintsPromise = withCache(connectionHintsCache, `hints:connections:${orgId}`, CONNECTION_HINTS_TTL, async () => {
     const rows = await safeSelect('integration_connections', admin.from('integration_connections').select('id, connector_id, config, status').eq('org_id', orgId).limit(20));

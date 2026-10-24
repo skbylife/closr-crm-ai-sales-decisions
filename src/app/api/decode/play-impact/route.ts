@@ -132,36 +132,6 @@ function normalizeText(input: DecodePlayImpactBody): string {
   return parts.filter(Boolean).join('\n');
 }
 
-function buildImpactAlert(text: string, decodeId?: string) {
-  const normalized = text.toLowerCase();
-  const signals: string[] = [];
-
-  if (/年降|降价|3040|3200|预算|没有让步空间/.test(text)) signals.push('年降 5% 与预算上限成为硬约束');
-  if (/tcs|mantis|竞品|低价|印度/.test(normalized)) signals.push('TCS 低价报价形成竞品锚点');
-  if (/aiops|roi|回本|cfo|500|新增投入|自动化/.test(normalized)) signals.push('AIOps 新增投入必须证明一年回本');
-  if (/陈晓峰|财务评审|预算归属|回报周期|财务/.test(text)) signals.push('陈晓峰介入财务评审，ROI 口径成为关键路径');
-
-  const needsReplan = signals.length >= 3;
-  if (!needsReplan) return null;
-
-  return {
-    impacted: true,
-    impact_level: 'high',
-    reason: '解读发现客户新增了年降 5% 硬约束、TCS 低价锚点、AIOps 一年回本证明和财务评审人陈晓峰，原有谋局需要重新计划。',
-    signals,
-    affectedAssumptions: [
-      '续约与 AIOps 扩展可以按原方案一起推进',
-      '采购通过后方案就能顺利进入下一阶段',
-      '新增服务线只需要业务价值说明，不需要单独财务 ROI 口径',
-    ],
-    suggestedAction: 'replan' as const,
-    needs_replan: true,
-    sourceDecodeId: decodeId ?? null,
-    timestamp: new Date().toISOString(),
-    dismissed: false,
-  };
-}
-
 function buildGenericImpactAlert(params: {
   body: DecodePlayImpactBody;
   play: StrategicPlayRow;
@@ -261,8 +231,6 @@ export async function POST(request: Request) {
 
     await requireAccountAccess(ctx, accountId);
 
-    const demoAlert = buildImpactAlert(normalizeText(body), body.decodeId);
-
     let sourceRecord: SourceRecordRow | null = null;
     if (body.decodeId) {
       const sourceResult = await admin
@@ -307,19 +275,7 @@ export async function POST(request: Request) {
     }
 
     for (const play of activePlays) {
-      const genericAlert = buildGenericImpactAlert({ body, play, sourceRecord });
-      const alert = demoAlert
-        ? {
-            ...genericAlert,
-            ...demoAlert,
-            signalStatement: genericAlert.signalStatement,
-            affectedJudgment: genericAlert.affectedJudgment,
-            evidence: genericAlert.evidence,
-            source: genericAlert.source,
-            question: genericAlert.question,
-            nextMove: genericAlert.nextMove,
-          }
-        : genericAlert;
+      const alert = buildGenericImpactAlert({ body, play, sourceRecord });
       const routeChangeProposal = buildRouteChangeProposal({
         play: {
           id: play.id,

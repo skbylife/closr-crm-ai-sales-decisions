@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { Search, Bell, ChevronRight, Building2, User, Target, X, Menu, LogOut, Settings, Sparkles, ClipboardCheck, Radio, BookOpen, ScanSearch, Clock, Calendar as CalendarIcon } from "lucide-react";
+import { Search, Bell, ChevronRight, Building2, User, Target, X, Menu, LogOut, Settings, ClipboardCheck, Radio, BookOpen, ScanSearch, Clock, Calendar as CalendarIcon } from "lucide-react";
 import { ROLE_LEVEL_LABELS } from "@/lib/babel-engine/types";
 import { useStore } from "@/lib/store";
 import { useNotifications } from "@/components/dashboard/notifications";
@@ -108,12 +108,11 @@ const TYPE_SECTION_LABELS: Record<SearchResult["type"], TranslationKey> = {
 
 export function Topbar() {
   const router = useRouter();
-  const { user, isDemo, signOut, exitDemo, setJobLevel: setAuthJobLevel } = useAuth();
-  const setStoreJobLevel = useStore(s => s.setJobLevel);
+  const { user, signOut } = useAuth();
   const jobLevel = useEffectiveJobLevel();
   const roleLevel = jobLevel >= 2 ? 'executive' : jobLevel >= 1 ? 'director' : 'ae';
   const { t } = useLocale();
-  const userName = useStore((s) => s.userSettings.displayName) || "Zeno";
+  const userName = useStore((s) => s.userSettings.displayName) || "Closr";
   const userRole = useStore((s) => s.userSettings.roleDescription);
   const notifications = useNotifications();
   const badgeCount = notifications.filter(
@@ -153,19 +152,8 @@ export function Topbar() {
   };
 
   // Determine display name
-  const DEMO_ROLE_LABELS: Record<number, TranslationKey> = { 0: "role.ae.short", 1: "role.manager.short", 2: "role.executive.short" };
-  const displayName = isDemo ? `Demo · ${t(DEMO_ROLE_LABELS[jobLevel] ?? "role.ae.short")}` : (user?.email?.split("@")[0] || userName);
-  const displaySub = isDemo ? t("topbar.demoMode") : (user?.email || userRole || ROLE_LEVEL_LABELS[roleLevel]);
-
-  const switchDemoRole = (level: number) => {
-    setAuthJobLevel(level);
-    setStoreJobLevel(level);
-    setUserMenuOpen(false);
-    // Demo role changes alter the data visibility scope. A page reload forces
-    // AuthProvider to hydrate from the standard demo dataset before filtering.
-    window.setTimeout(() => window.location.reload(), 0);
-  };
-
+  const displayName = user?.email?.split("@")[0] || userName;
+  const displaySub = user?.email || userRole || ROLE_LEVEL_LABELS[roleLevel];
 
   // Close search on outside click
   useEffect(() => {
@@ -316,14 +304,6 @@ export function Topbar() {
 
       {/* Actions */}
       <div className="flex items-center gap-2">
-        {/* Demo badge */}
-        {isDemo && (
-          <div className="hidden items-center gap-1.5 rounded-full border border-white/8 bg-white/6 px-3 py-1.5 text-xs font-medium text-[var(--chrome-ink-sub)] sm:flex">
-            <Sparkles className="h-3 w-3 text-[var(--accent-primary)]" />
-            Demo
-          </div>
-        )}
-
         {/* Search */}
         <div ref={searchRef} className="relative">
           {searchOpen ? (
@@ -475,7 +455,7 @@ export function Topbar() {
             className="flex items-center gap-3 rounded-xl border border-transparent px-2.5 py-1.5 transition-colors duration-150 hover:border-white/6 hover:bg-white/4"
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/8 bg-white/7 text-sm font-semibold text-[var(--chrome-ink)]">
-              {isDemo ? "D" : displayName.charAt(0).toUpperCase()}
+              {displayName.charAt(0).toUpperCase()}
             </div>
             <div className="hidden text-left sm:block">
               <p className="text-sm font-medium leading-tight text-[var(--chrome-ink)]">{displayName}</p>
@@ -491,35 +471,6 @@ export function Topbar() {
                 <p className="text-sm font-medium text-[var(--chrome-ink)]">{displayName}</p>
                 <p className="truncate text-xs text-[var(--chrome-ink-sub)]">{displaySub}</p>
               </div>
-
-              {/* Demo role switcher */}
-              {isDemo && (
-                <div className="border-b border-[#383639] px-4 py-3">
-                  <p className="mb-2 text-xs font-medium text-[var(--chrome-ink-dim)]">{t("role.switch")}</p>
-                  <div className="flex flex-col gap-1">
-                    {([
-                      { level: 0, label: t("role.ae.short"), emoji: '🎯' },
-                      { level: 1, label: t("role.manager.short"), emoji: '👔' },
-                      { level: 2, label: t("role.executive.short"), emoji: '👑' },
-                    ] as const).map((opt) => (
-                      <button
-                        key={opt.level}
-                        type="button"
-                        onClick={() => switchDemoRole(opt.level)}
-                        className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
-                          jobLevel === opt.level
-                            ? 'bg-accent/15 text-accent font-medium'
-                            : 'text-[var(--chrome-ink-sub)] hover:bg-[rgba(255,255,255,0.05)] hover:text-[var(--chrome-ink)]'
-                        }`}
-                      >
-                        <span className="text-base">{opt.emoji}</span>
-                        {opt.label}
-                        {jobLevel === opt.level && <span className="ml-auto text-xs text-accent">✓</span>}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
 
               {/* Menu items */}
               <div className="py-1">
@@ -539,16 +490,12 @@ export function Topbar() {
                   type="button"
                   onClick={() => {
                     setUserMenuOpen(false);
-                    if (isDemo) {
-                      exitDemo();
-                    } else {
-                      signOut();
-                    }
+                    signOut();
                   }}
                   className="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-danger/80 transition-colors hover:bg-[rgba(255,255,255,0.05)] hover:text-danger"
                 >
                   <LogOut className="h-4 w-4" />
-                  {isDemo ? t("topbar.exitDemo") : t("topbar.signOut")}
+                  {t("topbar.signOut")}
                 </button>
               </div>
             </div>

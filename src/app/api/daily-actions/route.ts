@@ -1,84 +1,14 @@
 import { requireAuth, requireAdmin, guardResponse } from '@/lib/api-guard';
 import {
   getVisiblePortfolioIds,
-  type PortfolioVisibility,
   resolveDashboardScope,
   restrictQueryToIds,
   restrictQueryToVisibleAccounts,
   restrictQueryToVisiblePortfolio,
 } from '@/lib/portfolio-scope';
-import { DEMO_USER_ID } from '@/lib/demo';
-import { getDemoRoleVisibleUserIds } from '@/lib/demo-role-visibility';
 import type { DailyAction } from '@/types/daily-action';
 
 const DAY_MS = 86_400_000;
-
-function parseDemoJobLevel(value: string | null): number | null {
-  if (value !== '0' && value !== '1') return null;
-  return Number(value);
-}
-
-async function getDemoRolePortfolioVisibility(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  admin: any,
-  ctx: Awaited<ReturnType<typeof requireAuth>>,
-  demoJobLevel: number | null,
-): Promise<PortfolioVisibility | null> {
-  if (ctx.userId !== DEMO_USER_ID || demoJobLevel === null) return null;
-
-  const { data: memberships } = await admin
-    .from('org_memberships')
-    .select('user_id, display_name, job_title, job_level')
-    .eq('org_id', ctx.orgId);
-
-  const visibleUserIds = getDemoRoleVisibleUserIds({
-    isDemo: true,
-    currentUserId: ctx.userId,
-    jobLevel: demoJobLevel,
-    orgMembers: (memberships ?? []).map((member: Record<string, unknown>) => ({
-      userId: member.user_id as string,
-      displayName: member.display_name as string | undefined,
-      jobTitle: member.job_title as string | undefined,
-      jobLevel: typeof member.job_level === 'number' ? member.job_level : undefined,
-    })),
-  });
-
-  if (!visibleUserIds) return null;
-
-  const { data: accounts } = await admin
-    .from('accounts')
-    .select('id')
-    .eq('org_id', ctx.orgId)
-    .or(`owner_id.in.(${visibleUserIds.join(',')}),and(owner_id.is.null,user_id.in.(${visibleUserIds.join(',')}))`)
-    .limit(10_000);
-
-  const accountIds = [...new Set((accounts ?? []).map((account: { id?: string }) => account.id).filter(Boolean))] as string[];
-
-  const opportunityFilters = [
-    `assigned_to.in.(${visibleUserIds.join(',')})`,
-    `user_id.in.(${visibleUserIds.join(',')})`,
-    accountIds.length > 0 ? `account_id.in.(${accountIds.join(',')})` : null,
-  ].filter((value): value is string => Boolean(value));
-
-  const { data: opportunities } = opportunityFilters.length > 0
-    ? await admin
-      .from('opportunities')
-      .select('id, account_id')
-      .eq('org_id', ctx.orgId)
-      .or(opportunityFilters.join(','))
-      .limit(10_000)
-    : { data: [] };
-
-  const opportunityIds = [...new Set((opportunities ?? []).map((opp: { id?: string }) => opp.id).filter(Boolean))] as string[];
-  const accountIdsFromOpps = [...new Set((opportunities ?? []).map((opp: { account_id?: string | null }) => opp.account_id).filter(Boolean))] as string[];
-
-  return {
-    scope: demoJobLevel >= 1 ? 'team' : 'mine',
-    restrict: true,
-    accountIds: [...new Set([...accountIds, ...accountIdsFromOpps])],
-    opportunityIds,
-  };
-}
 
 export async function GET(request: Request) {
   try {
@@ -88,8 +18,7 @@ export async function GET(request: Request) {
     // scope: personal (AE), team (Director), global (Executive). Server clamps by jobLevel.
     const url = new URL(request.url);
     const scope = resolveDashboardScope(ctx, url.searchParams.get('scope'));
-    const demoVisibility = await getDemoRolePortfolioVisibility(admin, ctx, parseDemoJobLevel(url.searchParams.get('demoJobLevel')));
-    const visibility = demoVisibility ?? await getVisiblePortfolioIds(admin, ctx, scope);
+    const visibility = await getVisiblePortfolioIds(admin, ctx, scope);
 
     const now = new Date();
     const todayStr = now.toISOString().split('T')[0];

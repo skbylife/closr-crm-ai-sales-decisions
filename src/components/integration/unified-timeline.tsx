@@ -231,14 +231,9 @@ export function UnifiedTimeline({ accountId, contactId, highlightId }: UnifiedTi
         errors.push('活动记录加载失败');
       }
 
-      // Only show error if ALL sources failed AND no events at all
-      // In demo mode, integration APIs may not be connected — just show empty state
+      // Surface unavailable sources when no timeline events could be loaded.
       if (errors.length > 0 && allEvents.length === 0) {
-        // Don't show error in demo, just show empty
-        const isDemo = document.cookie.includes('closr-demo-mode=true');
-        if (!isDemo) {
-          setError(errors.join("；"));
-        }
+        setError(errors.join("；"));
       }
       setEvents(allEvents);
       setLoading(false);

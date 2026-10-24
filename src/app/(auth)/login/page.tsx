@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { Mail, Lock, Loader2, Eye, EyeOff, ArrowRight, Sparkles, Headset } from 'lucide-react';
+import { Mail, Lock, Loader2, Eye, EyeOff, ArrowRight, Headset } from 'lucide-react';
 import { ClosrLogo } from '@/components/ui/closr-logo';
 import { createClient } from '@/lib/supabase/client';
 import { isNativeDatabase } from '@/lib/database-backend';
@@ -30,12 +30,6 @@ const LOGIN_COPY = {
     terms: '服务条款',
     and: '和',
     privacy: '隐私政策',
-    or: '或者',
-    demo: '体验 Demo',
-    demoPrompt: '请输入访问密码以进入演示环境。',
-    accessPassword: '访问密码',
-    cancel: '取消',
-    enter: '进入',
   },
   en: {
     switchLabel: '中文',
@@ -57,12 +51,6 @@ const LOGIN_COPY = {
     terms: 'Terms',
     and: 'and',
     privacy: 'Privacy Policy',
-    or: 'or',
-    demo: 'View Demo',
-    demoPrompt: 'Enter the access password to open the demo workspace.',
-    accessPassword: 'Access password',
-    cancel: 'Cancel',
-    enter: 'Enter',
   },
 } as const;
 
@@ -70,14 +58,10 @@ export default function LoginPage() {
   const searchParams = useSearchParams();
   const locale = searchParams.get('lang') === 'en' ? 'en' : 'zh';
   const invitationToken = searchParams.get('invitation');
-  const shouldOpenDemo = searchParams.get('demo') === 'true';
   const copy = LOGIN_COPY[locale];
   const alternateParams = new URLSearchParams(searchParams.toString());
   alternateParams.set('lang', locale === 'zh' ? 'en' : 'zh');
   const alternateLanguageHref = `/login?${alternateParams.toString()}`;
-  const demoParams = new URLSearchParams(searchParams.toString());
-  demoParams.set('demo', 'true');
-  const demoHref = `/login?${demoParams.toString()}`;
   const registerParams = new URLSearchParams();
   if (locale === 'en') registerParams.set('lang', 'en');
   if (invitationToken) registerParams.set('invitation', invitationToken);
@@ -93,9 +77,6 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(searchParams.get('error') === 'auth_callback_failed' ? '认证失败，请重试' : '');
   const [loading, setLoading] = useState(false);
-  const [demoAccessInput, setDemoAccessInput] = useState('');
-  const [demoAccessError, setDemoAccessError] = useState('');
-  const demoAccessInputRef = useRef<HTMLInputElement>(null);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,84 +125,6 @@ export default function LoginPage() {
       return;
     } catch {
       setError('登录失败，请稍后重试');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const readJson = async (res: Response) => {
-    return res.json().catch(() => ({})) as Promise<Record<string, unknown>>;
-  };
-
-  const handleDemo = async (accessPassword?: string) => {
-    setError('');
-    setLoading(true);
-    try {
-      const passwordToVerify = (accessPassword ?? demoAccessInput).trim();
-      // Server-side login: requires access password proof
-      const res = await fetch('/api/demo-login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ accessPassword: passwordToVerify }),
-      });
-      const data = await readJson(res);
-      if (!res.ok || typeof data.access_token !== 'string' || typeof data.refresh_token !== 'string') {
-        setError(typeof data.error === 'string' ? data.error : 'Demo 登录失败，请稍后重试');
-        return;
-      }
-      // Inject session into Supabase client
-      const supabase = createClient();
-      const { error: sessionErr } = await supabase.auth.setSession({
-        access_token: data.access_token,
-        refresh_token: data.refresh_token,
-      });
-      if (sessionErr) {
-        console.warn('[demo-login] browser setSession skipped:', sessionErr.message);
-      } else {
-        await supabase.auth.getSession().catch((err) => {
-          console.warn('[demo-login] browser getSession skipped:', err instanceof Error ? err.message : err);
-        });
-      }
-      await recordAuthAuditEvent('demo_login_success', { email: 'example-c39293aa15@example.invalid' });
-      // Set demo cookie so middleware and UI can detect demo mode
-      document.cookie = 'closr-demo-mode=true; path=/; max-age=86400';
-      localStorage.setItem('closr-locale', locale);
-
-      window.location.href = '/horizon';
-      return;
-    } catch {
-      setError('Demo 登录失败，请稍后重试');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const verifyDemoAccess = async (candidatePassword?: string) => {
-    const fallbackPassword = demoAccessInput || demoAccessInputRef.current?.value || '';
-    const passwordToVerify = (candidatePassword ?? fallbackPassword).trim();
-    setDemoAccessError('');
-    setError('');
-    if (!passwordToVerify) {
-      setDemoAccessError('请输入访问密码');
-      return;
-    }
-    setLoading(true);
-    try {
-      const res = await fetch('/api/verify-demo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ password: passwordToVerify }),
-      });
-      const data = await readJson(res);
-      if (res.ok && data.ok) {
-        await handleDemo(passwordToVerify);
-      } else {
-        setDemoAccessError(typeof data.error === 'string' ? data.error : '密码错误，请重试');
-      }
-    } catch {
-      setDemoAccessError('验证失败，请稍后重试');
     } finally {
       setLoading(false);
     }
@@ -362,65 +265,7 @@ export default function LoginPage() {
               {copy.consentPrefix} <a href="/terms" className="text-accent hover:underline">{copy.terms}</a> {copy.and} <a href="/privacy" className="text-accent hover:underline">{copy.privacy}</a>
             </p>
 
-        {/* Divider */}
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-border" />
-          </div>
-          <div className="relative flex justify-center text-xs">
-            <span className="bg-[var(--background)] px-3 text-secondary">{copy.or}</span>
-          </div>
-        </div>
 
-        {/* Demo button */}
-        {shouldOpenDemo && (
-          <div className="rounded-xl border border-accent/30 bg-accent/5 p-4">
-            <div className="mb-3 flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-accent" />
-              <p className="text-sm font-semibold text-foreground">{copy.demo}</p>
-            </div>
-            <p className="mb-3 text-xs leading-relaxed text-secondary">{copy.demoPrompt}</p>
-            <input
-              ref={demoAccessInputRef}
-              type="password"
-              value={demoAccessInput}
-              onChange={(e) => {
-                setDemoAccessInput(e.target.value);
-                setDemoAccessError('');
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  e.preventDefault();
-                  verifyDemoAccess(e.currentTarget.value);
-                }
-              }}
-              placeholder={copy.accessPassword}
-              className="mb-2 w-full rounded-lg border border-border bg-card px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/30"
-            />
-            {demoAccessError && <p className="mb-2 text-xs text-red-500">{demoAccessError}</p>}
-            <button
-              type="button"
-              onClick={() => verifyDemoAccess()}
-              disabled={loading}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-hover"
-            >
-              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <ArrowRight className="h-4 w-4" />}
-              {copy.enter}
-            </button>
-          </div>
-        )}
-        {!shouldOpenDemo && (
-          <Link
-            href={demoHref}
-            onClick={() => {
-              setDemoAccessError('');
-            }}
-            className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-card py-3 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-[var(--background)]"
-          >
-            <Sparkles className="h-4 w-4 text-accent" />
-            {copy.demo}
-          </Link>
-        )}
       </div>
       </div>
 
