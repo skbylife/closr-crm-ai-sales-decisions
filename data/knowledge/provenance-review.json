@@ -1,0 +1,532 @@
+[
+  {
+    "id": "72906afe1ecaf72cecf830f9f8fb672c",
+    "title": "BATNA — 最佳替代方案",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "c7f114f33de581d79e5a2ce84e04828b",
+    "title": "ZOPA — 可能达成协议区间",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "7d15461324b41c1c381b3b6e8e1a9c4f",
+    "title": "Chris Voss 镜像法与标注法",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "e7a33eb19aa429f24aa2b6d50b854541",
+    "title": "锚定效应与首次报价策略",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "1d601a55248b62c2967f039044292481",
+    "title": "多议题谈判与价值创造",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "a0ada3de5fcc88ce5249aa69e9b78f76",
+    "title": "让步策略与节奏控制",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "a9d7a8cebcccd4d63c4215c2899b8d02",
+    "title": "Chris Voss 黑天鹅信息",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "c6b3bce2ada1174ecf3c65be15b327a7",
+    "title": "利益导向 vs 立场导向谈判",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "29a3bbcff98320af6a7afa34653a6bf8",
+    "title": "谈判中的权力杠杆",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "5abf704807d240140664880e0aa77c49",
+    "title": "僵局破解：重构与创意方案",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "7e1608029f47c366d8944875fd3ec628",
+    "title": "MEDDIC — Metrics 量化指标",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "99ac32e364a4aec8871c9ae4930898be",
+    "title": "MEDDIC — Economic Buyer 经济买家",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "c5e95c7997e266ff139b9c938b89dd14",
+    "title": "MEDDIC — Decision Criteria 决策标准",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "8f62084a6b4ba7038ee0f5bc4acee17c",
+    "title": "MEDDIC — Decision Process 决策流程",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "0a3ee82da8c12fc69f13d6d7dfe84b4e",
+    "title": "MEDDIC — Identify Pain 识别痛点",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "d467368fedf26fde228fecfccc8b5905",
+    "title": "MEDDIC — Champion 内部拥护者",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "3a7dd4ef8d4cb96e2f31acb54cbb9aaa",
+    "title": "Challenger Sale — 教学式销售",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "1d89323d249dd067145df413eaf4f232",
+    "title": "SPIN Selling — 四类问题框架",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "6493fc2a8d1b28ec30c24a3e8b25104e",
+    "title": "Miller Heiman — 四种买方角色",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "584dbe1881f3f8baa68d1d97e249b5bd",
+    "title": "Solution Selling — 痛点驱动",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "58dcd01c600100d95acfe46207d992a9",
+    "title": "MEDDICC — Competition 竞争分析",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "18ceb9fe15abe4e83199ff37b3ffc7cd",
+    "title": "价值销售 — 从功能到ROI",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "e62b6cc8b84996b4787e8351d14cdec0",
+    "title": "Cialdini 互惠原则",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "09a6cb436ab30ddf73aa0134fbc8fa4d",
+    "title": "Cialdini 社会证明原则",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "bddda6c7bb8314977766614b88240dd6",
+    "title": "Cialdini 承诺一致原则",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "3940c5e0a09316f1d04a4fba774c4239",
+    "title": "Cialdini 稀缺原则与紧迫性",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "e77237dd78f4fbfbee96a6e51a4de25f",
+    "title": "Cialdini 权威原则",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "96ea66c51aa610c0cb4f4446fdc11cb0",
+    "title": "Cialdini 喜好原则",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "010e453237859a7ce83929b64020b6ce",
+    "title": "损失厌恶与框架效应",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "e918c3254af09534a837a82a72278d4e",
+    "title": "确认偏差与信息呈现",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "ccdc4d14387351151181b2e495fbeff8",
+    "title": "DISC 沟通风格 — 识别与适配",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "682181bc8ed0d41458ab126254cc7d13",
+    "title": "信任建立的四阶段模型",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "dd6e3819a90da0e7171a3f42390e079c",
+    "title": "重复博弈与以牙还牙策略",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "659e524e8cfa58430b7ae0cb2aec7e93",
+    "title": "信号博弈 — 可信信号",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "ec464c31609f319e72a9f9286a7b45b5",
+    "title": "承诺装置 — 绑定自己以取信",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "636c3fab52575242d54f156501551522",
+    "title": "信息不对称 — 利用与克服",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "6e2222895eeac2224069763508a82e86",
+    "title": "多方博弈 — 联盟构建",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "7170d8a6a4364674784e4f369a9148b6",
+    "title": "纳什均衡与价格博弈",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "22aef5ddf34c404ad3a9a9721042970f",
+    "title": "竞争定位 — 差异化三角",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "1bd0ce43c84a3bd0c0b41d2eb6a31ea6",
+    "title": "价值主张设计 — Value Proposition Canvas",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "1fff10f52dbeba9bbf29685af1f2f3e9",
+    "title": "蓝海策略 — 创造无竞争市场",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "6e8effff1bd53a72c8e9ddb111d256da",
+    "title": "经典策略方法 — 势、虚实、情报",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "658dc7e694d6587cbeb2bb071b2a2f1c",
+    "title": "客户成功 — 续约与扩展策略",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "a23ba80ea6f072d7671bd12fd40077ff",
+    "title": "生态策略 — 合作伙伴与渠道",
+    "classification": "generic_method_note",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "522639fb83090ddf080b7831fc44456a",
+    "title": "B2B SaaS 企业级赢单模式",
+    "classification": "generic_strategy_pattern",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [
+      "Removed unsupported quantitative/empirical success claim"
+    ],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "4dab132526fe6433fd0a666c19ce39ee",
+    "title": "多干系人复杂交易导航",
+    "classification": "generic_strategy_pattern",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [
+      "Reframed unverified real-scene claim as an explicitly hypothetical scenario"
+    ],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "75b60401412a3b9638497e980433de10",
+    "title": "Champion 培养成功模式",
+    "classification": "generic_strategy_pattern",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "31437f192ce19ec76c63f91b067064ff",
+    "title": "竞品置换实战手册",
+    "classification": "generic_strategy_pattern",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "6854d89db2e6c8e893b4f3cc6c2c9a88",
+    "title": "停滞交易重新激活模式",
+    "classification": "generic_strategy_pattern",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [
+      "Removed unsourced industry percentage"
+    ],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "b299e8ca1181b26aea684c0e82663354",
+    "title": "大型交易谈判阶段管理",
+    "classification": "generic_strategy_pattern",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "54b65981b4a617c60bd794b3bda3ce75",
+    "title": "季度末加速关单技巧",
+    "classification": "generic_strategy_pattern",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "b1982657bb0b43a67538e09c828fa6f2",
+    "title": "丢单复盘与学习框架",
+    "classification": "generic_strategy_pattern",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [
+      "Replaced unsourced numerical industry distribution with qualitative categories"
+    ],
+    "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted"
+  },
+  {
+    "id": "59f09db4b9688cd4d77a564fb82cab0c",
+    "title": "chinese_business",
+    "classification": "project_authored_cultural_prompt",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license"
+  },
+  {
+    "id": "1d697782f95a37d04a61b4b562e979f2",
+    "title": "american_business",
+    "classification": "project_authored_cultural_prompt",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license"
+  },
+  {
+    "id": "eb603d7f92c9442ffbca069148224125",
+    "title": "japanese_business",
+    "classification": "project_authored_cultural_prompt",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license"
+  },
+  {
+    "id": "41f859dfad6e746feb02669233f52854",
+    "title": "korean_business",
+    "classification": "project_authored_cultural_prompt",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license"
+  },
+  {
+    "id": "bdb1e0c9143e7d55c9ab5b3f8c989656",
+    "title": "middle_eastern_business",
+    "classification": "project_authored_cultural_prompt",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license"
+  },
+  {
+    "id": "d36543cfdfdbedcab2a51d74d04ecdfb",
+    "title": "european_business",
+    "classification": "project_authored_cultural_prompt",
+    "personal_records_detected": false,
+    "external_full_text_included": false,
+    "modifications": [],
+    "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license"
+  }
+]

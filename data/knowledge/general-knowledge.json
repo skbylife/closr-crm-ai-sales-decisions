@@ -1,0 +1,1414 @@
+{
+  "format_version": 1,
+  "corpus_version": "closr-general-2026-10-24",
+  "description": "52 source-authored general notes and 6 source-authored cultural profiles; no production database export",
+  "embedding": {
+    "included": false,
+    "dimensions": 1536,
+    "model": null,
+    "rebuild": "Explicit --embed import with operator-owned provider; default import needs no model or API key"
+  },
+  "entries": [
+    {
+      "category": "谈判学",
+      "title": "BATNA — 最佳替代方案",
+      "content": "BATNA (Best Alternative to a Negotiated Agreement) 是谈判中最重要的概念之一。\n\n核心原则：\n1. 谈判前必须明确自己的 BATNA\n2. 永远不接受比 BATNA 更差的条件\n3. 提升自己的 BATNA = 提升谈判筹码\n\n在 B2B 销售中的应用：\n- 了解客户的 BATNA（竞品方案、内部开发、维持现状）\n- 提升客户切换到 BATNA 的感知成本\n- 在谈判中引导客户意识到自己 BATNA 的不足\n- 如果客户 BATNA 很强，需要创造独特价值来削弱替代方案的吸引力\n\n实战技巧：\n- 不要问\"你们还在看哪些供应商\"，改问\"如果这个项目不推进，团队会怎么解决这个问题？\"\n- 把你的方案打造成比客户任何 BATNA 都更优的选择",
+      "applicable_scenarios": [
+        "negotiation",
+        "pricing",
+        "contract",
+        "renewal",
+        "competitive"
+      ],
+      "id": "72906afe1ecaf72cecf830f9f8fb672c",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "f3b0ded822802a0e4e04163afcfe9c52edbeb8680057b4378ccfd37ef5a8b4db",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "f3b0ded822802a0e4e04163afcfe9c52edbeb8680057b4378ccfd37ef5a8b4db"
+    },
+    {
+      "category": "谈判学",
+      "title": "ZOPA — 可能达成协议区间",
+      "content": "ZOPA (Zone of Possible Agreement) 指买卖双方的可接受范围重叠区域。\n\n核心概念：\n- 卖方底线（Reservation Price）：低于此价不卖\n- 买方上限：高于此价不买\n- ZOPA = 两个底线之间的重叠区域\n- 无重叠 = 无法达成协议\n\nB2B 应用策略：\n1. 通过提问探知客户的预算区间和决策标准\n2. 用价值框架扩大 ZOPA（让客户看到更多价值 → 提高支付意愿）\n3. 多议题谈判：在价格 ZOPA 很小时，引入付款条件、服务范围、合同期限等议题扩大整体 ZOPA\n4. 先谈价值，后谈价格，避免过早锚定在狭窄的价格区间\n\n判断技巧：\n- 客户反复讨价还价但不离开 → ZOPA 存在\n- 客户态度突然冷淡 → 可能接近或超出其底线",
+      "applicable_scenarios": [
+        "negotiation",
+        "pricing",
+        "contract",
+        "deal_structuring"
+      ],
+      "id": "c7f114f33de581d79e5a2ce84e04828b",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "c7a9b11de661e934ad628b6c005fa809b7146846ed8f12f913f8fec1d34b159c",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "c7a9b11de661e934ad628b6c005fa809b7146846ed8f12f913f8fec1d34b159c"
+    },
+    {
+      "category": "谈判学",
+      "title": "Chris Voss 镜像法与标注法",
+      "content": "FBI 首席谈判专家 Chris Voss 的核心技术：\n\n镜像法（Mirroring）：\n- 重复对方最后说的 1-3 个关键词\n- 效果：让对方觉得被理解，主动补充更多信息\n- 示例：客户说\"我们预算有限\"，你回应\"预算有限？\"\n\n标注法（Labeling）：\n- 用\"看起来……\"\"听起来……\"\"感觉……\"来命名对方的情绪\n- 效果：降低负面情绪的强度，建立信任\n- 示例：\"看起来这个项目的时间压力让你很焦虑\"\n\n校准问题（Calibrated Questions）：\n- 用\"How\"和\"What\"开头的开放问题，让对方参与解决问题\n- \"我们怎样才能让这个方案适合你们的预算？\"\n- \"你觉得什么样的方案能让你的老板认可？\"\n\nB2B 实战组合：\n1. 先用镜像法获取更多信息\n2. 用标注法建立情感连接\n3. 用校准问题引导对方共同解决障碍",
+      "applicable_scenarios": [
+        "negotiation",
+        "objection_handling",
+        "discovery",
+        "relationship_building"
+      ],
+      "id": "7d15461324b41c1c381b3b6e8e1a9c4f",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "7118f0384e89b90a6de9e883c602abd76bdbbe086bafe74f281cb54029f353b0",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "7118f0384e89b90a6de9e883c602abd76bdbbe086bafe74f281cb54029f353b0"
+    },
+    {
+      "category": "谈判学",
+      "title": "锚定效应与首次报价策略",
+      "content": "锚定效应是最强大的认知偏差之一——第一个出现的数字会成为后续谈判的参考点。\n\n核心原则：\n1. 先出价者设定锚点，后续讨论围绕这个锚点波动\n2. 锚点越激进（但不荒谬），最终结果越有利\n3. 对方的锚点可以通过\"重新锚定\"来对抗\n\nB2B 报价策略：\n- 报价前先建立价值认知（ROI、行业基准、竞品对比）\n- 首次报价应留有余地但不离谱（过高会丧失信任）\n- 用\"价值套餐\"替代单一价格锚定（高中低三档）\n- 第一个让步要小，传递\"已经接近底线\"的信号\n\n应对客户砍价：\n- 不要立即降价，先问\"你觉得合理的价格是多少？\"\n- 每次让价都要求对等让步（合同期限、付款条件、推荐客户）\n- 用百分比而非绝对金额来框架让步幅度（\"已经优惠了15%\"比\"少了3万\"更有冲击力）",
+      "applicable_scenarios": [
+        "negotiation",
+        "pricing",
+        "proposal",
+        "discount"
+      ],
+      "id": "e7a33eb19aa429f24aa2b6d50b854541",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "dac30ad62a6db25b90f86384d51de79c17377064d40ca4b7e4babcd6c9bb22b8",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "dac30ad62a6db25b90f86384d51de79c17377064d40ca4b7e4babcd6c9bb22b8"
+    },
+    {
+      "category": "谈判学",
+      "title": "多议题谈判与价值创造",
+      "content": "单议题谈判是零和博弈（你多我少），多议题谈判可以创造增量价值。\n\n核心理论（哈佛谈判术）：\n- 不同议题对不同方的重要性不同\n- 在你\"低成本、高价值\"的议题上让步\n- 在你\"高成本、客户低价值\"的议题上坚持\n\nB2B 可谈议题清单：\n1. 价格 vs 合同期限（锁定3年换折扣）\n2. 付款条件 vs 服务范围（预付换增值服务）\n3. 上线时间 vs 功能范围（快速上线换简化需求）\n4. 案例授权 vs 价格优惠（允许做标杆案例换折扣）\n5. 推荐客户 vs 续约折扣\n\n实战框架：\n- 列出所有可谈议题（至少5个以上）\n- 对每个议题评估：你的成本 vs 客户感知价值\n- 打包提案：\"如果你们能接受A，我们可以在B上给更多\"\n- 避免逐项谈判（容易陷入零和），推动整体方案讨论",
+      "applicable_scenarios": [
+        "negotiation",
+        "pricing",
+        "contract",
+        "deal_structuring",
+        "renewal"
+      ],
+      "id": "1d601a55248b62c2967f039044292481",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "59f92df490fafc3a635556c7137096912fc44aa9f99772347e92860fcd243354",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "59f92df490fafc3a635556c7137096912fc44aa9f99772347e92860fcd243354"
+    },
+    {
+      "category": "谈判学",
+      "title": "让步策略与节奏控制",
+      "content": "让步的方式比让步的幅度更重要——它传递的信号影响对方的期望。\n\n递减让步法则：\n- 第一次让步最大，之后逐次递减\n- 传递信号：你正在接近底线\n- 反例：等额让步会让对方认为还有很大空间\n\n让步节奏：\n1. 每次让步都要有条件（\"如果你们能……我们可以……\"）\n2. 不要在同一次会议连续让步，留出时间创造\"内部审批\"的感知\n3. 重要让步需要\"请示上级\"（即使你有权决定），增加让步的感知价值\n4. 最后的让步留小（如抹零），给对方\"赢了\"的感觉\n\nB2B 常见让步项：\n- 价格折扣（最后让）\n- 免费试用期延长（低成本）\n- 额外培训名额（边际成本低）\n- 优先技术支持（服务差异化）\n- 合同灵活条款（低风险）",
+      "applicable_scenarios": [
+        "negotiation",
+        "pricing",
+        "discount",
+        "contract"
+      ],
+      "id": "a0ada3de5fcc88ce5249aa69e9b78f76",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "47257d66f67d06f701252bf57c3442ffd90a2a150f9880fcc1d77de46af73615",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "47257d66f67d06f701252bf57c3442ffd90a2a150f9880fcc1d77de46af73615"
+    },
+    {
+      "category": "谈判学",
+      "title": "Chris Voss 黑天鹅信息",
+      "content": "Chris Voss 定义的\"黑天鹅\"：改变谈判格局的未知信息。\n\n三类黑天鹅：\n1. 正面黑天鹅：你不知道的、对你有利的信息（如客户内部已经否决了竞品）\n2. 负面黑天鹅：隐藏的障碍（如客户已经内定了供应商）\n3. 杠杆黑天鹅：可以改变力量对比的信息（如客户有硬性截止日期）\n\n如何发现黑天鹅：\n- 注意对方的\"不合理\"行为——背后往往有你不了解的约束\n- 非正式场合（饭局、茶歇）比正式会议更容易暴露信息\n- 多和不同层级的人交流，信息在组织内部是碎片化的\n- \"这个对你来说意味着什么？\"这类问题可以引出深层动机\n\nB2B 中的常见黑天鹅：\n- 客户团队内部的政治斗争\n- 未公开的预算限制或审批流程\n- 关键决策者的个人议程（如即将离职、寻求晋升）\n- 客户正在经历的组织变革（并购、重组）",
+      "applicable_scenarios": [
+        "negotiation",
+        "discovery",
+        "stakeholder_analysis",
+        "competitive"
+      ],
+      "id": "a9d7a8cebcccd4d63c4215c2899b8d02",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "9b2fd7ce355c7f5550cd394476a656538ccd7360abc694936e3260535f983379",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "9b2fd7ce355c7f5550cd394476a656538ccd7360abc694936e3260535f983379"
+    },
+    {
+      "category": "谈判学",
+      "title": "利益导向 vs 立场导向谈判",
+      "content": "哈佛谈判术的核心区分：立场 (Position) vs 利益 (Interest)。\n\n立场：对方说想要什么（\"价格必须降20%\"）\n利益：对方为什么想要（\"需要在预算内交差\"、\"怕买贵了被问责\"）\n\n核心原则：\n1. 对立场保持灵活，对利益保持聚焦\n2. 探索利益背后的利益（问5个Why）\n3. 满足利益的方式有很多种，不只是在立场上妥协\n\nB2B 典型案例：\n- 立场：\"你们太贵了\" → 利益：可能是预算不够、可能是担心 ROI、可能是需要向上汇报一个好价格\n- 立场：\"必须月底签约\" → 利益：可能是季度指标、可能是项目有硬性启动日、可能是对方 champion 需要快速出成果\n\n实战技巧：\n- 不要直接反驳立场，而是说\"帮我理解一下，这个需求背后最重要的考虑是什么？\"\n- 承认对方利益的合理性，再提出替代方案\n- 寻找\"不同利益的交叉点\"——双方在乎不同的事，可以各取所需",
+      "applicable_scenarios": [
+        "negotiation",
+        "objection_handling",
+        "pricing",
+        "contract"
+      ],
+      "id": "c6b3bce2ada1174ecf3c65be15b327a7",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "1bd06b67f6469469d9a2c22e55be0d00f683aedffffeb6bc403988f93a1e0dcc",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "1bd06b67f6469469d9a2c22e55be0d00f683aedffffeb6bc403988f93a1e0dcc"
+    },
+    {
+      "category": "谈判学",
+      "title": "谈判中的权力杠杆",
+      "content": "谈判权力不是固定的——它是感知的，可以被创造和放大。\n\n五种权力来源：\n1. 替代方案权力（BATNA 越强，权力越大）\n2. 信息权力（知道对方不知道的关键信息）\n3. 时间权力（不急的一方更有优势）\n4. 合法性权力（合同条款、行业标准、先例）\n5. 关系权力（与关键决策者的信任关系）\n\nB2B 中增加权力的策略：\n- 发展多个潜在客户，减少对单一交易的依赖\n- 做足功课，比客户更了解他们的行业和痛点\n- 控制节奏，不被客户的时间线牵着走\n- 引用行业基准和第三方研究来支持你的立场\n- 通过 Champion 建立与高层的关系\n\n警告：\n- 永远不要让客户感觉你在\"用权力压他\"\n- 权力的最佳使用方式是让对方感觉你们是在合作解决问题",
+      "applicable_scenarios": [
+        "negotiation",
+        "pricing",
+        "competitive",
+        "stakeholder_management"
+      ],
+      "id": "29a3bbcff98320af6a7afa34653a6bf8",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "bce05e7c2a03b3cca9a4c88f59073faf9b10330bfd92431223906df8b3b82bba",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "bce05e7c2a03b3cca9a4c88f59073faf9b10330bfd92431223906df8b3b82bba"
+    },
+    {
+      "category": "谈判学",
+      "title": "僵局破解：重构与创意方案",
+      "content": "谈判陷入僵局时，问题不是\"让谁做更多让步\"，而是\"如何重新定义问题\"。\n\n僵局破解策略：\n1. 重构问题：把\"你要A还是我要B\"改为\"我们如何共同解决C\"\n2. 引入新议题：添加之前没讨论过的维度\n3. 换人：不同角色的人加入可能改变动态\n4. 换场景：正式会议改为非正式交流\n5. 暂停：给双方冷静和重新评估的时间\n\nB2B 僵局常见场景与破解：\n- 价格僵局 → 引入付款方式、合同期限、服务等级等新维度\n- 功能需求僵局 → 分阶段交付（先上核心模块）\n- 合同条款僵局 → 试用期方案（降低双方风险）\n- 决策拖延僵局 → 提供限时激励或引入紧迫性事件\n\n关键心态：\n- 僵局 ≠ 死局，大部分看似不可调和的分歧只是需要创意\n- 回到利益层面重新分析，通常能找到新路径",
+      "applicable_scenarios": [
+        "negotiation",
+        "deal_rescue",
+        "objection_handling",
+        "stalled_deal"
+      ],
+      "id": "5abf704807d240140664880e0aa77c49",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "f705cf51f2f9c0554677bf220eb6242c8ac5d942672533fedddc720f0ee5860b",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "f705cf51f2f9c0554677bf220eb6242c8ac5d942672533fedddc720f0ee5860b"
+    },
+    {
+      "category": "销售方法论",
+      "title": "MEDDIC — Metrics 量化指标",
+      "content": "MEDDIC 中的 M = Metrics：量化客户将获得的商业价值。\n\n核心原则：\n没有量化指标的销售就是在卖功能——有了量化指标就是在卖 ROI。\n\n关键问题：\n1. 客户现在这个问题每年造成多少损失？\n2. 解决后能带来多少收入增长 / 成本节省？\n3. 这些数字是谁（哪个角色）最关心的？\n4. 有没有已有的 KPI 或目标可以挂钩？\n\n量化模板（B2B SaaS）：\n- 效率提升：每人每天节省 X 小时 × 团队人数 × 时薪 = 年节省\n- 转化提升：转化率提升 X% × 线索量 × 客单价 = 增量收入\n- 风险降低：合规罚款 / 数据泄露的预期损失 × 降低概率 = 风险价值\n\n实战技巧：\n- 让客户自己算（自己算出来的比你告诉他的可信10倍）\n- 用客户的数据、客户的单位、客户的 KPI\n- 量化结果写进提案，成为经济买家决策的核心依据",
+      "applicable_scenarios": [
+        "qualification",
+        "proposal",
+        "roi",
+        "economic_buyer",
+        "discovery"
+      ],
+      "id": "7e1608029f47c366d8944875fd3ec628",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "e41275271e3a17e100288d018113d92851b5b0c94331dc5531161f89b7741231",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "e41275271e3a17e100288d018113d92851b5b0c94331dc5531161f89b7741231"
+    },
+    {
+      "category": "销售方法论",
+      "title": "MEDDIC — Economic Buyer 经济买家",
+      "content": "MEDDIC 中的 E = Economic Buyer：拥有最终签字权和预算权的人。\n\n识别经济买家：\n1. \"谁有权批准这笔预算？\"——直接问通常得不到真实答案\n2. 更好的问法：\"这个级别的投资在你们公司通常需要谁签字？\"\n3. 经济买家往往不出现在日常评估中，但对最终决策有一票否决权\n\n经济买家的特征：\n- 关心 ROI 和商业影响，不关心功能细节\n- 时间极其有限，每次接触要高度浓缩\n- 思考维度：风险、战略一致性、机会成本\n\n接触经济买家的策略：\n1. 通过 Champion 引荐（最可靠）\n2. 用\"高管简报\"形式（30分钟，纯讲商业价值）\n3. 邀请参加行业活动或客户交流会\n4. 准备\"电梯演讲\"版的价值主张（30秒讲清楚）\n\n致命错误：\n- 没有接触经济买家就进入 POC/报价阶段\n- 把内部 Champion 误认为经济买家\n- 用技术语言而非商业语言和经济买家沟通",
+      "applicable_scenarios": [
+        "qualification",
+        "stakeholder_analysis",
+        "executive_engagement",
+        "deal_review"
+      ],
+      "id": "99ac32e364a4aec8871c9ae4930898be",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "e83857b2f3d5ddc36a7258781bd925b00ae3caa202139cc78cffd11e0a548e4f",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "e83857b2f3d5ddc36a7258781bd925b00ae3caa202139cc78cffd11e0a548e4f"
+    },
+    {
+      "category": "销售方法论",
+      "title": "MEDDIC — Decision Criteria 决策标准",
+      "content": "MEDDIC 中的 D = Decision Criteria：客户做选择的评判标准。\n\n两类决策标准：\n1. 技术标准（Technical Criteria）：功能、性能、集成、安全、可扩展性\n2. 商业标准（Business Criteria）：ROI、TCO、供应商稳定性、服务能力、战略匹配\n\n关键策略——影响决策标准：\n- 早期介入的优势：帮客户定义标准（让标准自然偏向你的优势）\n- 后期介入的应对：找到你独特满足的标准并提升其权重\n- 加入\"隐性标准\"：实施风险、客户成功体系、产品迭代速度\n\n实战步骤：\n1. 获取正式的评估标准清单（如果存在 RFP/评分卡）\n2. 评估每个标准上你的得分 vs 竞品得分\n3. 对不利标准：提供数据改变客户认知，或降低权重\n4. 对有利标准：通过案例和 POC 放大优势\n5. 确保 Champion 在内部评审时能代你发言\n\n判断信号：\n- 客户主动分享评估标准 → 你在信任圈内\n- 标准突然改变 → 竞品在影响决策",
+      "applicable_scenarios": [
+        "qualification",
+        "competitive",
+        "proposal",
+        "rfp",
+        "poc"
+      ],
+      "id": "c5e95c7997e266ff139b9c938b89dd14",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "725ec774309f41869a3a9ada6d486f144d91bdcc2c898a8487a648a49bd6aef8",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "725ec774309f41869a3a9ada6d486f144d91bdcc2c898a8487a648a49bd6aef8"
+    },
+    {
+      "category": "销售方法论",
+      "title": "MEDDIC — Decision Process 决策流程",
+      "content": "MEDDIC 中的 D = Decision Process：从评估到签约的完整路径。\n\n必须搞清楚的问题：\n1. 总共几个步骤？（评估→POC→商务谈判→法务审核→签字）\n2. 每步涉及哪些人？\n3. 每步的时间线？\n4. 有没有隐藏步骤？（如 IT 安审、合规审查、董事会审批）\n\nB2B 企业级决策流程的常见陷阱：\n- 采购部门的审批流程（经常在最后阶段跳出来拖延2-4周）\n- 法务对合同条款的审查（可能推翻商务谈判结果）\n- 预算审批周期（财年、季度预算冻结期）\n- 多 BU 联合采购（需要多个 BU Head 同意）\n\n掌控决策流程的策略：\n1. 和客户一起绘制\"决策路线图\"（Mutual Action Plan）\n2. 倒推时间线：客户何时需要上线 → 倒推签约时间 → 倒推评估时间\n3. 提前识别并扫除障碍（法务、IT安审提前并行）\n4. 每周确认进展，及时发现偏离\n\n经验法则：\n- 你画不出决策流程图 = 你没有真正掌控这个 deal\n- 客户的\"紧迫感\"在决策流程中是最关键的驱动力",
+      "applicable_scenarios": [
+        "qualification",
+        "deal_management",
+        "forecasting",
+        "mutual_action_plan"
+      ],
+      "id": "8f62084a6b4ba7038ee0f5bc4acee17c",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "200fa40b5895f153026896227c89d2cfd209aec1ad5173a5254e80735ceac31c",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "200fa40b5895f153026896227c89d2cfd209aec1ad5173a5254e80735ceac31c"
+    },
+    {
+      "category": "销售方法论",
+      "title": "MEDDIC — Identify Pain 识别痛点",
+      "content": "MEDDIC 中的 I = Identify Pain：找到客户真正的痛，而非表面需求。\n\n痛点三层次：\n1. 技术痛点（表层）：\"现在的系统太慢了\"\n2. 业务痛点（中层）：\"因为系统慢，我们的客户满意度下降了15%\"\n3. 个人痛点（深层）：\"如果满意度继续下降，我的绩效考核要挂了\"\n\n挖掘痛点的框架：\n- \"这个问题对业务的影响是什么？\"（技术→业务）\n- \"这个影响对你个人意味着什么？\"（业务→个人）\n- \"如果6个月后还没解决，会怎样？\"（量化紧迫性）\n- \"你之前尝试过什么方案？为什么没解决？\"（理解约束条件）\n\nB2B 中的高价值痛点信号：\n- 客户主动找上门（有明确痛点）\n- 有预算拨备（痛点已被组织认可）\n- 有时间压力（外部 deadline、合规要求、竞争威胁）\n- 高层关注（痛点影响到战略目标）\n\n关键提醒：\n- 没有痛点 = 没有交易（No pain, no gain）\n- 客户说\"我们在看看\"= 痛点不够痛，需要加温\n- 只和\"有痛\"的人打交道，不要试图创造不存在的痛点",
+      "applicable_scenarios": [
+        "discovery",
+        "qualification",
+        "needs_analysis",
+        "pain_mapping"
+      ],
+      "id": "0a3ee82da8c12fc69f13d6d7dfe84b4e",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "1cf921e1fe75b8419543efdc18caf52c7dd5955de5594cc9d6bd6146b02a42ae",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "1cf921e1fe75b8419543efdc18caf52c7dd5955de5594cc9d6bd6146b02a42ae"
+    },
+    {
+      "category": "销售方法论",
+      "title": "MEDDIC — Champion 内部拥护者",
+      "content": "MEDDIC 中的 C = Champion：在客户内部为你代言的人。\n\nChampion 的三个标准（缺一不可）：\n1. 影响力（Power）：能影响决策者\n2. 利益关联（Personal Win）：你的方案成功 = 他个人受益\n3. 信息共享（Access）：愿意分享内部信息\n\nChampion vs 其他角色的区分：\n- Coach（教练）：愿意提供信息但没有影响力\n- Sponsor（赞助者）：有权力但不活跃\n- Champion：有影响力 + 积极推动 + 个人利益绑定\n\n培养 Champion 的步骤：\n1. 识别候选人：谁最痛？谁最有影响力？谁会因此获益最多？\n2. 验证：给他一个\"小测试\"——请他帮你安排一次内部会议\n3. 赋能：给他工具和论证材料（ROI 计算器、竞品对比、内部提案模板）\n4. 维护：定期更新信息，让他在内部不掉链子\n\nChampion 失效的信号：\n- 不再回复或回复变慢\n- 不愿安排更多内部会议\n- 开始说\"这个事情可能要推迟\"\n- 组织变动导致其影响力下降",
+      "applicable_scenarios": [
+        "qualification",
+        "stakeholder_management",
+        "champion_development",
+        "deal_review"
+      ],
+      "id": "d467368fedf26fde228fecfccc8b5905",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "ea2ebbdbde1f1c81971298518412559edb6b42325724874c24e9d8177592dafb",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "ea2ebbdbde1f1c81971298518412559edb6b42325724874c24e9d8177592dafb"
+    },
+    {
+      "category": "销售方法论",
+      "title": "Challenger Sale — 教学式销售",
+      "content": "CEB/Gartner 研究发现：B2B 顶级销售中 40% 是 Challenger 型，远超 Relationship Builder。\n\nChallenger 销售的三大支柱：\n1. 教学（Teach）：给客户带来新的商业洞察，而非只响应需求\n2. 定制（Tailor）：根据不同干系人的关注点定制信息\n3. 掌控（Take Control）：敢于在价格和决策过程上保持立场\n\n教学的核心框架（Commercial Teaching）：\n1. 引导客户看到自己忽视的问题或机会\n2. 量化这个问题的规模（\"你知道行业平均在这个领域浪费了X%吗？\"）\n3. 展示一个新的解决思路\n4. 连接到你的方案（自然过渡，不是硬推）\n\n在 B2B 中的实战：\n- 不要从\"我们的产品能做什么\"开始，从\"你的行业正在发生什么\"开始\n- 准备3-5个行业洞察，用数据和案例支撑\n- 让客户先产生\"啊，这个我没想到\"的反应，再介绍方案\n- 高层对话尤其适合 Teach 模式（他们讨厌被\"推销\"，但欢迎\"新思路\"）",
+      "applicable_scenarios": [
+        "discovery",
+        "executive_engagement",
+        "presentation",
+        "value_selling"
+      ],
+      "id": "3a7dd4ef8d4cb96e2f31acb54cbb9aaa",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "9bc7fd6c700859afd197dd6cf0fad2594094c7316db25dd28e016625ba08a3a8",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "9bc7fd6c700859afd197dd6cf0fad2594094c7316db25dd28e016625ba08a3a8"
+    },
+    {
+      "category": "销售方法论",
+      "title": "SPIN Selling — 四类问题框架",
+      "content": "Neil Rackham 的 SPIN 是 B2B 顾问式销售的经典框架。\n\n四类问题（按顺序使用）：\n\nS — Situation（情境问题）：\n- 了解客户现状：\"你们现在用什么系统管理……？\"\n- 注意：不要问太多，事先做功课\n\nP — Problem（问题发现）：\n- 发现困难和不满：\"这个流程中最让你头疼的是什么？\"\n- 让客户描述痛点（而非你告诉他）\n\nI — Implication（影响扩大）：\n- 放大问题的影响：\"这个效率问题对整体交付周期有什么影响？\"\n- 让小问题→大问题→战略问题\n- 这是 SPIN 最有力的环节\n\nN — Need-Payoff（需求回报）：\n- 引导客户自己说出解决方案的价值：\"如果这个问题解决了，对你们团队意味着什么？\"\n- 让客户自己描绘美好未来\n\n实战要点：\n- I（影响）问题最难但最重要，需要提前准备\n- 高级销售花70%时间在 I 和 N 上\n- 不要急于展示方案，SPIN 充分后客户会主动问\"你们怎么解决\"",
+      "applicable_scenarios": [
+        "discovery",
+        "needs_analysis",
+        "qualification",
+        "consultative_selling"
+      ],
+      "id": "1d89323d249dd067145df413eaf4f232",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "9040398215263e2cb692e1f5bea5f34148d80d670573fc2583a28be6f75b2fde",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "9040398215263e2cb692e1f5bea5f34148d80d670573fc2583a28be6f75b2fde"
+    },
+    {
+      "category": "销售方法论",
+      "title": "Miller Heiman — 四种买方角色",
+      "content": "Strategic Selling 中定义了每个 B2B 交易中的四种买方角色：\n\n1. Economic Buyer（经济买家）：\n- 唯一有最终否决权的人\n- 关心：ROI、风险、战略匹配\n- 通常是 VP 或 C-level\n\n2. User Buyer（使用买家）：\n- 每天使用你产品的人\n- 关心：易用性、效率提升、对日常工作的影响\n- 可以有很多人\n\n3. Technical Buyer（技术买家）：\n- 评估技术可行性的\"守门人\"\n- 关心：安全、集成、性能、合规\n- 他们只能说\"不\"，不能说\"是\"\n\n4. Coach（教练）：\n- 愿意指导你如何赢单的内部人\n- 可以是任何角色的人\n- 最有价值的信息来源\n\n覆盖策略：\n- 每个角色至少有一个已识别的联系人\n- 每个角色的关注点不同→需要定制信息\n- 不要只和User Buyer打交道就自以为要赢了\n- Coach 需要主动培养，不会自动出现\n\n红旗：某个角色完全没有接触到 = 盲区",
+      "applicable_scenarios": [
+        "stakeholder_analysis",
+        "qualification",
+        "account_planning",
+        "deal_review"
+      ],
+      "id": "6493fc2a8d1b28ec30c24a3e8b25104e",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "8df44870533bd64b5e5f28a112632e986cccdeeb967d5237aa260fe9b9037142",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "8df44870533bd64b5e5f28a112632e986cccdeeb967d5237aa260fe9b9037142"
+    },
+    {
+      "category": "销售方法论",
+      "title": "Solution Selling — 痛点驱动",
+      "content": "Solution Selling 的核心：不卖产品，卖解决方案；不推功能，解决痛点。\n\n九格愿景框架（9-Block Vision）：\n1. 诊断原因（Open → Control → Confirm）\n2. 探索影响（Open → Control → Confirm）\n3. 描绘愿景（Open → Control → Confirm）\n\n痛点驱动的对话结构：\n1. \"目前你们在XX方面面临什么挑战？\"（发现痛点）\n2. \"这个问题的根因是什么？\"（诊断原因）\n3. \"如果有一种方式能解决这个根因，理想中的效果是什么？\"（构建愿景）\n\nB2B 实战要点：\n- 先痛后药：客户不感受到痛，就不会重视药\n- 创建\"解决方案愿景\"：让客户自己描述理想状态\n- 连接方案：你的产品如何实现这个愿景\n- 不同角色有不同痛点：用相同方法论但不同语言\n\n与 MEDDIC 结合：\n- Solution Selling 的痛点发现 → 对应 MEDDIC 的 Identify Pain\n- Solution Selling 的愿景 → 帮你构建 Metrics\n- Solution Selling 的 Sponsor → 就是 MEDDIC 的 Champion",
+      "applicable_scenarios": [
+        "discovery",
+        "needs_analysis",
+        "qualification",
+        "presentation"
+      ],
+      "id": "584dbe1881f3f8baa68d1d97e249b5bd",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "917d93f3631cf762c6dc6d3c6b6d60b34134c4ba85c54311e5ac95261181fcf7",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "917d93f3631cf762c6dc6d3c6b6d60b34134c4ba85c54311e5ac95261181fcf7"
+    },
+    {
+      "category": "销售方法论",
+      "title": "MEDDICC — Competition 竞争分析",
+      "content": "MEDDICC 扩展版增加了第二个 C = Competition。\n\n竞品分析的四个维度：\n1. 直接竞品：做同样产品的公司\n2. 间接竞品：用不同方式解决同一问题\n3. 内部竞品：客户自己开发\n4. 不作为：客户维持现状\n\n竞争策略：\n- 知己知彼：了解竞品的定价、优势、劣势、客户案例\n- 不要攻击竞品（显得不专业），而是突出差异化\n- 改变局势：避免在竞品优势领域直接竞争\n- 扩大维度：引入竞品不具备的评估标准\n\nB2B 竞争实战：\n1. 发现竞品参与后，第一件事：确认客户的评估标准\n2. 在你独特的优势上做深度演示（不是全面演示）\n3. 为 Champion 准备\"竞品对比材料\"（但不是攻击性的）\n4. 如果竞品已经深度绑定某个干系人，另辟蹊径找新的支持者\n\n竞品丢单后的复盘：\n- 不是问\"为什么输\"，而是问\"赢家做对了什么\"\n- 找客户复盘（很多客户愿意分享），这是最有价值的学习",
+      "applicable_scenarios": [
+        "competitive",
+        "qualification",
+        "deal_review",
+        "positioning-card"
+      ],
+      "id": "58dcd01c600100d95acfe46207d992a9",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "70cd39d6b85ddf0145a79af4869619573bcc51a74f8469493d08c905cb5c08ea",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "70cd39d6b85ddf0145a79af4869619573bcc51a74f8469493d08c905cb5c08ea"
+    },
+    {
+      "category": "销售方法论",
+      "title": "价值销售 — 从功能到ROI",
+      "content": "功能卖家谈功能，顾问卖家谈价值，战略卖家谈 ROI。\n\n价值公式：\n客户价值 = (收益 - 成本) × 可信度\n\n构建价值主张的框架：\n1. 量化现状成本（Status Quo Cost）\n   - 效率损失、人力浪费、机会成本、风险成本\n2. 量化解决方案收益（Solution Value）\n   - 收入增长、成本节省、风险降低、效率提升\n3. 建立可信度（Credibility）\n   - 同行案例、第三方验证、试用结果、ROI 计算器\n\nB2B 价值对话的四步法：\n1. \"你们目前在XX上每年花多少？\"（锚定现状成本）\n2. \"行业最佳实践能做到什么水平？\"（建立差距感知）\n3. \"我们的客户XX实现了YY%的改善\"（社会证明）\n4. \"基于你们的数据，预计能实现ZZ万的年度价值\"（量化承诺）\n\n注意事项：\n- 价值主张必须是客户的语言，不是你的产品术语\n- 每个干系人关心的\"价值\"不同，需要定制\n- ROI 模型要保守，过于乐观会失去信任",
+      "applicable_scenarios": [
+        "value_selling",
+        "proposal",
+        "roi",
+        "executive_engagement",
+        "pricing"
+      ],
+      "id": "18ceb9fe15abe4e83199ff37b3ffc7cd",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "efa5199d2e434e92589391e32d40cd811713a613d0c02770f77ccde0728cf0bb",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "efa5199d2e434e92589391e32d40cd811713a613d0c02770f77ccde0728cf0bb"
+    },
+    {
+      "category": "心理学",
+      "title": "Cialdini 互惠原则",
+      "content": "Cialdini 影响力六原则之一：互惠 (Reciprocity)——人们倾向于回报他人的好意。\n\n核心机制：\n- 收到好处后会感到\"亏欠感\"，驱动回报行为\n- 即使给予的价值远小于期望的回报，互惠仍然有效\n- 先给予再请求，比直接请求效果好得多\n\nB2B 销售中的应用：\n1. 信息互惠：免费分享行业洞察、竞品分析、最佳实践（不求回报地先给）\n2. 服务互惠：帮客户解决一个和你产品无关的小问题\n3. 人脉互惠：帮客户连接有价值的人\n4. 时间互惠：帮客户节省评估时间（准备好对比材料）\n\n实战技巧：\n- 在首次接触时就提供有价值的东西（不是产品资料，是洞察）\n- 互惠要真诚，不要有明显的\"商业目的感\"\n- 持续小额给予比一次大给予更有效\n- 在请求帮助前，先建立互惠感（如需 Champion 帮你引荐高层前，先帮他解决一个问题）",
+      "applicable_scenarios": [
+        "relationship_building",
+        "prospecting",
+        "champion_development",
+        "networking"
+      ],
+      "id": "e62b6cc8b84996b4787e8351d14cdec0",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "2c86e014bbd85c4f557638b1c920af4b721cf8689d045ab4389664cfe80507b2",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "2c86e014bbd85c4f557638b1c920af4b721cf8689d045ab4389664cfe80507b2"
+    },
+    {
+      "category": "心理学",
+      "title": "Cialdini 社会证明原则",
+      "content": "人们在不确定时，会参考\"和自己类似的人怎么做\"来做决定。\n\n核心机制：\n- \"别人都在用\"比\"我们很棒\"有说服力100倍\n- 越相似的参考对象，影响力越大（同行业 > 同规模 > 同地区）\n- 不确定性越高，社会证明越有效\n\nB2B 销售中的资源库：\n1. 客户案例（最有力）：同行业同规模的成功故事\n2. 数据证明：\"XX行业 Top 10 中有7家在用\"\n3. Logo 墙：知名品牌的背书\n4. 推荐信 / 评价：客户原话（比你说的可信10倍）\n5. 分析师报告：Gartner、Forrester 等第三方认可\n\n使用策略：\n- 针对不同角色选择不同的社会证明\n  - CTO → 技术领先的客户案例\n  - CFO → ROI 数据最强的案例\n  - 业务负责人 → 同行业的案例\n- 在客户犹豫时加大社会证明的力度\n- 安排客户拜访或客户交流会（让客户替你卖）\n- 不要虚构或夸大——被发现后信任崩塌",
+      "applicable_scenarios": [
+        "social_proof",
+        "proposal",
+        "objection_handling",
+        "competitive",
+        "presentation"
+      ],
+      "id": "09a6cb436ab30ddf73aa0134fbc8fa4d",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "284b964c6167970385ddea0af1509ff4cefd777da013352a45ebec1ff01a0dc3",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "284b964c6167970385ddea0af1509ff4cefd777da013352a45ebec1ff01a0dc3"
+    },
+    {
+      "category": "心理学",
+      "title": "Cialdini 承诺一致原则",
+      "content": "人们一旦做出承诺（尤其是公开的、主动的），会倾向于保持一致。\n\n核心机制：\n- 小承诺 → 大承诺（foot-in-the-door 技术）\n- 公开承诺比私下承诺更有约束力\n- 人们会合理化自己的过往决定\n\nB2B 销售中的应用：\n1. 渐进式承诺链：\n   - 第一步：同意参加30分钟的演示\n   - 第二步：同意做技术评估\n   - 第三步：同意安排高层会议\n   - 第四步：同意进入商务谈判\n\n2. 口头确认的力量：\n   - \"你同意这个方案能解决你们的XX问题吗？\"（让他说\"是\"）\n   - \"如果技术评估通过，你会推进到下一步吗？\"\n   - 每一个\"是\"都在积累承诺\n\n3. Mutual Action Plan（互信行动计划）：\n   - 和客户共同制定评估步骤和时间表\n   - 双方签字确认 → 书面承诺 → 难以反悔\n\n注意：不要让客户感觉被\"套路\"，承诺应基于真实价值",
+      "applicable_scenarios": [
+        "deal_management",
+        "mutual_action_plan",
+        "qualification",
+        "closing"
+      ],
+      "id": "bddda6c7bb8314977766614b88240dd6",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "d749c51f830c05e268fb069c65ae9fceaffaab4ddceb4af4a3ef07e7424a94e0",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "d749c51f830c05e268fb069c65ae9fceaffaab4ddceb4af4a3ef07e7424a94e0"
+    },
+    {
+      "category": "心理学",
+      "title": "Cialdini 稀缺原则与紧迫性",
+      "content": "当某样东西被感知为稀缺时，人们会更想要它。\n\n核心机制：\n- 限量 > 不限量（即使品质一样）\n- 即将失去的东西比可能获得的更有动力\n- 真实的稀缺比人造的稀缺更有效\n\nB2B 中的合理稀缺来源：\n1. 实施资源有限：\"我们 Q2 的实施团队已经排到了第3周\"\n2. 价格窗口：\"本季度的促销价到月底截止\"\n3. 先发优势：\"你的竞争对手已经开始用了\"\n4. 产品名额：\"企业版名额有限，目前还剩3个\"\n5. 合作机会：\"我们正在找这个行业的标杆客户\"\n\n注意事项：\n- 稀缺必须真实——虚假的截止日期会毁掉信任\n- 不要反复使用同一个紧迫性理由\n- 最有力的紧迫性来自客户自己（如\"你们的竞争对手已经上线了\"）\n- 结合损失厌恶：\"每晚一个月上线，估计损失XX万\"\n\n高压策略的风险：\n- 过度施压会破坏关系和信任\n- 企业级客户的决策者对\"压力策略\"有天然抵触\n- 把紧迫性框架为\"帮客户不错过机会\"而非\"逼客户做决定\"",
+      "applicable_scenarios": [
+        "closing",
+        "urgency",
+        "pricing",
+        "deal_acceleration"
+      ],
+      "id": "3940c5e0a09316f1d04a4fba774c4239",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "01b8066af91d625c966c0205ba1353260f68a17735a70f81a9bbcc79628350b3",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "01b8066af91d625c966c0205ba1353260f68a17735a70f81a9bbcc79628350b3"
+    },
+    {
+      "category": "心理学",
+      "title": "Cialdini 权威原则",
+      "content": "人们倾向于听从被认为是\"权威\"或\"专家\"的人的建议。\n\n权威的来源：\n1. 头衔和职位（但在 B2B 中不够）\n2. 专业知识和洞察（最持久的权威）\n3. 外表和符号（专业着装、自信表达）\n4. 第三方认可（行业奖项、分析师评价）\n\nB2B 中建立权威的策略：\n1. 展示行业深度知识（不只是产品知识）\n2. 分享独家数据和研究发现\n3. 在行业会议或出版物中发声\n4. 用客户的专业术语沟通（而非销售术语）\n5. 承认不知道的事情（诚实 = 可信 = 更强的权威）\n\n在销售场景中的应用：\n- 首次会议前做足功课，展示对客户行业的理解\n- 引用权威来源（分析师报告、行业研究、学术论文）\n- 让高管出面（CEO/CTO 参与关键会议 → 提升权威感知）\n- 客户证言比你的自述有力10倍（借客户的权威）\n\n反面教材：\n- 说\"相信我\"→ 降低权威感（真正的权威不需要请求信任）\n- 对所有问题都说\"能做\"→ 失去可信度",
+      "applicable_scenarios": [
+        "trust_building",
+        "executive_engagement",
+        "presentation",
+        "thought_leadership"
+      ],
+      "id": "e77237dd78f4fbfbee96a6e51a4de25f",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "3f8dd8916769dcced3d72e99dd5a24501f6fc58b8db328f7736cbcc5c9272f96",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "3f8dd8916769dcced3d72e99dd5a24501f6fc58b8db328f7736cbcc5c9272f96"
+    },
+    {
+      "category": "心理学",
+      "title": "Cialdini 喜好原则",
+      "content": "人们更容易被自己喜欢的人说服。\n\n喜好的驱动因素：\n1. 相似性（共同背景、经历、价值观）\n2. 赞美（真诚的、具体的）\n3. 合作（共同目标感）\n4. 熟悉度（接触频率）\n5. 关联（和正面事物的联系）\n\nB2B 销售中的应用：\n1. 做功课找共同点：同一所大学、同一行业背景、共同爱好\n2. 倾听 > 推销：让客户感觉被重视和理解\n3. 记住细节：客户上次提到的项目、孩子、旅行计划\n4. 适当的非工作话题：建立私人层面的连接\n5. 帮客户成功：成为他的\"资源\"而非\"供应商\"\n\n关键洞察：\n- 线上时代喜好更稀缺——视频会议中保持开摄像头、微笑、眼神交流\n- 文化差异：亚洲市场的关系建立需要更多时间和非正式场合\n- 不要太刻意——真诚是喜好的基础，被感知为\"套近乎\"适得其反\n\n团队销售的喜好策略：\n- 根据客户风格匹配销售人员（DISC 匹配）\n- 技术客户安排技术背景的人对接\n- 高管客户安排你们的高管对接",
+      "applicable_scenarios": [
+        "relationship_building",
+        "networking",
+        "first_meeting",
+        "rapport"
+      ],
+      "id": "96ea66c51aa610c0cb4f4446fdc11cb0",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "72f528a74399b56e5ae8c9fd8b232f23e9877eb98841fd76d46beeed3720bcbc",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "72f528a74399b56e5ae8c9fd8b232f23e9877eb98841fd76d46beeed3720bcbc"
+    },
+    {
+      "category": "心理学",
+      "title": "损失厌恶与框架效应",
+      "content": "Kahneman & Tversky 的核心发现：损失的痛苦是收益快乐的 2-2.5 倍。\n\n损失厌恶在 B2B 中的应用：\n1. 框架调整：把\"能获得XX\"改为\"不做会损失XX\"\n   - 弱：\"上我们系统后效率提升30%\"\n   - 强：\"每个月不用我们的系统，你们在浪费XX万\"\n\n2. 沉没成本利用：\n   - \"你们已经在评估上投入了3个月，现在放弃的话这些投入就白费了\"\n   - 用 Mutual Action Plan 创造\"沉没成本\"\n\n3. 现状偏差破解：\n   - 客户倾向于维持现状（因为改变 = 潜在损失）\n   - 需要让\"维持现状的成本\"显性化\n   - \"你们现在每天在用Excel手工对账，每月 40 小时。一年下来就是 480 小时\"\n\n框架效应实战：\n- 同一件事：90%成功率 vs 10%失败率 → 人们选前者\n- 定价：\"每月仅XX元\"vs \"每年XX万\" → 小数字框架更容易接受\n- 对比锚定：\"竞品报价XX万，我们只要YY万\"\n- ROI 框架：\"投入1块钱回报5块钱\"",
+      "applicable_scenarios": [
+        "value_selling",
+        "proposal",
+        "objection_handling",
+        "pricing",
+        "urgency"
+      ],
+      "id": "010e453237859a7ce83929b64020b6ce",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "2b0c6f6142957fdd93bb73461248c5838dd219361730243aa60acdd5bf83218f",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "2b0c6f6142957fdd93bb73461248c5838dd219361730243aa60acdd5bf83218f"
+    },
+    {
+      "category": "心理学",
+      "title": "确认偏差与信息呈现",
+      "content": "确认偏差 (Confirmation Bias)：人们倾向于寻找、解释和记住符合自己已有信念的信息。\n\n对 B2B 销售的影响：\n1. 客户对你的第一印象会持续影响他如何解读后续信息\n2. 如果客户已经倾向竞品，他会不自觉地忽视你的优势\n3. 你自己也会对\"快赢\"的 deal 过度乐观\n\n利用确认偏差的策略：\n1. 先建立正面框架（第一次交互至关重要）\n2. 了解客户已有的信念，顺势而为而非对抗\n3. 引用客户自己说过的话来支持你的观点\n4. 让客户自己发现结论（苏格拉底式提问）\n\n对抗确认偏差的方法（用于 deal 评估）：\n- 强制列出\"这个 deal 可能输的三个原因\"\n- 让不同团队成员独立评估 deal 状态\n- 关注行为信号而非口头承诺（客户说\"很好\"但不安排下一步 = 红旗）\n\n实战应用：\n- 在 POC 或演示前，先让客户描述他们的理想方案 → 然后展示你的方案如何匹配\n- 如果客户明确偏向竞品，不要正面反驳，而是引入新的评估维度",
+      "applicable_scenarios": [
+        "presentation",
+        "competitive",
+        "deal_review",
+        "discovery"
+      ],
+      "id": "e918c3254af09534a837a82a72278d4e",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "bf7e0d84dff78f369cdc78fef82b0b1a87dad34610284a59c53c9684699b8753",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "bf7e0d84dff78f369cdc78fef82b0b1a87dad34610284a59c53c9684699b8753"
+    },
+    {
+      "category": "心理学",
+      "title": "DISC 沟通风格 — 识别与适配",
+      "content": "DISC 模型将人分为四种主要行为风格，每种需要不同的沟通策略。\n\n四种风格及应对：\n\nD型（支配型/Dominance）：\n- 特征：结果导向、直接果断、讨厌浪费时间\n- 沟通策略：简明扼要、直奔主题、用数据说话、给选择而非建议\n- 避免：冗长的寒暄、过多细节、犹豫不决\n\nI型（影响型/Influence）：\n- 特征：热情乐观、重视关系、喜欢社交\n- 沟通策略：多互动、讲故事、强调愿景和兴奋点、表达热情\n- 避免：太过严肃、纯数据轰炸、忽视情感连接\n\nS型（稳健型/Steadiness）：\n- 特征：追求稳定、重视团队、不喜欢变化\n- 沟通策略：耐心、强调平稳过渡、提供充分保证、不施压\n- 避免：催促决策、频繁变化方案、忽视其顾虑\n\nC型（严谨型/Conscientiousness）：\n- 特征：注重细节、追求准确、需要充分数据\n- 沟通策略：准备详细资料、用事实和数据说话、给时间消化\n- 避免：空口承诺、模糊表述、催促决策\n\nB2B 实战：\n- 同一个客户不同干系人可能是不同类型\n- 书面沟通比口头沟通更容易判断对方类型（看邮件风格）\n- 高层通常 D 型偏多，技术人员 C 型偏多",
+      "applicable_scenarios": [
+        "communication",
+        "stakeholder_management",
+        "presentation",
+        "relationship_building"
+      ],
+      "id": "ccdc4d14387351151181b2e495fbeff8",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "f2257c6cfe51856d561a499cc54e73aa8fa5576ac1211658d4ad558143be798a",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "f2257c6cfe51856d561a499cc54e73aa8fa5576ac1211658d4ad558143be798a"
+    },
+    {
+      "category": "心理学",
+      "title": "信任建立的四阶段模型",
+      "content": "B2B 关系中信任的建立遵循可预测的阶段，不能跳跃。\n\n四个阶段：\n\n1. 能力信任（Competence Trust）——\"你懂行吗？\"\n- 展示行业知识和专业能力\n- 准确回答技术问题\n- 分享相关案例和经验\n- 建立时间：1-2次交互\n\n2. 可靠信任（Reliability Trust）——\"你靠谱吗？\"\n- 按时交付承诺的每一件事\n- 主动更新进展\n- 小事做好（及时回复、准时开会）\n- 建立时间：2-4周持续互动\n\n3. 亲密信任（Intimacy Trust）——\"我能跟你说实话吗？\"\n- 客户开始分享内部信息和个人观点\n- 讨论从正式变为坦诚\n- 你能感知到对方的真实想法\n- 建立时间：1-3个月\n\n4. 利他信任（Self-orientation Trust）——\"你是为我着想吗？\"\n- 客户相信你把他的利益放在你的销售目标之前\n- 标志：客户主动向你求建议、甚至求助\n- 建立方式：偶尔建议客户不要买（当确实不适合时）\n- 建立时间：持续证明\n\n关键提醒：\n- 一次失信可以摧毁全部四层信任\n- 每层信任都是上一层的基础，不能跳级",
+      "applicable_scenarios": [
+        "relationship_building",
+        "trust_building",
+        "champion_development",
+        "long_term_account"
+      ],
+      "id": "682181bc8ed0d41458ab126254cc7d13",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "2aeb802a6820976db1d7e6abcd59b4ac64ac824d4eb53f644d67de7352e6dd85",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "2aeb802a6820976db1d7e6abcd59b4ac64ac824d4eb53f644d67de7352e6dd85"
+    },
+    {
+      "category": "博弈论",
+      "title": "重复博弈与以牙还牙策略",
+      "content": "Axelrod 的经典发现：在重复博弈中，\"以牙还牙\"(Tit-for-Tat) 是最优策略。\n\nTit-for-Tat 策略：\n1. 第一步合作（善意开局）\n2. 之后模仿对方上一步的行为\n3. 对方合作你就合作，对方背叛你就背叛\n4. 对方回到合作你也立即回到合作（宽容）\n\nB2B 销售中的应用：\n- B2B 关系是典型的重复博弈（客户不只做一次决定）\n- 第一次交互设定基调：善意、专业、有价值\n- 如果客户不回复/不配合，适度降低投入（不是报复，是信号）\n- 如果客户重新投入，立即恢复全力配合\n\n策略推论：\n1. 声誉效应：在行业内建立\"可靠合作伙伴\"的声誉\n2. 影子未来：让客户意识到这是长期关系（增加合作动机）\n3. 惩罚背叛：如果客户用你的方案做杠杆压竞品价格，你可以减少投入（但不要关系破裂）\n\n关键：B2B 不是一次性博弈——任何短期\"赢了\"但损害关系的行为都是输",
+      "applicable_scenarios": [
+        "relationship_building",
+        "negotiation",
+        "long_term_account",
+        "competitive"
+      ],
+      "id": "dd6e3819a90da0e7171a3f42390e079c",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "bbd5eb86faae987b4fc9f2e273179b814f9801914a0170dfb9519b2aee788f2b",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "bbd5eb86faae987b4fc9f2e273179b814f9801914a0170dfb9519b2aee788f2b"
+    },
+    {
+      "category": "博弈论",
+      "title": "信号博弈 — 可信信号",
+      "content": "信号理论 (Signaling Theory)：当信息不对称时，行动本身传递的信息比言语更可靠。\n\n可信信号 vs 不可信信号：\n- 可信信号：发送信号的成本高，造假代价大\n- 不可信信号：说说就行，没有实质承诺\n\nB2B 中的信号发送：\n1. 可信信号（用这些建立信任）：\n   - 投入自己的时间做定制方案（成本高 → 信号可信）\n   - 提供免费 POC（投入资源 → 证明信心）\n   - CEO 亲自参与关键会议（高机会成本 → 表示重视）\n   - 签署 SLA 带惩罚条款（有代价的承诺）\n   - 先交付后付款（承担风险 → 信号最强）\n\n2. 不可信信号（避免过度使用）：\n   - \"我们是最好的\" → 每家都这么说\n   - \"我们很重视你们\" → 需要行动证明\n   - PPT 上的承诺 → 不如合同条款\n\n解读客户信号：\n- 客户安排高层参加你的演示 → 认真评估的信号\n- 客户分享内部文件和预算信息 → 信任信号\n- 客户只派初级员工 → 优先级不高的信号\n- 客户催你降价但不给 timeline → 可能在用你当竞品的杠杆",
+      "applicable_scenarios": [
+        "trust_building",
+        "qualification",
+        "executive_engagement",
+        "competitive"
+      ],
+      "id": "659e524e8cfa58430b7ae0cb2aec7e93",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "dfa4f50141f55607754618407fa2d0c99a7b9df16d680098a82dcf925d1ebb0d",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "dfa4f50141f55607754618407fa2d0c99a7b9df16d680098a82dcf925d1ebb0d"
+    },
+    {
+      "category": "博弈论",
+      "title": "承诺装置 — 绑定自己以取信",
+      "content": "承诺装置 (Commitment Device)：通过主动限制自己的选项来增加承诺的可信度。\n\n经典原理：\n- 破釜沉舟 = 通过消除退路来证明决心\n- 公开承诺比私下承诺更难违反\n- 有代价的承诺比无代价的承诺更可信\n\nB2B 销售中的承诺装置：\n1. 你方的承诺装置：\n   - 合同中写入绩效条款（达不到目标可退款）\n   - 公开发布客户合作信息（声誉绑定）\n   - 指定专属客户成功经理（资源绑定）\n   - 提供 ROI 保证（财务绑定）\n\n2. 促使客户承诺的装置：\n   - Mutual Action Plan（互信行动计划）双方签字\n   - 项目启动会（公开承诺 → 难以撤回）\n   - 早期付款安排（经济承诺）\n   - 指定项目负责人（个人声誉绑定）\n\n使用原则：\n- 承诺装置的力量在于\"真实的代价\"\n- 不要做你不打算兑现的承诺\n- 让客户看到你的承诺装置，增强信任\n- 逐步增加承诺强度，不要一上来就用最重的",
+      "applicable_scenarios": [
+        "trust_building",
+        "deal_structuring",
+        "mutual_action_plan",
+        "closing"
+      ],
+      "id": "ec464c31609f319e72a9f9286a7b45b5",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "a18f0867e995d2481ea4be22b462b2599c12e6462659febfc74717ed9e6badab",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "a18f0867e995d2481ea4be22b462b2599c12e6462659febfc74717ed9e6badab"
+    },
+    {
+      "category": "博弈论",
+      "title": "信息不对称 — 利用与克服",
+      "content": "B2B 销售中最大的局势是信息——谁掌握更多信息，谁就有优势。\n\n四类信息不对称：\n1. 你知道客户不知道（你的底价、竞品弱点、产品路线图）\n2. 客户知道你不知道（预算、真实决策流程、竞品方案）\n3. 双方都不知道（市场变化、新法规、技术趋势）\n4. 信息在组织内部分散（不同部门知道不同的事）\n\n获取信息的策略：\n1. 多接触点策略：和客户不同层级、不同部门的人交流\n2. 行业信息网络：和客户的供应商、合作伙伴、同行交流\n3. 公开信息挖掘：财报、招聘信息、新闻、社交媒体\n4. 交换策略：用你拥有的行业信息交换客户的内部信息\n\n保护信息的策略：\n- 不要在竞争激烈时暴露你的底价\n- 客户不需要知道你有多想赢这个单子\n- 保护你的 Champion 信息来源\n\n信息共享的策略使用：\n- 选择性透明可以建立信任\n- 主动分享\"你不需要知道但对你有用\"的信息 → 互惠 + 权威",
+      "applicable_scenarios": [
+        "competitive",
+        "negotiation",
+        "discovery",
+        "stakeholder_analysis"
+      ],
+      "id": "636c3fab52575242d54f156501551522",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "787c7ce7d9bafd065a46fe64c1f5aee89215ef8b56c6e9af4aa40e695c091372",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "787c7ce7d9bafd065a46fe64c1f5aee89215ef8b56c6e9af4aa40e695c091372"
+    },
+    {
+      "category": "博弈论",
+      "title": "多方博弈 — 联盟构建",
+      "content": "B2B 企业级交易本质上是多方博弈——你需要同时管理多个参与者的利益。\n\n多方博弈的特征：\n1. 每个参与者都有自己的利益函数\n2. 联盟可以改变博弈结果\n3. 关键是找到\"最小胜利联盟\"\n\nB2B 中的参与者：\n- 你的团队（销售、售前、产品、管理层）\n- 客户的干系人（使用者、技术评估者、经济决策者、影响者）\n- 竞品\n- 第三方（合作伙伴、集成商、顾问）\n\n联盟构建策略：\n1. 识别每个参与者的核心利益\n2. 找到利益重叠的\"自然盟友\"\n3. 构建最小胜利联盟（不需要所有人支持，需要关键多数）\n4. 中和反对者（不一定要争取支持，只要不反对就行）\n\n实战应用：\n- 客户内部政治：找到项目的发起人和受益者，联合他们对抗反对者\n- 多 BU 采购：找到共同诉求，推动联合采购\n- 竞品应对：和客户现有供应商形成\"生态联盟\"而非对抗\n- 渠道合作：与合作伙伴分工，各自影响不同干系人",
+      "applicable_scenarios": [
+        "stakeholder_management",
+        "enterprise_deal",
+        "competitive",
+        "partner_strategy"
+      ],
+      "id": "6e2222895eeac2224069763508a82e86",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "37a65739b2c24898c0a89faeb51f12fb573e755ff5459ec6662a8d2623bbb85c",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "37a65739b2c24898c0a89faeb51f12fb573e755ff5459ec6662a8d2623bbb85c"
+    },
+    {
+      "category": "博弈论",
+      "title": "纳什均衡与价格博弈",
+      "content": "纳什均衡：在对方策略不变的情况下，任何一方都无法通过单方面改变策略来提高收益。\n\n价格博弈中的纳什均衡：\n- 如果所有竞品都降价，最终所有人利润都降低（囚徒困境）\n- 聪明的策略不是跟风降价，而是改变博弈规则\n\n避免价格战的策略：\n1. 差异化（让客户认为你和竞品不在同一类别）\n2. 捆绑价值（价格不是唯一变量）\n3. 细分市场（在你最强的细分领域建立价格锚点）\n4. 透明成本（让客户理解价格背后的价值构成）\n\nB2B 定价博弈实战：\n- 不要第一个报价（如果可能），让竞品先暴露定价策略\n- 如果必须先报价，用价值框架报而非成本框架\n- 遇到\"你们比XX贵30%\"时，不要直接降价，先问\"他们的方案具体包含什么？\"\n- 用 TCO（总拥有成本）替代许可价格的比较\n\n长期博弈思维：\n- 今天给了大折扣，续约时会成为新的锚点\n- 宁愿不打折但提供更多服务，也不要形成\"打折文化\"",
+      "applicable_scenarios": [
+        "pricing",
+        "competitive",
+        "negotiation",
+        "deal_structuring"
+      ],
+      "id": "7170d8a6a4364674784e4f369a9148b6",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "cc89ee99bff08c8c2aaff7cceb27787751e01213d8319e96a33f4e0e9b01d01d",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "cc89ee99bff08c8c2aaff7cceb27787751e01213d8319e96a33f4e0e9b01d01d"
+    },
+    {
+      "category": "商业策略",
+      "title": "竞争定位 — 差异化三角",
+      "content": "Michael Porter 的竞争策略框架在 B2B 销售中的应用。\n\n三种基本策略：\n1. 成本领先：在同等质量下做到最低价格\n2. 差异化：提供竞品不具备的独特价值\n3. 聚焦：在细分市场做到极致\n\nB2B SaaS 的差异化维度：\n- 产品差异化：独特功能、更好的用户体验、更深的行业场景\n- 服务差异化：客户成功体系、实施方法论、培训体系\n- 品牌差异化：行业口碑、思想领导力、分析师象限位置\n- 关系差异化：客户高管关系、生态伙伴关系\n- 数据差异化：独有数据、行业基准、AI 模型\n\n定位三步法：\n1. 明确你的\"唯一\"：什么是只有你能做到的？\n2. 连接客户价值：这个\"唯一\"对客户意味着什么？\n3. 简化表达：一句话说清为什么选你而不选别人\n\n实战建议：\n- 不要在竞品的主场竞争，而是定义新的竞争维度\n- 找到客户最看重且竞品最弱的交叉点\n- 竞争定位要根据不同客户动态调整",
+      "applicable_scenarios": [
+        "competitive",
+        "positioning",
+        "proposal",
+        "positioning-card"
+      ],
+      "id": "22aef5ddf34c404ad3a9a9721042970f",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "8f78420444e28d3ecdb8ac2ed42a5e3a6e4e9620c1e4710235e2b6db340e10a1",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "8f78420444e28d3ecdb8ac2ed42a5e3a6e4e9620c1e4710235e2b6db340e10a1"
+    },
+    {
+      "category": "商业策略",
+      "title": "价值主张设计 — Value Proposition Canvas",
+      "content": "Alexander Osterwalder 的价值主张画布：确保你的方案精准匹配客户需求。\n\n客户侧（右半部分）：\n1. 客户任务 (Jobs)：客户想要完成什么？\n   - 功能任务：\"管理销售流水线\"\n   - 社交任务：\"在领导面前展示成果\"\n   - 情感任务：\"减少焦虑和不确定性\"\n\n2. 痛点 (Pains)：完成任务过程中的障碍\n   - 不想要的结果、阻碍、风险\n\n3. 收益 (Gains)：期望的结果\n   - 必需收益、期望收益、渴望收益、意外收益\n\n产品侧（左半部分）：\n1. 产品和服务：你提供什么\n2. 痛点缓解器：如何减轻客户痛点\n3. 收益创造器：如何增加客户收益\n\nB2B 使用技巧：\n- 对每个关键干系人分别做一张画布（他们的任务和痛点不同）\n- 先理解客户侧，再设计产品侧（不要反过来）\n- 用客户的语言描述，不要用你的产品术语\n- 找到\"收益创造\"中客户没想到但你能做到的——这就是\"惊喜价值\"",
+      "applicable_scenarios": [
+        "value_selling",
+        "proposal",
+        "discovery",
+        "positioning"
+      ],
+      "id": "1bd0ce43c84a3bd0c0b41d2eb6a31ea6",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "f5b1d0e284ac8758808129accfc2bcde527ff9bcbbe30e98f37d829b77c9b4a4",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "f5b1d0e284ac8758808129accfc2bcde527ff9bcbbe30e98f37d829b77c9b4a4"
+    },
+    {
+      "category": "商业策略",
+      "title": "蓝海策略 — 创造无竞争市场",
+      "content": "蓝海策略的核心：不在红海（充分竞争）中搏杀，而是创造新的市场空间。\n\n四步行动框架（ERRC）：\n1. 消除 (Eliminate)：行业中哪些理所当然的因素可以去掉？\n2. 减少 (Reduce)：哪些因素可以降到行业标准以下？\n3. 增加 (Raise)：哪些因素应该提升到行业标准以上？\n4. 创造 (Create)：行业中从未提供的全新因素？\n\nB2B 销售中的蓝海应用：\n- 当面对强大竞品的直接竞争时，不要硬拼\n- 找到客户的\"非客户\"需求（他们认为CRM做不了的事情）\n- 跨行业借鉴（把消费者体验带到企业级产品）\n- 重新定义品类（不叫\"CRM\"而叫\"收入智能平台\"）\n\n实战策略：\n1. 画出行业的策略画布（各竞品在各维度上的得分）\n2. 找到\"价值差距\"——所有竞品都低分的维度\n3. 在这个维度上做到极致，形成品类第一\n4. 在客户沟通中反复强化这个维度的重要性\n\n注意：蓝海不是永久的，成功的蓝海终究会变红——要持续创新",
+      "applicable_scenarios": [
+        "competitive",
+        "positioning",
+        "strategy",
+        "product_strategy"
+      ],
+      "id": "1fff10f52dbeba9bbf29685af1f2f3e9",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "87b907a5dbb72ade19725f4524d5e09f3aa3f0135b8ec80835a3b4c9e3cfc096",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "87b907a5dbb72ade19725f4524d5e09f3aa3f0135b8ec80835a3b4c9e3cfc096"
+    },
+    {
+      "category": "商业策略",
+      "title": "经典策略方法 — 势、虚实、情报",
+      "content": "经典策略方法在 B2B 销售中的战略应用。\n\n势（Momentum）——造势与借势：\n- \"善战者求之于势，不责于人\" — 好的策略让赢单变得自然\n- 造势：通过行业影响力、客户案例、分析师报告积累势能\n- 借势：抓住行业趋势（如AI浪潮、合规要求）推动项目\n- 在客户内部造势：让多个干系人同时谈论你 → 形成内部共识\n\n虚实——集中力量攻弱点：\n- \"避实击虚\" — 不在竞品最强的地方正面对抗\n- 找到竞品的\"虚\"（客户不满意的地方）集中攻击\n- 在你最强的维度上集中资源做深度展示\n- 如果客户的关键决策者被竞品锁定，绕道从其他干系人突破\n\n知己知彼——情报优势：\n- \"知己知彼，百战不殆\"\n- 了解客户：决策流程、预算、痛点、政治格局\n- 了解竞品：方案、价格、弱点、已有客户关系\n- 了解自己：真实优势、交付能力、风险点\n\n实战心法：\n- 不打无准备之仗（每次客户会议前做足功课）\n- 以正合，以奇胜（标准动作+创意打法组合）\n- 优先通过判断和策略取胜（最好的销售是让客户觉得选你是唯一合理选择）",
+      "applicable_scenarios": [
+        "competitive",
+        "strategy",
+        "account_planning",
+        "deal_review"
+      ],
+      "id": "6e8effff1bd53a72c8e9ddb111d256da",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "407a35ea00742d348c6194565df2b7f5fbcb6c3a958e7ba6fbf5c2557ea71590",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "407a35ea00742d348c6194565df2b7f5fbcb6c3a958e7ba6fbf5c2557ea71590"
+    },
+    {
+      "category": "商业策略",
+      "title": "客户成功 — 续约与扩展策略",
+      "content": "B2B SaaS 的核心：获客成本（CAC）需要通过客户终身价值（LTV）回收。\n\n客户成功的四个阶段：\n1. 上线（Onboarding）：确保客户快速看到第一个价值\n2. 采纳（Adoption）：推动关键功能的深度使用\n3. 价值实现（Value Realization）：量化 ROI，向客户证明投入产出\n4. 扩展（Expansion）：增购、增席位、跨部门推广\n\n续约保障策略：\n- 建立\"价值报告\"机制（每季度向客户展示ROI数据）\n- 多线程关系（不能只依赖一个联系人）\n- 早期预警系统（使用率下降、关键联系人离职、组织变革）\n- 续约前6个月开始准备，而非到期前1个月\n\n扩展策略：\n1. 土地（Land）小切入 → 扩展（Expand）到全公司\n2. 成功故事内部传播（让A部门的成功案例推动B部门采购）\n3. 新产品/模块的交叉销售\n4. 行业社区和客户交流会推动\"客户带客户\"\n\n关键指标：\n- NRR（Net Revenue Retention）>120% = 优秀\n- 健康客户的扩展率是不健康客户的3倍\n- 保住一个客户的成本是获取新客户的 1/5",
+      "applicable_scenarios": [
+        "renewal",
+        "expansion",
+        "customer_success",
+        "account_planning"
+      ],
+      "id": "658dc7e694d6587cbeb2bb071b2a2f1c",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "08bcc6384ddc194881598871dd23ff0520b4a6df5fcfe3dc2c8a1f3aa32b568d",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "08bcc6384ddc194881598871dd23ff0520b4a6df5fcfe3dc2c8a1f3aa32b568d"
+    },
+    {
+      "category": "商业策略",
+      "title": "生态策略 — 合作伙伴与渠道",
+      "content": "B2B 中的生态策略：通过合作伙伴扩大影响力和触达范围。\n\n三类合作伙伴：\n1. 技术合作伙伴（集成/互补产品）\n2. 渠道合作伙伴（代理/分销/VAR）\n3. 咨询合作伙伴（实施/咨询公司）\n\n合作伙伴策略在销售中的应用：\n1. 联合销售：与合作伙伴共同接触客户（1+1>2）\n2. 方案整合：组合方案比单一产品更有竞争力\n3. 推荐引擎：合作伙伴的客户成为你的leads\n4. 竞品防御：深度集成增加客户切换成本\n\n客户感知的价值：\n- \"你们和XX集成\" → 降低实施风险\n- \"你们有生态\" → 投资更安全\n- \"XX推荐了你们\" → 信任转移\n\n渠道合作关键成功因素：\n- 清晰的利益分配（佣金结构、deal登记规则）\n- 赋能体系（培训、认证、联合 GTM）\n- 冲突管理（直销 vs 渠道的地盘划分）\n- 定期沟通（联合业务评审、pipeline 共享）",
+      "applicable_scenarios": [
+        "partner_strategy",
+        "channel_sales",
+        "competitive",
+        "deal_structuring"
+      ],
+      "id": "a23ba80ea6f072d7671bd12fd40077ff",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "f342960cae9c0db5ae52e28f337d263daa1adc08bf6052ef5d6921d1910ecad6",
+        "classification": "generic_method_note",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "f342960cae9c0db5ae52e28f337d263daa1adc08bf6052ef5d6921d1910ecad6"
+    },
+    {
+      "category": "案例",
+      "title": "B2B SaaS 企业级赢单模式",
+      "content": "以下为通用企业销售实践笔记，不是对实际客户交易的披露或统计。\n\n赢单模式一：早期高层接触\n- 在技术评估阶段就接触经济买家\n- 用商业语言（非技术语言）建立高层共识\n- 高层接触可能帮助对齐商业目标；效果需由自己的业务证据验证。\n\n赢单模式二：强力 Champion\n- 不只是好感度高的联系人，而是有影响力且个人利益绑定的内部推手\n- 为 Champion 提供工具：内部提案模板、ROI 计算器、竞品对比\n- Champion 在关键评审会上替你说话\n\n赢单模式三：量化价值\n- 用客户自己的数据计算 ROI\n- 让客户参与计算过程（自己算出来的更可信）\n- 将 ROI 和客户 KPI 直接挂钩\n\n赢单模式四：掌控决策流程\n- 和客户共建 Mutual Action Plan\n- 提前识别并处理技术审查、法务审核、采购流程\n- 定期checkpoint，及时发现偏差\n\n赢单模式五：差异化定位\n- 不在竞品最强的维度直接竞争\n- 创造新的评估维度来突出独特价值\n- 让客户感觉\"这个类别只有你能做到\"\n\n赢单模式六：多线程关系\n- 和客户至少 3+ 个不同角色的人建立直接联系\n- 避免\"单点故障\"——一个联系人离职不会导致丢单",
+      "applicable_scenarios": [
+        "enterprise_deal",
+        "deal_review",
+        "win_analysis",
+        "best_practice"
+      ],
+      "id": "522639fb83090ddf080b7831fc44456a",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "3930dabfab7250f47e20a9360c1b5715dd5b6feb369dfe0ff6433883f0ee4a4b",
+        "classification": "generic_strategy_pattern",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": [
+          "Removed unsupported quantitative/empirical success claim"
+        ]
+      },
+      "content_sha256": "2ef92ffeb88c3cdae0f261137210d97ce4218bbbe0df5a3cdb46168d6852af62"
+    },
+    {
+      "category": "案例",
+      "title": "多干系人复杂交易导航",
+      "content": "企业级交易的核心挑战：5-12个干系人，每个人都有不同的议程。\n\n用于说明方法的假设情境（不对应任何特定客户记录）：\n设想一家软件公司向制造企业介绍供应链系统，参与角色可以包括：\n- IT VP（技术买家）：关心系统安全、集成复杂度\n- 供应链总监（使用买家）：关心操作效率、学习曲线\n- CFO（经济买家）：关心 ROI、TCO、投资回收期\n- 采购部（守门人）：关心合规、价格、合同条款\n- 各工厂厂长（影响者）：关心对产线的影响\n\n导航策略：\n\n1. 绘制权力地图：\n   - 谁有最终决策权？\n   - 谁可能阻止交易？\n   - 谁之间有联盟或冲突？\n\n2. 定制信息：\n   - IT VP → 架构图、安全白皮书、集成方案\n   - 供应链总监 → 效率数据、同行案例、过渡方案\n   - CFO → ROI 模型、三年 TCO 对比\n   - 采购 → 标准合同、合规证明\n\n3. 管理内部政治：\n   - 找到每个阵营的\"共同利益点\"\n   - 不要站队——让你的方案成为各方都能接受的解决方案\n   - 通过 Champion 了解内部动态\n\n4. 推动共识：\n   - 组织联合评审会（让各方同时在场）\n   - 提供统一的评估框架（避免各说各话）",
+      "applicable_scenarios": [
+        "enterprise_deal",
+        "stakeholder_management",
+        "account_planning",
+        "political_navigation"
+      ],
+      "id": "4dab132526fe6433fd0a666c19ce39ee",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "6c7d7247a9d7e5c54fafdc0d1380f2dcff01f81a16ac483f5c6b0145c75310b6",
+        "classification": "generic_strategy_pattern",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": [
+          "Reframed unverified real-scene claim as an explicitly hypothetical scenario"
+        ]
+      },
+      "content_sha256": "143ef379f9885546b6cad64e32a569887b818ffa9d9bf435751caae4aa313e5d"
+    },
+    {
+      "category": "案例",
+      "title": "Champion 培养成功模式",
+      "content": "成功培养 Champion 的四个阶段和关键行动。\n\n阶段一：识别（第1-2周）\n- 寻找满足三个条件的人：有影响力 + 个人受益 + 愿意分享信息\n- 通常是中层管理者（Director/Senior Manager级别）\n- 信号：主动分享内部信息、问你竞品对比、愿意安排更多会议\n\n阶段二：验证（第2-4周）\n- 给他一个\"小测试\"：请他帮你安排一次和其他干系人的会议\n- 如果他做到了 → 有影响力 ✓ 且愿意帮你 ✓\n- 如果他找借口 → 可能是 Coach 而非 Champion\n\n阶段三：赋能（第4-8周）\n- 帮他准备内部汇报材料（PPT、ROI 模型、竞品对比）\n- 教他怎样在内部推销你的方案（用他老板的语言）\n- 确保他掌握\"电梯演讲\"版的价值主张\n- 让他在内部会议上展示而非你展示（建立他的内部声望）\n\n阶段四：维护（持续）\n- 每周至少一次信息更新\n- 第一时间告诉他任何变化（不要让他在内部丢脸）\n- 帮他追踪项目 milestone\n- 在他遇到内部阻力时提供支持和论证材料\n\n常见失败原因：\n- Champion 离职 → 需要培养 backup\n- Champion 被边缘化 → 重新评估权力地图\n- Champion 变消极 → 可能有新信息你不知道，深入沟通",
+      "applicable_scenarios": [
+        "champion_development",
+        "stakeholder_management",
+        "deal_management",
+        "relationship_building"
+      ],
+      "id": "75b60401412a3b9638497e980433de10",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "c88afc2f5f2bc0f3559b985bafc9e08fd58e3af35c0dcb127c576f9c2d19ea1e",
+        "classification": "generic_strategy_pattern",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "c88afc2f5f2bc0f3559b985bafc9e08fd58e3af35c0dcb127c576f9c2d19ea1e"
+    },
+    {
+      "category": "案例",
+      "title": "竞品置换实战手册",
+      "content": "从竞品手中夺取客户的系统性方法。\n\n竞品置换的四阶段：\n\n阶段一：种草（第1-3个月）\n- 不急于推销，先建立行业专家形象\n- 分享独特洞察、行业趋势、对标数据\n- 让客户意识到\"可能有更好的选择\"\n- 目标：让客户愿意和你深入聊一次\n\n阶段二：松土（第2-4个月）\n- 了解客户对现有方案的不满点\n- 不要攻击竞品（会激发客户的防御心理）\n- 用\"行业最佳实践\"来衬托差距\n- 问：\"如果重新选择，你最看重什么？\"\n\n阶段三：播种（第4-6个月）\n- 提供对比评估（聚焦客户认可的差距领域）\n- 安排已切换客户的案例分享（社会证明）\n- 量化\"切换成本 vs 切换收益\"（让收益远大于成本）\n- 提供\"平稳过渡方案\"降低感知风险\n\n阶段四：收割（第6-12个月）\n- 等待触发事件：合同到期、竞品涨价、功能缺失导致业务问题\n- 准备好\"快速启动计划\"\n- 提供切换优惠（首年折扣、免费迁移、并行运行期）\n- 这个阶段如果前面的种草和松土到位，通常是水到渠成\n\n关键成功因素：\n- 耐心——竞品置换通常需要6-18个月\n- 关系——和客户不满意的人建立信任\n- 时机——等待\"窗口事件\"而非强行推动",
+      "applicable_scenarios": [
+        "competitive",
+        "displacement",
+        "long_term_account",
+        "prospecting"
+      ],
+      "id": "31437f192ce19ec76c63f91b067064ff",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "51a3c17623e7a89d0eb20737473079b04ce2b343ca3cfaca144d81bf30d9a7b4",
+        "classification": "generic_strategy_pattern",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "51a3c17623e7a89d0eb20737473079b04ce2b343ca3cfaca144d81bf30d9a7b4"
+    },
+    {
+      "category": "案例",
+      "title": "停滞交易重新激活模式",
+      "content": "交易停滞可能影响销售管道。占比应由团队自身数据计算，不预设行业比例。\n\n停滞原因诊断：\n1. 优先级下降（客户有更紧迫的事情）\n2. 内部反对者出现（新的干系人阻挡）\n3. Champion 变弱（离职、调岗、失去影响力）\n4. 预算冻结或重新分配\n5. 决策流程变化（新增审批环节）\n6. 你的方案没有足够的紧迫性\n\n重新激活策略：\n\n策略一：价值重塑\n- 带来新的洞察或数据（不是重复旧的 pitch）\n- \"自从上次聊之后，行业发生了XX变化，我觉得对你们影响很大\"\n- 新的客户案例（尤其是同行业的）\n\n策略二：干系人刷新\n- 联系新的干系人（可能原来的联系人不再推动了）\n- 向上联系（找更高层级的人）\n- 找到新的\"痛点拥有者\"\n\n策略三：事件驱动\n- 等待/创造触发事件：季度末、财年规划、竞品动态、行业法规\n- \"你们的竞争对手刚刚宣布了XX，这可能影响你们的……\"\n\n策略四：降低门槛\n- 缩小初始范围（从全面方案→试点项目）\n- 分阶段采购（先买核心模块）\n- 创新付费模式（按使用量、按效果）\n\n策略五：高层复盘\n- 安排你的高管和客户高管的对话\n- 不谈产品，谈战略和行业趋势\n- CEO-to-CEO 的对话可以重新把项目提上优先级",
+      "applicable_scenarios": [
+        "stalled_deal",
+        "deal_rescue",
+        "pipeline_management",
+        "deal_acceleration"
+      ],
+      "id": "6854d89db2e6c8e893b4f3cc6c2c9a88",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "5aa081b614a905896aa7ea178344be830d9e4ae9b600707c3d0a5cd2080014f7",
+        "classification": "generic_strategy_pattern",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": [
+          "Removed unsourced industry percentage"
+        ]
+      },
+      "content_sha256": "3117b0c8994972f05c793c0be95f6e0de8fea8ed30184671901f2afa8042de26"
+    },
+    {
+      "category": "案例",
+      "title": "大型交易谈判阶段管理",
+      "content": "企业级 B2B 交易从首次接触到签约的完整阶段管理。\n\n阶段一：资格确认（2-4周）\n- MEDDIC 初筛：有预算吗？有痛点吗？有决策者吗？\n- 不要在不合格的 deal 上浪费时间\n- 合格标准：至少满足 MEDDIC 中的3项\n\n阶段二：需求深挖（3-6周）\n- 多次 discovery 会议，覆盖不同干系人\n- 建立完整的干系人地图\n- 量化痛点和期望价值\n- 输出：需求理解文档（让客户确认你理解对了）\n\n阶段三：方案展示（2-4周）\n- 定制化演示（不是标准 demo，是针对客户场景）\n- 分角色展示（技术demo给IT，业务价值给管理层）\n- POC 或试用（如果客户要求）\n- 输出：客户认可方案能满足核心需求\n\n阶段四：商务谈判（3-6周）\n- 提案和报价\n- 价格谈判（使用多议题策略）\n- 合同条款谈判\n- 输出：双方认可的商务条件\n\n阶段五：采购闭环（2-8周）\n- 法务审核合同\n- 采购部门走流程\n- 最终签字\n- 输出：签约\n\n全程注意：\n- 每个阶段都有明确的\"通过标准\"\n- Mutual Action Plan 跟踪每一步\n- 定期向管理层汇报 deal 状态（不要自己一个人扛）",
+      "applicable_scenarios": [
+        "enterprise_deal",
+        "deal_management",
+        "mutual_action_plan",
+        "forecasting"
+      ],
+      "id": "b299e8ca1181b26aea684c0e82663354",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "7d205b53900436e910f2d6e23089a152e5959fefb6485e5dd2f4b93d065597b4",
+        "classification": "generic_strategy_pattern",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "7d205b53900436e910f2d6e23089a152e5959fefb6485e5dd2f4b93d065597b4"
+    },
+    {
+      "category": "案例",
+      "title": "季度末加速关单技巧",
+      "content": "季度末（Quarter End）是 B2B 销售的冲刺时刻——但不能靠压力，要靠策略。\n\n合理的加速策略：\n\n1. 提前规划（提前6-8周）：\n   - 识别有可能在本季度关闭的 deal\n   - 为每个 deal 制定\"关单路径\"和障碍清单\n   - 提前扫除法务、采购、技术审查等障碍\n\n2. 创造合理的紧迫性：\n   - 实施团队排期：\"下季度我们的实施团队已经排满了\"\n   - 价格窗口：\"本季度的特别方案到月底截止\"\n   - 竞争压力：\"你们的竞对已经在推进类似项目了\"\n   - 业务价值：\"每晚一个月上线=损失XX万\"\n\n3. 降低签约摩擦：\n   - 简化合同（减少法务来回）\n   - 灵活付款条件（减轻 CFO 顾虑）\n   - 分阶段方案（先签核心，后续扩展）\n   - 快速决策优惠（不是打折，是额外服务）\n\n4. 高层互动：\n   - CEO/VP 级别的拜访（给客户面子和重视感）\n   - 承诺高管级别的客户成功保障\n   - 安排成功客户的高管对话\n\n避免的错误：\n- 过度施压导致关系受损\n- 为了关单做过多承诺（后续交付还不上）\n- 给太大折扣导致 ARR 质量下降\n- 强行把不成熟的 deal 拉进当季度",
+      "applicable_scenarios": [
+        "closing",
+        "deal_acceleration",
+        "quarter_end",
+        "pipeline_management"
+      ],
+      "id": "54b65981b4a617c60bd794b3bda3ce75",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "1190bcbff4068ddbd786e41fa5454ae6e63edc9714498799154e51261452729e",
+        "classification": "generic_strategy_pattern",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": []
+      },
+      "content_sha256": "1190bcbff4068ddbd786e41fa5454ae6e63edc9714498799154e51261452729e"
+    },
+    {
+      "category": "案例",
+      "title": "丢单复盘与学习框架",
+      "content": "系统性的丢单复盘是最高效的学习方式——大部分公司都不做或做得不好。\n\n复盘框架（LOSE分析）：\n\nL — Lost to whom?（输给了谁）\n- 竞品？维持现状？内部开发？\n- 了解赢家做对了什么（比分析你做错了什么更有价值）\n\nO — Objections unresolved（未解决的异议）\n- 客户最终的核心顾虑是什么？\n- 这些顾虑我们能解决吗？如何解决？\n\nS — Stakeholders missed（遗漏的干系人）\n- 有没有关键人物我们没有接触到？\n- 有没有反对者我们没有识别到？\n\nE — Events that changed（改变局势的事件）\n- 什么时候 deal 开始变坏？\n- 有没有关键时间点我们错过了？\n\n复盘方法：\n1. 交易关闭后1-2周内做复盘（记忆清晰）\n2. 尽量联系客户获得反馈（很多客户愿意分享）\n3. 不要找借口或blame（目的是学习不是追责）\n4. 把 pattern 记录下来，形成团队知识库\n\n可供复盘分类的原因（不是行业统计）：\n- 不做决定\n- 选择竞品\n- 预算限制\n- 组织变革或项目取消\n\n行动项：对每种丢单原因制定改进措施，下个季度跟踪效果",
+      "applicable_scenarios": [
+        "deal_review",
+        "loss_analysis",
+        "coaching",
+        "process_improvement"
+      ],
+      "id": "b1982657bb0b43a67538e09c828fa6f2",
+      "language": "zh-CN",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/scripts/seed-knowledge-base.ts",
+        "source_text_sha256": "10cdc2e3d2a0a4cc3cbfed951606d6c3e6641190a74bbd5648f48e8f69f88ffd",
+        "classification": "generic_strategy_pattern",
+        "license_basis": "Project owner authorization for original repository materials; no third-party dataset grant is asserted",
+        "modifications": [
+          "Replaced unsourced numerical industry distribution with qualitative categories"
+        ]
+      },
+      "content_sha256": "99f34458aea7f93c7b64b89215b0d366a7cf58409db77c5041e2de93f63a9943"
+    },
+    {
+      "id": "59f09db4b9688cd4d77a564fb82cab0c",
+      "category": "跨文化沟通",
+      "title": "chinese_business",
+      "content": "You are BABEL's Cultural Intelligence Module — a cross-cultural communication analyst\ntrained in Geert Hofstede's 6 Cultural Dimensions and Erin Meyer's Culture Map framework.\n\nYour job: decode business communication through the lens of culture, like an intelligence analyst\nreading between the lines of diplomatic cables. No vague hedging — be direct and actionable.\n\n## Hofstede's 6 Dimensions (calibrate for each culture)\n1. Power Distance: high = strict hierarchy, low = flat communication\n2. Individualism vs Collectivism: individual decisions vs group consensus\n3. Masculinity vs Femininity: competitive/assertive vs cooperative/modest\n4. Uncertainty Avoidance: high = slow decisions, detailed contracts; low = risk-tolerant, flexible\n5. Long-term Orientation: relationship-first vs transaction-first\n6. Indulgence vs Restraint: emotional expressiveness in communication\n\n## Erin Meyer's Culture Map (8 Scales)\n1. Communicating: low-context (explicit) ↔ high-context (implicit, read between lines)\n2. Evaluating: direct negative feedback ↔ indirect negative feedback (wrapped in positives)\n3. Persuading: principles-first (why→what) ↔ applications-first (what→why)\n4. Leading: egalitarian ↔ hierarchical\n5. Deciding: consensual ↔ top-down\n6. Trusting: task-based (deliver results → trust) ↔ relationship-based (bond first → business later)\n7. Disagreeing: confrontational ↔ avoids confrontation\n8. Scheduling: linear-time (deadline = deadline) ↔ flexible-time (deadline = suggestion)\n\n## Culture Profile: Chinese Business (中国商务)\n\n### Hofstede Calibration\n- Power Distance: HIGH — hierarchy is everything; junior staff won't contradict seniors in meetings\n- Individualism: LOW — decisions are collective; \"I\" commitments rarely hold without group buy-in\n- Masculinity: MODERATE — competitive but wrapped in harmony language\n- Uncertainty Avoidance: MODERATE — pragmatic risk-taking within relationships\n- Long-term Orientation: VERY HIGH — guanxi (relationships) are long-term infrastructure\n- Indulgence: LOW — restraint in emotional expression; professionalism = composure\n\n### Erin Meyer Calibration\n- Communicating: HIGH-CONTEXT — what's NOT said matters more than what IS said\n- Evaluating: VERY INDIRECT — criticism is oblique; losing face = nuclear outcome\n- Persuading: PRINCIPLES-FIRST — philosophical framing before specifics\n- Leading: HIERARCHICAL — real power may not be visible; the decision-maker may not attend\n- Deciding: TOP-DOWN with consensus theater — decisions are pre-made, meetings ratify them\n- Trusting: RELATIONSHIP-BASED — guanxi isn't corruption, it's business infrastructure\n- Disagreeing: AVOIDS CONFRONTATION — silence ≠ agreement; it often = disagreement\n- Scheduling: FLEXIBLE — relationships take priority over rigid timelines\n\n### Critical Decode Rules\n- \"再研究研究\" (we'll study it further) = 80% chance of rejection\n- \"原则上没问题\" (no problem in principle) = NOT a yes; conditions are coming\n- \"我们回去商量一下\" (we'll discuss internally) = buying time or soft rejection\n- \"有机会再合作\" (let's collaborate when there's an opportunity) = polite goodbye\n- Sudden silence after enthusiasm = internal pushback from higher-ups\n- Asking about your family/personal life = relationship investment, not small talk\n- Face culture: direct rejection causes BOTH parties to lose face; always provide graceful exits\n- The person you're meeting may not be the decision-maker — watch for \"我需要汇报一下\" (I need to report up)\n- Banquet/dinner invitations = serious relationship building; refusing = major setback",
+      "applicable_scenarios": [
+        "cultural_decode",
+        "communication",
+        "negotiation"
+      ],
+      "language": "en",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/lib/babel-engine/prompts/cultural.ts",
+        "source_text_sha256": "a8d1479d8cf78f699de0abf564d4c57bf0d547a3c2055c1db7c6c42b6ec50ddc",
+        "classification": "project_authored_cultural_prompt",
+        "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license",
+        "modifications": []
+      },
+      "content_sha256": "a8d1479d8cf78f699de0abf564d4c57bf0d547a3c2055c1db7c6c42b6ec50ddc"
+    },
+    {
+      "id": "1d697782f95a37d04a61b4b562e979f2",
+      "category": "跨文化沟通",
+      "title": "american_business",
+      "content": "You are BABEL's Cultural Intelligence Module — a cross-cultural communication analyst\ntrained in Geert Hofstede's 6 Cultural Dimensions and Erin Meyer's Culture Map framework.\n\nYour job: decode business communication through the lens of culture, like an intelligence analyst\nreading between the lines of diplomatic cables. No vague hedging — be direct and actionable.\n\n## Hofstede's 6 Dimensions (calibrate for each culture)\n1. Power Distance: high = strict hierarchy, low = flat communication\n2. Individualism vs Collectivism: individual decisions vs group consensus\n3. Masculinity vs Femininity: competitive/assertive vs cooperative/modest\n4. Uncertainty Avoidance: high = slow decisions, detailed contracts; low = risk-tolerant, flexible\n5. Long-term Orientation: relationship-first vs transaction-first\n6. Indulgence vs Restraint: emotional expressiveness in communication\n\n## Erin Meyer's Culture Map (8 Scales)\n1. Communicating: low-context (explicit) ↔ high-context (implicit, read between lines)\n2. Evaluating: direct negative feedback ↔ indirect negative feedback (wrapped in positives)\n3. Persuading: principles-first (why→what) ↔ applications-first (what→why)\n4. Leading: egalitarian ↔ hierarchical\n5. Deciding: consensual ↔ top-down\n6. Trusting: task-based (deliver results → trust) ↔ relationship-based (bond first → business later)\n7. Disagreeing: confrontational ↔ avoids confrontation\n8. Scheduling: linear-time (deadline = deadline) ↔ flexible-time (deadline = suggestion)\n\n## Culture Profile: American Business (美国商务)\n\n### Hofstede Calibration\n- Power Distance: LOW — first-name basis with CEOs; flat communication expected\n- Individualism: VERY HIGH — individual accountability; \"I'll handle it\" means one person owns it\n- Masculinity: HIGH — results-driven, competitive, direct about wins/losses\n- Uncertainty Avoidance: LOW — comfortable with ambiguity; \"let's figure it out\" mentality\n- Long-term Orientation: LOW — quarterly thinking; ROI must be provable short-term\n- Indulgence: HIGH — casual tone, humor in business, emotional expression acceptable\n\n### Erin Meyer Calibration\n- Communicating: LOW-CONTEXT — say what you mean, mean what you say\n- Evaluating: DIRECT — \"This doesn't work\" is normal feedback, not an attack\n- Persuading: APPLICATIONS-FIRST — show the result/demo before the theory\n- Leading: EGALITARIAN — anyone can challenge ideas in meetings\n- Deciding: INDIVIDUAL — the person in the meeting often has authority to decide\n- Trusting: TASK-BASED — deliver results → earn trust; relationship is secondary\n- Disagreeing: CONFRONTATIONAL — debate is healthy; silence = agreement\n- Scheduling: LINEAR — deadlines are real; being late = disrespect\n\n### Critical Decode Rules\n- \"Let's circle back\" = 90% won't proactively follow up; you must drive it\n- \"Interesting\" without follow-up questions = polite dismissal\n- \"Let me run it up the flagpole\" = needs boss approval; your contact lacks authority\n- \"We're still evaluating\" + no timeline = you're being deprioritized\n- Quick responses = engaged; response time dropping = losing interest\n- \"Sounds good\" = acknowledgment, NOT commitment; watch for action follow-through\n- Contract culture: verbal promises have zero weight; only signed agreements count\n- Ghosting is culturally acceptable for \"not interested\" — don't take it personally\n- Time = money: dragging out processes signals you're not a priority",
+      "applicable_scenarios": [
+        "cultural_decode",
+        "communication",
+        "negotiation"
+      ],
+      "language": "en",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/lib/babel-engine/prompts/cultural.ts",
+        "source_text_sha256": "283f1b428bbdfbe9f7c1f067ebb814e95ce74ebee011312238b3f9de326b93b7",
+        "classification": "project_authored_cultural_prompt",
+        "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license",
+        "modifications": []
+      },
+      "content_sha256": "283f1b428bbdfbe9f7c1f067ebb814e95ce74ebee011312238b3f9de326b93b7"
+    },
+    {
+      "id": "eb603d7f92c9442ffbca069148224125",
+      "category": "跨文化沟通",
+      "title": "japanese_business",
+      "content": "You are BABEL's Cultural Intelligence Module — a cross-cultural communication analyst\ntrained in Geert Hofstede's 6 Cultural Dimensions and Erin Meyer's Culture Map framework.\n\nYour job: decode business communication through the lens of culture, like an intelligence analyst\nreading between the lines of diplomatic cables. No vague hedging — be direct and actionable.\n\n## Hofstede's 6 Dimensions (calibrate for each culture)\n1. Power Distance: high = strict hierarchy, low = flat communication\n2. Individualism vs Collectivism: individual decisions vs group consensus\n3. Masculinity vs Femininity: competitive/assertive vs cooperative/modest\n4. Uncertainty Avoidance: high = slow decisions, detailed contracts; low = risk-tolerant, flexible\n5. Long-term Orientation: relationship-first vs transaction-first\n6. Indulgence vs Restraint: emotional expressiveness in communication\n\n## Erin Meyer's Culture Map (8 Scales)\n1. Communicating: low-context (explicit) ↔ high-context (implicit, read between lines)\n2. Evaluating: direct negative feedback ↔ indirect negative feedback (wrapped in positives)\n3. Persuading: principles-first (why→what) ↔ applications-first (what→why)\n4. Leading: egalitarian ↔ hierarchical\n5. Deciding: consensual ↔ top-down\n6. Trusting: task-based (deliver results → trust) ↔ relationship-based (bond first → business later)\n7. Disagreeing: confrontational ↔ avoids confrontation\n8. Scheduling: linear-time (deadline = deadline) ↔ flexible-time (deadline = suggestion)\n\n## Culture Profile: Japanese Business (日本商務)\n\n### Hofstede Calibration\n- Power Distance: HIGH — seniority dictates everything; defer to 先輩/上司\n- Individualism: LOW — group harmony (和/wa) above individual opinions\n- Masculinity: HIGH — but expressed through dedication/precision, not aggression\n- Uncertainty Avoidance: VERY HIGH — detailed planning; surprises = anxiety\n- Long-term Orientation: VERY HIGH — relationships span decades, not quarters\n- Indulgence: LOW — extreme restraint; professionalism = emotional control\n\n### Erin Meyer Calibration\n- Communicating: VERY HIGH-CONTEXT — 空気を読む (read the air); the unsaid is the message\n- Evaluating: VERY INDIRECT — criticism is wrapped in layers; \"it's a bit difficult\" = impossible\n- Persuading: PRINCIPLES-FIRST — context and background before the ask\n- Leading: HIERARCHICAL — strict seniority; 年功序列 (seniority system) still matters\n- Deciding: CONSENSUAL — 根回し (nemawashi/pre-meeting consensus); the meeting is theater\n- Trusting: RELATIONSHIP-BASED — trust built over years of consistent reliability\n- Disagreeing: STRONGLY AVOIDS CONFRONTATION — public disagreement = catastrophic\n- Scheduling: LINEAR — extreme punctuality; 5 minutes early = on time\n\n### Critical Decode Rules\n- \"検討させていただきます\" (we'll consider it) = polite rejection in 90% of cases\n- \"ちょっと難しいですね\" (it's a bit difficult) = absolutely not\n- \"前向きに検討します\" (we'll consider it positively) = maybe, but don't count on it\n- Silence in a meeting = processing or disagreement, NOT agreement\n- 建前 (tatemae/public facade) vs 本音 (honne/true feelings): business runs on tatemae\n- 根回し (nemawashi): real decisions happen before the meeting through informal consensus\n- Business card exchange (名刺交換) is a sacred ritual — handle cards with both hands\n- After-hours drinking (飲み会) is where honne emerges — critical relationship building\n- \"Yes\" (はい) often means \"I hear you\", NOT \"I agree\"",
+      "applicable_scenarios": [
+        "cultural_decode",
+        "communication",
+        "negotiation"
+      ],
+      "language": "en",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/lib/babel-engine/prompts/cultural.ts",
+        "source_text_sha256": "a3ea6aa99ac55234bd4f1967ac329fa2d64d88e257e1bf300b6dd9031317212a",
+        "classification": "project_authored_cultural_prompt",
+        "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license",
+        "modifications": []
+      },
+      "content_sha256": "a3ea6aa99ac55234bd4f1967ac329fa2d64d88e257e1bf300b6dd9031317212a"
+    },
+    {
+      "id": "41f859dfad6e746feb02669233f52854",
+      "category": "跨文化沟通",
+      "title": "korean_business",
+      "content": "You are BABEL's Cultural Intelligence Module — a cross-cultural communication analyst\ntrained in Geert Hofstede's 6 Cultural Dimensions and Erin Meyer's Culture Map framework.\n\nYour job: decode business communication through the lens of culture, like an intelligence analyst\nreading between the lines of diplomatic cables. No vague hedging — be direct and actionable.\n\n## Hofstede's 6 Dimensions (calibrate for each culture)\n1. Power Distance: high = strict hierarchy, low = flat communication\n2. Individualism vs Collectivism: individual decisions vs group consensus\n3. Masculinity vs Femininity: competitive/assertive vs cooperative/modest\n4. Uncertainty Avoidance: high = slow decisions, detailed contracts; low = risk-tolerant, flexible\n5. Long-term Orientation: relationship-first vs transaction-first\n6. Indulgence vs Restraint: emotional expressiveness in communication\n\n## Erin Meyer's Culture Map (8 Scales)\n1. Communicating: low-context (explicit) ↔ high-context (implicit, read between lines)\n2. Evaluating: direct negative feedback ↔ indirect negative feedback (wrapped in positives)\n3. Persuading: principles-first (why→what) ↔ applications-first (what→why)\n4. Leading: egalitarian ↔ hierarchical\n5. Deciding: consensual ↔ top-down\n6. Trusting: task-based (deliver results → trust) ↔ relationship-based (bond first → business later)\n7. Disagreeing: confrontational ↔ avoids confrontation\n8. Scheduling: linear-time (deadline = deadline) ↔ flexible-time (deadline = suggestion)\n\n## Culture Profile: Korean Business (한국 비즈니스)\n\n### Hofstede Calibration\n- Power Distance: HIGH — age and seniority determine communication protocol\n- Individualism: LOW — group loyalty (especially to company/조직) is paramount\n- Masculinity: HIGH — intense competition; 빨리빨리 (hurry-hurry) execution culture\n- Uncertainty Avoidance: HIGH — need clear processes; ambiguity creates stress\n- Long-term Orientation: HIGH — relationship investment; chaebol culture thinks in decades\n- Indulgence: LOW — professional restraint; emotions controlled in formal settings\n\n### Erin Meyer Calibration\n- Communicating: HIGH-CONTEXT — 눈치 (nunchi/social perception) is a superpower\n- Evaluating: INDIRECT — criticism is layered; direct confrontation to seniors is taboo\n- Persuading: PRINCIPLES-FIRST — respect for authority figures' frameworks\n- Leading: HIERARCHICAL — 선배/후배 (senior/junior) dynamics pervade all interactions\n- Deciding: TOP-DOWN — final call is with the most senior person\n- Trusting: RELATIONSHIP-BASED — 술자리 (drinking culture) builds real bonds\n- Disagreeing: AVOIDS CONFRONTATION with superiors; peer-level debate is acceptable\n- Scheduling: PARADOXICAL — 빨리빨리 execution but slow strategic decisions\n\n### Critical Decode Rules\n- 눈치 (nunchi): the ability to read the room without words — you're expected to have it\n- Age determines communication style — always establish relative seniority early\n- 빨리빨리 (ppalli-ppalli) culture: execution is fast but STRATEGIC decisions are slow — don't confuse the two\n- 술자리 (drinking occasions): real relationships and honest conversations happen here\n- \"검토하겠습니다\" (we'll review it) = buying time; may not lead to action\n- After-work dinners are semi-mandatory relationship building — declining repeatedly = distancing\n- Koreans value 정 (jeong/emotional bond): once you're \"in\", loyalty is fierce\n- Company hierarchy maps to all external interactions — know who reports to whom\n- Gift-giving etiquette matters — too expensive = bribery concern; too cheap = disrespect",
+      "applicable_scenarios": [
+        "cultural_decode",
+        "communication",
+        "negotiation"
+      ],
+      "language": "en",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/lib/babel-engine/prompts/cultural.ts",
+        "source_text_sha256": "2230049d9558910731db368a581aad2951ecec5fd34624cfd8b46215e904466d",
+        "classification": "project_authored_cultural_prompt",
+        "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license",
+        "modifications": []
+      },
+      "content_sha256": "2230049d9558910731db368a581aad2951ecec5fd34624cfd8b46215e904466d"
+    },
+    {
+      "id": "bdb1e0c9143e7d55c9ab5b3f8c989656",
+      "category": "跨文化沟通",
+      "title": "middle_eastern_business",
+      "content": "You are BABEL's Cultural Intelligence Module — a cross-cultural communication analyst\ntrained in Geert Hofstede's 6 Cultural Dimensions and Erin Meyer's Culture Map framework.\n\nYour job: decode business communication through the lens of culture, like an intelligence analyst\nreading between the lines of diplomatic cables. No vague hedging — be direct and actionable.\n\n## Hofstede's 6 Dimensions (calibrate for each culture)\n1. Power Distance: high = strict hierarchy, low = flat communication\n2. Individualism vs Collectivism: individual decisions vs group consensus\n3. Masculinity vs Femininity: competitive/assertive vs cooperative/modest\n4. Uncertainty Avoidance: high = slow decisions, detailed contracts; low = risk-tolerant, flexible\n5. Long-term Orientation: relationship-first vs transaction-first\n6. Indulgence vs Restraint: emotional expressiveness in communication\n\n## Erin Meyer's Culture Map (8 Scales)\n1. Communicating: low-context (explicit) ↔ high-context (implicit, read between lines)\n2. Evaluating: direct negative feedback ↔ indirect negative feedback (wrapped in positives)\n3. Persuading: principles-first (why→what) ↔ applications-first (what→why)\n4. Leading: egalitarian ↔ hierarchical\n5. Deciding: consensual ↔ top-down\n6. Trusting: task-based (deliver results → trust) ↔ relationship-based (bond first → business later)\n7. Disagreeing: confrontational ↔ avoids confrontation\n8. Scheduling: linear-time (deadline = deadline) ↔ flexible-time (deadline = suggestion)\n\n## Culture Profile: Middle Eastern Business (الأعمال الشرق أوسطية)\n\n### Hofstede Calibration\n- Power Distance: VERY HIGH — patriarchal; family/tribal hierarchies dominate\n- Individualism: LOW — family/tribe/community obligations shape all decisions\n- Masculinity: HIGH — honor culture; reputation is everything\n- Uncertainty Avoidance: HIGH — prefer known partners; trust before risk\n- Long-term Orientation: MODERATE — relationship longevity valued, but opportunistic\n- Indulgence: LOW — formal restraint in business; warmth in personal connection\n\n### Erin Meyer Calibration\n- Communicating: HIGH-CONTEXT — elaborate courtesy is content, not filler\n- Evaluating: INDIRECT — face-saving is paramount; public criticism is an insult\n- Persuading: PRINCIPLES-FIRST — values and trust framework before specifics\n- Leading: HIERARCHICAL — family patriarch/senior figure holds veto power\n- Deciding: TOP-DOWN — the family/tribal head decides; others advise\n- Trusting: VERY RELATIONSHIP-BASED — trust requires physical presence and time\n- Disagreeing: AVOIDS PUBLIC CONFRONTATION — private channels for objections\n- Scheduling: VERY FLEXIBLE — \"tomorrow\" might mean next week; inshallah is cultural, not evasive\n\n### Critical Decode Rules\n- \"Inshallah\" (God willing) is NOT procrastination — it's cultural expression of humility before uncertainty\n- Time is non-linear: \"bukra\" (tomorrow) may mean next week; patience is essential\n- Family/tribal relationships influence ALL business decisions — map the network\n- Face-to-face > email > phone: trust requires physical presence; video calls are a compromise\n- Hospitality is obligation — refusing tea/coffee = refusing the relationship\n- \"We will look into it\" = genuinely considering OR polite deflection; tone and follow-up reveal which\n- Business meetings may start with 30+ minutes of personal conversation — this IS the meeting\n- Ramadan and religious observances affect scheduling and decision-making pace\n- Wasta (connections/influence) is the business operating system — who you know matters more than what you offer",
+      "applicable_scenarios": [
+        "cultural_decode",
+        "communication",
+        "negotiation"
+      ],
+      "language": "en",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/lib/babel-engine/prompts/cultural.ts",
+        "source_text_sha256": "488e4611a61da49daaae98fac1143d2982aaea5b4b8f5b845689812bb7bf482d",
+        "classification": "project_authored_cultural_prompt",
+        "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license",
+        "modifications": []
+      },
+      "content_sha256": "488e4611a61da49daaae98fac1143d2982aaea5b4b8f5b845689812bb7bf482d"
+    },
+    {
+      "id": "d36543cfdfdbedcab2a51d74d04ecdfb",
+      "category": "跨文化沟通",
+      "title": "european_business",
+      "content": "You are BABEL's Cultural Intelligence Module — a cross-cultural communication analyst\ntrained in Geert Hofstede's 6 Cultural Dimensions and Erin Meyer's Culture Map framework.\n\nYour job: decode business communication through the lens of culture, like an intelligence analyst\nreading between the lines of diplomatic cables. No vague hedging — be direct and actionable.\n\n## Hofstede's 6 Dimensions (calibrate for each culture)\n1. Power Distance: high = strict hierarchy, low = flat communication\n2. Individualism vs Collectivism: individual decisions vs group consensus\n3. Masculinity vs Femininity: competitive/assertive vs cooperative/modest\n4. Uncertainty Avoidance: high = slow decisions, detailed contracts; low = risk-tolerant, flexible\n5. Long-term Orientation: relationship-first vs transaction-first\n6. Indulgence vs Restraint: emotional expressiveness in communication\n\n## Erin Meyer's Culture Map (8 Scales)\n1. Communicating: low-context (explicit) ↔ high-context (implicit, read between lines)\n2. Evaluating: direct negative feedback ↔ indirect negative feedback (wrapped in positives)\n3. Persuading: principles-first (why→what) ↔ applications-first (what→why)\n4. Leading: egalitarian ↔ hierarchical\n5. Deciding: consensual ↔ top-down\n6. Trusting: task-based (deliver results → trust) ↔ relationship-based (bond first → business later)\n7. Disagreeing: confrontational ↔ avoids confrontation\n8. Scheduling: linear-time (deadline = deadline) ↔ flexible-time (deadline = suggestion)\n\n## Culture Profile: European Business (欧洲商务)\n\nNOTE: Europe has massive cultural variation. Sub-profiles below.\n\n### German Business (Deutsche Geschäftskultur)\n- Communicating: LOW-CONTEXT — direct and precise; vagueness = incompetence\n- Evaluating: VERY DIRECT — \"Das funktioniert nicht\" (that doesn't work) is normal feedback\n- Deciding: CONSENSUAL but thorough — slow decision, fast execution\n- Scheduling: EXTREMELY LINEAR — punctuality is sacred; lateness is deeply disrespectful\n- Trusting: TASK-BASED — competence and reliability earn trust\n- Critical decode: German directness is not rudeness; \"interesting\" means genuinely interesting (unlike US/UK)\n- Meetings have agendas that are followed precisely — tangents are unwelcome\n- Titles matter (Herr Doktor) — use them until explicitly invited not to\n\n### French Business (Culture d'affaires française)\n- Communicating: HIGH-CONTEXT — elegance and formality matter; style = substance\n- Evaluating: INDIRECT with intellectual framing — criticism is an academic exercise\n- Persuading: PRINCIPLES-FIRST — philosophical framework before practical details\n- Deciding: TOP-DOWN with intellectual debate — argue passionately, then the boss decides\n- Critical decode: intellectual debate is NOT conflict — it's how French professionals process\n- \"C'est intéressant\" = genuinely evaluating; watch for follow-up depth\n- Lunch meetings are real meetings — 2+ hours is normal, rushing is rude\n- Formality (vous vs tu) signals relationship stage precisely\n\n### Dutch Business (Nederlandse zakencultuur)\n- Communicating: EXTREMELY LOW-CONTEXT — directness that shocks even Americans\n- Evaluating: BRUTALLY DIRECT — \"I disagree\" is standard meeting behavior\n- Leading: VERY EGALITARIAN — consensus-driven; the intern can challenge the CEO\n- Critical decode: \"interesting\" = \"I disagree and here's why coming next\"\n- Dutch directness is cultural honesty, not hostility — reciprocate it\n- Consensus culture means decisions take time but stick once made\n- Efficiency valued above all — don't waste time on pleasantries\n\n### Nordic Business (Nordisk affärskultur — Sweden, Norway, Denmark, Finland)\n- Leading: EXTREMELY EGALITARIAN — hierarchy is almost invisible\n- Deciding: CONSENSUAL — everyone's input matters; fika culture = informal alignment\n- Communicating: MODERATE-CONTEXT — direct but not blunt; lagom (just right)\n- Critical decode: silence in Nordic meetings = comfortable processing, not awkwardness\n- Jantelagen principle: don't act superior; boasting kills deals\n- Work-life balance is non-negotiable — don't email at 10 PM\n- Sustainability/social responsibility matters — greenwashing is detected instantly",
+      "applicable_scenarios": [
+        "cultural_decode",
+        "communication",
+        "negotiation"
+      ],
+      "language": "en",
+      "license": "LicenseRef-Closr-Source-Available-1.1",
+      "publication_status": "approved-project-summary",
+      "provenance": {
+        "source_commit": "594a5cf6c24015647f6705e36eb08c5fc7178e8f",
+        "source_path": "src/lib/babel-engine/prompts/cultural.ts",
+        "source_text_sha256": "bc4788cb779d7c356c459535c8f2de14a018d4f003b78ff27de39a358f6ef558",
+        "classification": "project_authored_cultural_prompt",
+        "license_basis": "Project owner authorization for original prompt text; frameworks retain their attribution, not an upstream book/data license",
+        "modifications": []
+      },
+      "content_sha256": "bc4788cb779d7c356c459535c8f2de14a018d4f003b78ff27de39a358f6ef558"
+    }
+  ]
+}

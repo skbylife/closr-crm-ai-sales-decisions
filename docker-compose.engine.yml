@@ -1,0 +1,83 @@
+# Closr Judgment Engine — Docker Compose PoC
+# P0: standalone engine deployment with Postgres + pgvector
+# Usage: docker compose -f docker-compose.engine.yml up -d
+# Access: http://localhost:3109/engine (preview UI)
+#         POST http://localhost:3109/api/engine/judgment/snapshot (API)
+#
+# Supply ENGINE_DB_PASSWORD via your local environment or docker compose --env-file.
+# Never commit a real database password.
+
+services:
+  # ── Postgres + pgvector ─────────────────────────────────
+  engine-db:
+    image: pgvector/pgvector:pg16
+    container_name: closr-engine-db
+    environment:
+      POSTGRES_DB: closr_engine
+      POSTGRES_USER: engine
+      POSTGRES_PASSWORD: ${ENGINE_DB_PASSWORD:?Set your own ENGINE_DB_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U engine -d closr_engine"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+    volumes:
+      - engine-pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+
+  # ── Engine DB migration ─────────────────────────────────
+  engine-migrate:
+    image: postgres:16
+    container_name: closr-engine-migrate
+    entrypoint: ["bash", "-c"]
+    command: >
+      until pg_isready -h engine-db -U engine -d closr_engine; do sleep 1; done
+      && psql "$${ENGINE_DATABASE_URL}" -f /migrations/038_engine_core.sql
+      && echo "Engine migration: done"
+    environment:
+      ENGINE_DATABASE_URL: postgresql://engine:${ENGINE_DB_PASSWORD:?Set your own ENGINE_DB_PASSWORD}@engine-db:5432/closr_engine
+    volumes:
+      - ./src/lib/migrations:/migrations:ro
+    depends_on:
+      engine-db:
+        condition: service_healthy
+
+  # ── Engine Next.js app ──────────────────────────────────
+  engine-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL:-http://engine-db:5432}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY:-placeholder-key}
+    image: closr-engine:latest
+    container_name: closr-engine-app
+    ports:
+      - "${ENGINE_PORT:-3100}:3000"
+    environment:
+      # Database (required for persist=true + migration verification)
+      DATABASE_URL: postgresql://engine:${ENGINE_DB_PASSWORD:?Set your own ENGINE_DB_PASSWORD}@engine-db:5432/closr_engine
+      SUPABASE_DB_URL: postgresql://engine:${ENGINE_DB_PASSWORD:?Set your own ENGINE_DB_PASSWORD}@engine-db:5432/closr_engine
+      PG_SSL: "false"
+      # Model endpoint (optional — builder is pure-rule in P0)
+      AI_API_KEY: ${AI_API_KEY:-}
+      AI_PROVIDER: ${AI_PROVIDER:-deepseek}
+      AI_MODEL: ${AI_MODEL:-deepseek-chat}
+      # Next runtime
+      NODE_ENV: production
+      PORT: "3000"
+      # Required for Closr app startup (no-op placeholder for engine-only mode)
+      NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL:-http://engine-db:5432}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY:-placeholder-key}
+      CLOSR_SELF_HOSTED_SUPABASE: "1"
+      DEPLOY_TARGET: customer-self-hosted-enterprise
+    restart: unless-stopped
+    depends_on:
+      engine-migrate:
+        condition: service_completed_successfully
+
+volumes:
+  engine-pgdata:

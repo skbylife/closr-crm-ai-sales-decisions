@@ -1,21 +1,21 @@
+import { createNativeServerClient } from '@/lib/native-client/server';
+import { isNativeDatabase } from '@/lib/database-backend';
 // Supabase — Server Client
 // Used in server components, API routes, and server actions.
 
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
-import { getPublicRuntimeConfig } from "@/lib/community/public-runtime-config";
 
 // TODO: Add typed database schema once tables are created
 // TODO: Add service role client for admin operations
 
 export async function createClient() {
+  if (isNativeDatabase()) return createNativeServerClient();
   const cookieStore = await cookies();
-  const config = getPublicRuntimeConfig();
-  if (!config) throw new Error('supabase_unavailable');
 
   return createServerClient(
-    config.url,
-    config.anonKey,
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
         getAll() {

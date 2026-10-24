@@ -1,0 +1,39 @@
+{
+  "tenantId": "tenant_demo",
+  "accountId": "acct_customer_c",
+  "opportunityId": "opp_5g_ops_rfp",
+  "sources": [
+    {
+      "id": "src_rfp_doc_001",
+      "tenantId": "tenant_demo",
+      "sourceType": "rfp",
+      "externalSourceId": "rfp_5g_ops_001",
+      "accountId": "acct_customer_c",
+      "opportunityId": "opp_5g_ops_rfp",
+      "contactIds": ["contact_procurement_c"],
+      "occurredAt": "2026-06-18T08:00:00.000Z",
+      "author": {
+        "side": "customer",
+        "name": "招采办公室"
+      },
+      "content": "RFP 要求两周内提交投标文件，评分标准强调 OSS/BSS 集成、MTTR 降低、故障预测准确率和本地交付能力。采购流程显示技术澄清会后直接进入评标。",
+      "metadata": {
+        "scenario": "rfp-tender"
+      }
+    },
+    {
+      "id": "src_rfp_meeting_002",
+      "tenantId": "tenant_demo",
+      "sourceType": "meeting",
+      "accountId": "acct_customer_c",
+      "opportunityId": "opp_5g_ops_rfp",
+      "contactIds": ["contact_technical_c"],
+      "occurredAt": "2026-06-19T11:00:00.000Z",
+      "author": {
+        "side": "seller",
+        "name": "Solution Lead"
+      },
+      "content": "技术联系人提醒 RFP 可能已有倾向供应商，若无法在技术澄清前证明 OSS/BSS 集成和 MTTR 价值，投标会变成陪标。"
+    }
+  ]
+}

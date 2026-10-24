@@ -1,8 +1,17 @@
-import { createBrowserClient } from '@supabase/ssr';
+import { createNativeBrowserClient } from '@/lib/native-client/browser';
+import { isNativeDatabase } from '@/lib/database-backend';
+// Supabase — Browser Client
+// Used in client components for real-time subscriptions and auth state.
 
-export type BrowserPublicConfig = Readonly<{ url: string; anonKey: string }>;
+import { createBrowserClient } from "@supabase/ssr";
 
-export function createClient(config: BrowserPublicConfig) {
-  if (!config?.url || !config?.anonKey) throw new Error('supabase_unavailable');
-  return createBrowserClient(config.url, config.anonKey);
+// TODO: Add typed database schema once tables are created
+// TODO: Add real-time channel subscriptions for inbox updates
+
+export function createClient() {
+  if (isNativeDatabase()) return createNativeBrowserClient();
+  return createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
 }

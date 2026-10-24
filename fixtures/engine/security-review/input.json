@@ -1,0 +1,39 @@
+{
+  "tenantId": "tenant_demo",
+  "accountId": "acct_customer_b",
+  "opportunityId": "opp_bank_security_review",
+  "sources": [
+    {
+      "id": "src_security_email_001",
+      "tenantId": "tenant_demo",
+      "sourceType": "email",
+      "externalSourceId": "email_security_001",
+      "accountId": "acct_customer_b",
+      "opportunityId": "opp_bank_security_review",
+      "contactIds": ["contact_security"],
+      "occurredAt": "2026-06-18T14:30:00.000Z",
+      "author": {
+        "side": "customer",
+        "name": "安全合规负责人"
+      },
+      "content": "安全委员会要求先完成数据驻留、审计日志、权限隔离和模型供应商合规说明。没有通过安全评审前，POC 不能进入生产环境。",
+      "metadata": {
+        "scenario": "security-review"
+      }
+    },
+    {
+      "id": "src_security_note_002",
+      "tenantId": "tenant_demo",
+      "sourceType": "crm_note",
+      "accountId": "acct_customer_b",
+      "opportunityId": "opp_bank_security_review",
+      "contactIds": ["contact_champion_b"],
+      "occurredAt": "2026-06-19T10:15:00.000Z",
+      "author": {
+        "side": "seller",
+        "name": "AM"
+      },
+      "content": "业务 sponsor 想推进试点，但法务和安全合规要求看到数据处理附录、审计证据和私有化部署边界。"
+    }
+  ]
+}

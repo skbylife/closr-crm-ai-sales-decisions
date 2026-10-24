@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#0a0a0a;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#0a0a0a;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="480" cellpadding="0" cellspacing="0" style="max-width:480px;width:100%;">
+          <tr>
+            <td align="center" style="padding-bottom:32px;">
+              <div style="display:inline-block;background-color:#c0392b;color:#ffffff;font-size:20px;font-weight:700;width:44px;height:44px;line-height:44px;text-align:center;border-radius:12px;">C</div>
+              <span style="display:inline-block;vertical-align:middle;margin-left:12px;font-size:24px;font-weight:700;color:#ffffff;letter-spacing:-0.5px;">Closr</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:#141414;border:1px solid #262626;border-radius:16px;padding:40px 36px;">
+              <h1 style="margin:0 0 8px;font-size:22px;font-weight:700;color:#ffffff;text-align:center;">您被邀请加入 Closr</h1>
+              <p style="margin:0 0 28px;font-size:14px;color:#888888;text-align:center;line-height:1.5;">您的同事邀请您加入团队，一起使用 Closr 管理销售流程。<br>点击下方按钮接受邀请并设置密码。</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="padding:4px 0 28px;">
+                    <a href="{{ .ConfirmationURL }}" style="display:inline-block;background-color:#c0392b;color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;padding:14px 40px;border-radius:10px;letter-spacing:0.3px;">接受邀请</a>
+                  </td>
+                </tr>
+              </table>
+              <hr style="border:none;border-top:1px solid #262626;margin:0 0 20px;">
+              <p style="margin:0;font-size:12px;color:#666666;text-align:center;line-height:1.6;">
+                如果按钮无法点击，请复制以下链接到浏览器：<br>
+                <a href="{{ .ConfirmationURL }}" style="color:#c0392b;text-decoration:underline;word-break:break-all;">{{ .ConfirmationURL }}</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 0 0;text-align:center;">
+              <p style="margin:0;font-size:12px;color:#555555;line-height:1.5;">
+                此邮件由 <span style="color:#888888;">Closr</span> 自动发送<br>
+                AI-Powered Sales Intelligence Platform
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

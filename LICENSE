@@ -1,4 +1,4 @@
-Closr Community Source-Available License, Version 1.0
+Closr Source-Available License, Version 1.1
 
 Copyright 2026 Zhaocheng Liu
 
@@ -7,12 +7,12 @@ Software under these terms.
 
 1. Definitions
 
-"Covered Software" means the original Closr Community application source and
-object code expressly identified as licensed under this license, together with
-modifications to that code. It excludes Third-Party Materials, the separate
-proprietary Closr Engine, BABEL, private prompts, proprietary strategy logic,
-evaluation data, hosted Engine services, and any other material not expressly
-identified as Covered Software.
+"Covered Software" means the original Closr application source and object code
+in this distribution, including Closr Engine, BABEL, prompts, and strategy logic,
+and the original general-knowledge text, rules, and seed data included in this
+distribution, together with modifications to those materials. It excludes
+Third-Party Materials, customer or personal records, credentials, hosted services,
+and any other material not included in this distribution.
 
 "Third-Party Materials" means software, data, images, documentation, and other
 material included with or used by the Covered Software under a different
@@ -67,10 +67,11 @@ to the Covered Software and do not replace any Third-Party Materials license.
 5. Notices, separate components, and marks
 
 Keep the license and attribution notices for Covered Software and each
-Third-Party Material you distribute. This license grants no rights to the
-private Closr Engine, its API, model providers, customer data, or the Closr name
-and logos, except factual identification of the Covered Software's origin.
-Access to an Engine service requires separate authorization and terms.
+Third-Party Material you distribute. This license grants no rights to hosted Closr services, model providers,
+customer data, or the Closr name and logos, except factual identification of the
+Covered Software's origin. Access to a hosted Engine service requires separate
+authorization and terms. The Engine source included in this distribution is
+Covered Software.
 
 6. Previously granted licenses
 

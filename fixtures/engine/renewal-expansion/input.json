@@ -1,0 +1,41 @@
+{
+  "tenantId": "tenant_demo",
+  "accountId": "acct_customer_a",
+  "opportunityId": "opp_aiops_renewal",
+  "sources": [
+    {
+      "id": "src_renewal_email_001",
+      "tenantId": "tenant_demo",
+      "sourceType": "email",
+      "externalSourceId": "email_renewal_001",
+      "accountId": "acct_customer_a",
+      "opportunityId": "opp_aiops_renewal",
+      "contactIds": ["contact_procurement"],
+      "occurredAt": "2026-06-18T12:00:00.000Z",
+      "author": {
+        "side": "customer",
+        "name": "采购负责人",
+        "email": "buyer@example.com"
+      },
+      "content": "今年集团有 5% 年降目标，TCS 报价更低。CFO 需要看到 AIOps 一年回本证明后再进入预算评审。",
+      "metadata": {
+        "scenario": "renewal-expansion"
+      }
+    },
+    {
+      "id": "src_renewal_meeting_002",
+      "tenantId": "tenant_demo",
+      "sourceType": "meeting",
+      "externalSourceId": "meeting_renewal_002",
+      "accountId": "acct_customer_a",
+      "opportunityId": "opp_aiops_renewal",
+      "contactIds": ["contact_champion", "contact_cfo"],
+      "occurredAt": "2026-06-19T09:00:00.000Z",
+      "author": {
+        "side": "seller",
+        "name": "AE"
+      },
+      "content": "Champion 表示业务团队认可技术方案，但 CFO 仍要求 ROI 模型明确一年回本，采购仍围绕年降和竞品报价谈判。"
+    }
+  ]
+}

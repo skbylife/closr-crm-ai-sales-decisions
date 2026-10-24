@@ -1,7 +1,4 @@
-import { getSupabaseAdmin } from '@/lib/supabase';
-import { getOrgIdForUser } from '@/lib/get-org-id';
-import { withCache, permissionCache, PERMISSION_TTL } from '@/lib/cache';
-type PlayMomentum = 'progressing' | 'active' | 'slowing' | 'stalled' | 'blocked';
+import type { Account, PlayMomentum } from '@/lib/babel-engine/types';
 
 // OrgRole: 平台管理权限（能不能邀请人、改设置）
 // 保留 'manager' 兼容历史 DB 数据，逻辑上等同 'member'
@@ -22,10 +19,6 @@ export interface UserContext {
 /**
  * 获取当前用户的完整权限上下文（带 5 分钟缓存）
  */
-export async function getUserContext(userId: string, options: { fresh?: boolean } = {}): Promise<UserContext | null> {
-  if (options.fresh) return _fetchUserContext(userId);
-  return withCache(permissionCache as import('@/lib/cache').MemoryCache<UserContext | null>, `user_ctx:${userId}`, PERMISSION_TTL, () => _fetchUserContext(userId));
-}
 
 export function getRoleLevel(orgRole: OrgRole): RoleLevel {
   return orgRole === 'owner' || orgRole === 'admin' ? 'admin' : 'member';
@@ -45,47 +38,11 @@ export function canAccessAssignedAccounts(jobLevel: number): boolean {
   return !canViewAllAccounts(jobLevel);
 }
 
-export function filterVisibleAccounts<T extends { ownerId?: string | null; userId?: string | null }>(accounts: T[], ctx: Pick<UserContext, 'userId' | 'jobLevel'>): T[] {
+export function filterVisibleAccounts(accounts: Account[], ctx: Pick<UserContext, 'userId' | 'jobLevel'>): Account[] {
   if (canViewAllAccounts(ctx.jobLevel)) return accounts;
   return accounts.filter((account) => (account.ownerId ?? account.userId) === ctx.userId);
 }
 
-async function _fetchUserContext(userId: string): Promise<UserContext | null> {
-  const orgId = await getOrgIdForUser(userId);
-  if (!orgId) return null;
-
-  const admin = getSupabaseAdmin();
-  if (!admin) return null;
-
-  const { data: membership } = await admin
-    .from('org_memberships')
-    .select('role, team_id, job_level, role_level')
-    .eq('user_id', userId)
-    .eq('org_id', orgId)
-    .single();
-
-  if (!membership) return null;
-
-  const orgRole = membership.role as OrgRole;
-  // 优先读 job_level，兼容旧 role_level
-  const jobLevel = Math.min((membership.job_level as number) ?? (membership.role_level as number) ?? 0, 2);
-  const teamId = membership.team_id as string | null;
-
-  // Director (jobLevel >= 1) 且有 teamId → 获取团队成员 IDs
-  let teamMemberIds: string[] = [userId];
-  if (jobLevel >= 1 && teamId) {
-    const { data: members } = await admin
-      .from('org_memberships')
-      .select('user_id')
-      .eq('org_id', orgId)
-      .eq('team_id', teamId);
-
-    teamMemberIds = (members ?? []).map(m => m.user_id);
-    if (!teamMemberIds.includes(userId)) teamMemberIds.push(userId);
-  }
-
-  return { userId, orgId, orgRole, roleLevel: getRoleLevel(orgRole), jobLevel, teamId, teamMemberIds };
-}
 
 /**
  * 根据 jobLevel 决定数据范围

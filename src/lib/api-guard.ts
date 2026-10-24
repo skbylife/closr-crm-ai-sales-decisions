@@ -9,8 +9,9 @@
  */
 
 import { getAuthUser } from '@/lib/api-auth';
-import { getUserContext, type UserContext, type OrgRole, type DataScope, canViewScope } from '@/lib/permissions';
-import { getSupabaseAdmin } from '@/lib/supabase';
+import { getUserContext } from '@/lib/permissions-server';
+import { type UserContext, type OrgRole, type DataScope, canViewScope } from '@/lib/permissions';
+import { getSupabaseAdmin } from '@/lib/supabase/admin';
 import type { SupabaseClient } from '@supabase/supabase-js';
 
 // Role hierarchy: owner > admin > manager > member
@@ -203,6 +204,6 @@ export function guardResponse(err: unknown): Response {
   if (err instanceof ApiError) {
     return Response.json({ error: err.message }, { status: err.status });
   }
-  console.error('[api-guard] Unexpected error');
+  console.error('[api-guard] Unexpected error:', err);
   return Response.json({ error: '服务器错误' }, { status: 500 });
 }

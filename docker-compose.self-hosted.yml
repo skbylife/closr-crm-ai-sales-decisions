@@ -1,0 +1,71 @@
+name: closr-self-hosted
+
+x-app-build: &app-build
+  context: .
+  dockerfile: Dockerfile
+  args:
+    NEXT_PUBLIC_CLOSR_DATABASE_BACKEND: postgres
+
+x-app-environment: &app-environment
+  CLOSR_DATABASE_BACKEND: postgres
+  NEXT_PUBLIC_CLOSR_DATABASE_BACKEND: postgres
+  DATABASE_URL: postgresql://closr:${POSTGRES_PASSWORD:?Run node scripts/native-init.mjs first}@db:5432/closr
+  PG_SSL: "false"
+  NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+  CLOSR_DATA_DIR: /data/closr
+  CLOSR_STORAGE_DIR: /data/closr/uploads
+  AI_PROVIDER: ${AI_PROVIDER:-disabled}
+  AI_BASE_URL: ${AI_BASE_URL:-}
+  AI_API_KEY: ${AI_API_KEY:-}
+  AI_MODEL: ${AI_MODEL:-}
+  AI_EMBEDDING_MODEL: ${AI_EMBEDDING_MODEL:-}
+  NEXT_TELEMETRY_DISABLED: "1"
+
+services:
+  db:
+    image: pgvector/pgvector:0.8.0-pg16@sha256:a132765ec351c65111b5b675928a3a0515a466a40f97277329db8b8209ad8bc9
+    environment:
+      POSTGRES_DB: closr
+      POSTGRES_USER: closr
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run node scripts/native-init.mjs first}
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U closr -d closr"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  migrate:
+    build: *app-build
+    image: closr:self-hosted
+    environment: *app-environment
+    command: ["node", "scripts/native-startup.mjs"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  app:
+    build: *app-build
+    image: closr:self-hosted
+    environment: *app-environment
+    ports:
+      - "${CLOSR_BIND_ADDRESS:-127.0.0.1}:${CLOSR_PORT:-3000}:3000"
+    volumes:
+      - application-data:/data/closr
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    restart: unless-stopped
+
+volumes:
+  database:
+  application-data:

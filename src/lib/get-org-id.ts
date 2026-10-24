@@ -1,5 +1,5 @@
 // 服务端获取用户的 org_id（从 org_memberships 表查询）
-import { getSupabaseAdmin } from '@/lib/supabase';
+import { getSupabaseAdmin } from '@/lib/supabase/admin';
 
 /**
  * 根据 userId 获取其所属组织 ID。
