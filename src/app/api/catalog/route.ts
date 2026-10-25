@@ -55,7 +55,8 @@ async function mutate(request: Request, operation: 'create' | 'update' | 'delete
     if (table === 'products') {
       if (typeof body.unit_price !== 'number' || !Number.isFinite(body.unit_price) || body.unit_price < 0) throw new ApiError(400, 'Invalid price');
       if (typeof body.currency !== 'string' || !/^[A-Z]{3}$/.test(body.currency)) throw new ApiError(400, 'Invalid currency');
-      values = { name: text(body.name, true), sku: text(body.sku ?? ''), description: text(body.description ?? ''), category: text(body.category ?? ''), unit_price: body.unit_price, currency: body.currency, updated_at: new Date().toISOString() };
+      if (body.is_active !== undefined && typeof body.is_active !== 'boolean') throw new ApiError(400, 'Invalid product status');
+      values = { name: text(body.name, true), sku: text(body.sku ?? ''), description: text(body.description ?? ''), category: text(body.category ?? ''), unit_price: body.unit_price, currency: body.currency, ...(body.is_active !== undefined ? { is_active: body.is_active } : operation === 'create' ? { is_active: true } : {}), updated_at: new Date().toISOString() };
     } else if (operation === 'update') {
       if (!statuses.has(body.status)) throw new ApiError(400, 'Invalid quote status');
       values = { status: body.status, updated_at: new Date().toISOString() };

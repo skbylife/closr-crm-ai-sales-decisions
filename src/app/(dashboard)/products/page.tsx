@@ -2,14 +2,15 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { useLocale } from '@/lib/i18n';
+import { Package, FileText, Search } from 'lucide-react';
 import { appConfirm } from '@/lib/confirm-store';
 
-type Product = { id: string; name: string; sku: string | null; description: string | null; unit_price: number; currency: string; category: string | null };
+type Product = { id: string; name: string; sku: string | null; description: string | null; unit_price: number; currency: string; category: string | null; is_active: boolean | null };
 type Quote = { id: string; quote_number: string; account_id: string; opportunity_id: string; status: string; total: number; valid_until: string };
 type Account = { id: string; name: string };
 type Opportunity = Account & { account_id: string };
 type Catalog = { products: Product[]; quotes: Quote[]; accounts: Account[]; opportunities: Opportunity[] };
-const emptyProduct = { name: '', sku: '', description: '', unit_price: '0', currency: 'USD', category: '' };
+const emptyProduct = { name: '', sku: '', description: '', unit_price: '0', currency: 'USD', category: '', is_active: true };
 
 export default function ProductsPage() {
   const { locale } = useLocale(); const en = locale === 'en';
@@ -41,19 +42,21 @@ export default function ProductsPage() {
   const accountName = (id: string) => data.accounts.find(a => a.id === id)?.name ?? (en ? 'Unavailable account' : '客户不可见');
   const opportunityName = (id: string) => data.opportunities.find(o => o.id === id)?.name ?? (en ? 'Unavailable opportunity' : '商机不可见');
   const products = data.products.filter(p => `${p.name} ${p.sku ?? ''}`.toLowerCase().includes(search.toLowerCase()));
-  const quotes = data.quotes.filter(q => `${q.quote_number} ${accountName(q.account_id)}`.toLowerCase().includes(search.toLowerCase()));
+  const quotes = data.quotes.filter(q => `${q.quote_number} ${accountName(q.account_id)} ${opportunityName(q.opportunity_id)}`.toLowerCase().includes(search.toLowerCase()));
   return <div className="mx-auto max-w-7xl space-y-4 p-6">
-    <h1 className="text-2xl font-bold">{en ? 'Products and quotes' : '产品与报价'}</h1>
-    <div className="flex flex-wrap gap-3">
-      <button onClick={() => { setTab('products'); setShowForm(false); }} className="rounded border border-border px-3 py-2">{en ? 'Product catalog' : '产品目录'}</button>
-      <button onClick={() => { setTab('quotes'); setShowForm(false); }} className="rounded border border-border px-3 py-2">{en ? 'Quotes' : '报价单'}</button>
-      <button disabled={busy || loading} onClick={() => { setEditing(null); setProduct(emptyProduct); setShowForm(true); }} className="rounded bg-accent px-3 py-2 text-white">{en ? 'Add record' : '新建记录'}</button>
+    <div className="flex flex-wrap items-center justify-between gap-3">
+      <div><h1 className="flex items-center gap-2 text-2xl font-bold"><Package className="h-6 w-6 text-accent" />{en ? 'Products and quotes' : '产品与报价'}</h1><p className="mt-1 text-sm text-muted">{en ? 'Manage your product catalog and opportunity quotes.' : '管理产品目录与商机报价单。'}</p></div>
+      <button disabled={busy || loading} onClick={() => { setEditing(null); setProduct(emptyProduct); setShowForm(true); }} className="rounded bg-accent px-3 py-2 text-white">{tab === 'products' ? (en ? 'Add product' : '新增产品') : (en ? 'Create quote' : '新建报价')}</button>
+    </div>
+    <div className="flex gap-1 rounded-lg bg-sidebar p-1" role="tablist" aria-label={en ? 'Catalog view' : '目录视图'}>
+      {(['products', 'quotes'] as const).map(value => <button key={value} role="tab" aria-selected={tab === value} onClick={() => { setTab(value); setShowForm(false); setSearch(''); }} className={`flex items-center gap-2 rounded-md px-4 py-2 text-sm ${tab === value ? 'bg-card text-foreground shadow-sm' : 'text-secondary'}`}>{value === 'products' ? <Package className="h-4 w-4" /> : <FileText className="h-4 w-4" />}{value === 'products' ? (en ? 'Product catalog' : '产品目录') : (en ? 'Quotes' : '报价单')} ({data[value].length})</button>)}
     </div>
     {error && <p role="alert" className="text-danger">{error}</p>}
     {loading && <p role="status">{en ? 'Loading…' : '加载中…'}</p>}
-    <input aria-label={en ? 'Search' : '搜索'} className="form-input w-full" placeholder={en ? 'Search records' : '搜索记录'} value={search} onChange={e => setSearch(e.target.value)} />
+    <div className="relative"><Search aria-hidden className="absolute left-3 top-3 h-4 w-4 text-muted" /><input aria-label={en ? 'Search' : '搜索'} className="form-input w-full" style={{ paddingLeft: 36 }} placeholder={en ? 'Search records' : '搜索记录'} value={search} onChange={e => setSearch(e.target.value)} /></div>
     {showForm && tab === 'products' && <form className="rounded-xl border border-border bg-card p-4 space-y-3" onSubmit={e => { e.preventDefault(); void save(editing ? 'PATCH' : 'POST', { kind: 'product', id: editing, ...product, unit_price: Number(product.unit_price) }); }}>
       <div className="grid gap-3 sm:grid-cols-2">{(['name', 'sku', 'description', 'category', 'currency', 'unit_price'] as const).map(key => <label key={key} className="text-sm">{{ name: en ? 'Name' : '名称', sku: 'SKU', description: en ? 'Description' : '描述', category: en ? 'Category' : '分类', currency: en ? 'Currency (ISO code)' : '币种（ISO代码）', unit_price: en ? 'Unit price' : '单价' }[key]}<input className="form-input mt-1 w-full" required={['name', 'currency', 'unit_price'].includes(key)} type={key === 'unit_price' ? 'number' : 'text'} min={key === 'unit_price' ? 0 : undefined} step={key === 'unit_price' ? 'any' : undefined} value={product[key]} onChange={e => setProduct({ ...product, [key]: e.target.value })} /></label>)}</div>
+      <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={product.is_active} onChange={e => setProduct({ ...product, is_active: e.target.checked })} />{en ? 'Active product' : '启用产品'}</label>
       <button disabled={busy} className="rounded bg-accent px-3 py-2 text-white">{en ? 'Save' : '保存'}</button>
       <button type="button" onClick={() => setShowForm(false)} className="px-3">{en ? 'Cancel' : '取消'}</button>
     </form>}
@@ -65,6 +68,22 @@ export default function ProductsPage() {
       <button disabled={busy} className="rounded bg-accent px-3 py-2 text-white">{en ? 'Create draft' : '创建草稿'}</button><button type="button" onClick={() => setShowForm(false)} className="px-3">{en ? 'Cancel' : '取消'}</button>
     </form>}
     {!loading && (tab === 'products' ? products.length === 0 : quotes.length === 0) && <p className="text-muted">{en ? 'No matching records.' : '暂无匹配记录。'}</p>}
-    {tab === 'products' ? products.map(p => <article key={p.id} className="rounded-xl border border-border bg-card p-4 flex flex-wrap items-center justify-between gap-3"><div><h2 className="font-semibold">{p.name}</h2><p className="text-sm text-muted">{p.sku} · {p.category}</p><p className="text-sm">{p.description}</p><p>{p.currency} {Number(p.unit_price).toLocaleString(en ? 'en-US' : 'zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p></div><div className="flex gap-3"><button disabled={busy} onClick={() => { setEditing(p.id); setProduct({ name: p.name, sku: p.sku ?? '', description: p.description ?? '', category: p.category ?? '', currency: p.currency ?? 'USD', unit_price: String(p.unit_price) }); setShowForm(true); }}>{en ? 'Edit' : '编辑'}</button><button disabled={busy} onClick={() => void remove('product', p.id)} className="text-danger">{en ? 'Delete' : '删除'}</button></div></article>) : quotes.map(q => <article key={q.id} className="rounded-xl border border-border bg-card p-4 space-y-2"><h2 className="font-mono text-sm break-all">{q.quote_number}</h2><p>{accountName(q.account_id)} · {opportunityName(q.opportunity_id)}</p><p>{en ? 'Total' : '金额'}: {Number(q.total)} · {en ? 'Valid until' : '有效期'}: {q.valid_until}</p><select aria-label={en ? 'Quote status' : '报价状态'} disabled={busy} className="form-input" value={q.status} onChange={e => void save('PATCH', { kind: 'quote', id: q.id, status: e.target.value })}>{[['draft', en ? 'Draft' : '草稿'], ['sent', en ? 'Sent' : '已发送'], ['accepted', en ? 'Accepted' : '已接受'], ['rejected', en ? 'Rejected' : '已拒绝'], ['expired', en ? 'Expired' : '已过期']].map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><button disabled={busy} onClick={() => void remove('quote', q.id)} className="ml-4 text-danger">{en ? 'Delete' : '删除'}</button></article>)}
+    <div className="overflow-x-auto rounded-xl border border-border bg-card">
+      {tab === 'products' ? <table className="w-full min-w-[720px] text-left text-sm"><caption className="sr-only">{en ? 'Product catalog' : '产品目录'}</caption>
+        <thead className="bg-sidebar text-secondary"><tr>{[en ? 'Product / description' : '产品 / 描述', 'SKU', en ? 'Unit price' : '单价', en ? 'Category' : '分类', en ? 'Status' : '状态', en ? 'Actions' : '操作'].map(label => <th scope="col" key={label} className="p-3 font-medium">{label}</th>)}</tr></thead>
+        <tbody>{products.map(p => <tr key={p.id} className="border-t border-border">
+          <td className="p-3"><p className="font-semibold">{p.name}</p><p className="mt-1 max-w-sm whitespace-pre-wrap text-xs text-muted">{p.description || '—'}</p></td><td className="p-3 font-mono text-xs">{p.sku || '—'}</td>
+          <td className="p-3 whitespace-nowrap">{p.currency} {Number(p.unit_price).toLocaleString(en ? 'en-US' : 'zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td><td className="p-3">{p.category || '—'}</td>
+          <td className="p-3"><span className={`rounded-full px-2 py-1 text-xs ${p.is_active === false ? 'bg-sidebar text-secondary' : 'bg-positive/10 text-positive'}`}>{p.is_active == null ? (en ? 'Not recorded' : '未记录') : p.is_active ? (en ? 'Active' : '启用') : (en ? 'Inactive' : '停用')}</span></td>
+          <td className="p-3"><div className="flex gap-3"><button disabled={busy} onClick={() => { setEditing(p.id); setProduct({ name: p.name, sku: p.sku ?? '', description: p.description ?? '', category: p.category ?? '', currency: p.currency ?? 'USD', unit_price: String(p.unit_price), is_active: p.is_active !== false }); setShowForm(true); }}>{en ? 'Edit' : '编辑'}</button><button disabled={busy} onClick={() => void remove('product', p.id)} className="text-danger">{en ? 'Delete' : '删除'}</button></div></td>
+        </tr>)}</tbody>
+      </table> : <table className="w-full min-w-[850px] text-left text-sm"><caption className="sr-only">{en ? 'Quotes' : '报价单'}</caption>
+        <thead className="bg-sidebar text-secondary"><tr>{[en ? 'Quote number' : '报价编号', en ? 'Account' : '客户', en ? 'Opportunity' : '商机', en ? 'Status' : '状态', en ? 'Total' : '金额', en ? 'Valid until' : '有效期', en ? 'Actions' : '操作'].map(label => <th scope="col" key={label} className="p-3 font-medium">{label}</th>)}</tr></thead>
+        <tbody>{quotes.map(q => <tr key={q.id} className="border-t border-border"><td className="max-w-48 break-all p-3 font-mono text-xs">{q.quote_number}</td><td className="p-3">{accountName(q.account_id)}</td><td className="p-3">{opportunityName(q.opportunity_id)}</td>
+          <td className="p-3"><select aria-label={`${en ? 'Quote status' : '报价状态'}: ${q.quote_number}`} disabled={busy} className="form-input" value={q.status} onChange={e => void save('PATCH', { kind: 'quote', id: q.id, status: e.target.value })}>{[['draft', en ? 'Draft' : '草稿'], ['sent', en ? 'Sent' : '已发送'], ['accepted', en ? 'Accepted' : '已接受'], ['rejected', en ? 'Rejected' : '已拒绝'], ['expired', en ? 'Expired' : '已过期']].map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></td>
+          <td className="p-3">{Number(q.total).toLocaleString(en ? 'en-US' : 'zh-CN', { minimumFractionDigits: 2 })}</td><td className="p-3 whitespace-nowrap">{q.valid_until ? q.valid_until.slice(0, 10) : '—'}</td><td className="p-3"><button disabled={busy} onClick={() => void remove('quote', q.id)} className="text-danger">{en ? 'Delete' : '删除'}</button></td>
+        </tr>)}</tbody>
+      </table>}
+    </div>
   </div>;
 }

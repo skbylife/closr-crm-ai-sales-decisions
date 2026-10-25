@@ -35,6 +35,8 @@ const ROUTE_LABEL_KEYS: Record<string, TranslationKey> = {
   intel: "route.intel",
   knowledge: "route.knowledge",
   settings: "route.settings",
+  products: "nav.products",
+  pool: "nav.pool",
   notifications: "route.notifications",
 };
 

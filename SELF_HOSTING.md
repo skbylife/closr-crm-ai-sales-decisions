@@ -61,7 +61,7 @@ Use only fictional data for this check. AI generation is unavailable with AI dis
 
 ## Domain and HTTPS
 
-Place your own TLS-terminating reverse proxy on the same host, forwarding to `http://127.0.0.1:3000`. Obtain a certificate for your domain and allow public traffic only to the proxy's HTTPS port. Preserve the original `Host` and set trusted forwarded protocol/host headers. Configure `NEXT_PUBLIC_APP_URL=https://crm.example.com` to your real origin, then recreate the app (`up -d --no-deps --force-recreate app` with the same Compose flags). Same-origin checks reject mismatched origins. Do not expose PostgreSQL; Compose publishes no database port. A containerized proxy needs an explicitly configured shared network/upstream rather than assuming its own localhost reaches Closr.
+Place your own TLS-terminating reverse proxy on the same host, forwarding to `http://127.0.0.1:3000`. Obtain a certificate for your domain and allow public traffic only to the proxy's HTTPS port. Preserve the original `Host` and set trusted forwarded protocol/host headers. Configure `NEXT_PUBLIC_APP_URL=https://crm.example.com` to your real origin, then recreate the app (`up -d --no-deps --force-recreate app` with the same Compose flags). Same-origin checks reject mismatched origins. If building outside the supplied Dockerfile with `NEXT_PUBLIC_APP_URL` set during `npm run build`, rebuild after changing that origin: Next.js can inline the build-time value. Do not expose PostgreSQL; Compose publishes no database port. A containerized proxy needs an explicitly configured shared network/upstream rather than assuming its own localhost reaches Closr.
 
 ## Knowledge and optional models
 

@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 
 import { useStore } from "@/lib/store";
+import OrganizationDataSection from "./organization-data-section";
 import MfaSection from "./mfa-section";
 import PasswordSection from "./password-section";
 import NotificationSection from "./notification-section";
@@ -963,6 +964,7 @@ function SettingsPageInner() {
           </div>
 
           {importMessage && <p className="mb-3 text-xs text-accent font-medium">{importMessage}</p>}
+          <OrganizationDataSection />
 
 
         </div>

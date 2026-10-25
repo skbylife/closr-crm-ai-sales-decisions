@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { GET, POST, PATCH, DELETE } from './route';
+import { GET as dataPreview } from '../organization/data-management/route';
 import { GET as poolGet } from '../pool/route';
 import { POST as transfer, GET as transferHistory } from '../accounts/transfer/route';
 import { ApiError, requireAuth } from '@/lib/api-guard';
@@ -38,7 +39,7 @@ beforeEach(() => {
 describe('real catalog persistence and guarded pool routes', () => {
   it('rejects unauthenticated reads and writes before accessing the database', async () => {
     vi.mocked(requireAuth).mockRejectedValue(new ApiError(401, 'Authentication required'));
-    expect((await GET()).status).toBe(401); expect((await POST(request(product))).status).toBe(401); expect((await poolGet()).status).toBe(401); expect(writes).toHaveLength(0);
+    expect((await GET()).status).toBe(401); expect((await POST(request(product))).status).toBe(401); expect((await poolGet()).status).toBe(401); expect((await dataPreview()).status).toBe(401); expect(writes).toHaveLength(0);
   });
   it('persists product create/edit/delete, including zero price and server-selected org', async () => {
     const created = await POST(request({ ...product, org_id: 'forged-org' })); expect(created.status).toBe(200);
@@ -46,6 +47,47 @@ describe('real catalog persistence and guarded pool routes', () => {
     expect((await PATCH(request({ ...product, id, name: 'Updated product' }))).status).toBe(200);
     expect((await (await GET()).json()).products[0].name).toBe('Updated product');
     expect((await DELETE(request({ kind: 'product', id }))).status).toBe(200); expect(tables.products).toHaveLength(0);
+  });
+  it('persists active status, rejects non-booleans, and preserves status when omitted', async () => {
+    const created = await POST(request({ ...product, is_active: false }));
+    const id = (await created.json()).record.id;
+    expect(tables.products[0].is_active).toBe(false);
+    expect((await PATCH(request({ ...product, id }))).status).toBe(200);
+    expect(tables.products[0].is_active).toBe(false);
+    expect((await PATCH(request({ ...product, id, is_active: 'false' }))).status).toBe(400);
+    expect((await PATCH(request({ ...product, id, is_active: true }))).status).toBe(200);
+    expect(tables.products[0].is_active).toBe(true);
+  });
+  it('pool summaries only count children in the current tenant and returned pool', async () => {
+    tables.accounts.push({ id: 'pool', org_id: 'org-a', owner_id: null, user_id: null });
+    tables.contacts = [{ id: 'c1', org_id: 'org-a', account_id: 'pool' }, { id: 'c2', org_id: 'org-b', account_id: 'pool' }, { id: 'c3', org_id: 'org-a', account_id: 'mine' }];
+    tables.opportunities.push({ id: 'p1', org_id: 'org-a', account_id: 'pool' });
+    const data = await (await poolGet()).json();
+    expect(data.accounts[0]).toMatchObject({ contact_count: 1, opportunity_count: 1 });
+    expect(writes).toHaveLength(0);
+  });
+  it('management preview rejects members/admins and ambiguous owner memberships without writes', async () => {
+    expect((await dataPreview()).status).toBe(403);
+    vi.mocked(requireAuth).mockResolvedValue({ ...ctx, orgRole: 'admin' });
+    expect((await dataPreview()).status).toBe(403);
+    vi.mocked(requireAuth).mockResolvedValue({ ...ctx, orgRole: 'owner' });
+    tables.org_memberships = [{ user_id: 'self', org_id: 'org-a', role: 'owner' }, { user_id: 'self', org_id: 'org-b', role: 'owner' }];
+    expect((await dataPreview()).status).toBe(409);
+    tables.org_memberships = [{ user_id: 'self', org_id: 'org-a', role: 'member' }];
+    expect((await dataPreview()).status).toBe(409);
+    expect(writes).toHaveLength(0);
+  });
+  it('management preview returns only tenant counts, no record content, and never enables deletion', async () => {
+    vi.mocked(requireAuth).mockResolvedValue({ ...ctx, orgRole: 'owner' });
+    tables.org_memberships[0].role = 'owner';
+    tables.products = [{ id: 'pa', org_id: 'org-a', name: 'Private product body' }, { id: 'pb', org_id: 'org-b' }];
+    const response = await dataPreview(); expect(response.status).toBe(200);
+    expect(response.headers.get('cache-control')).toBe('no-store');
+    const body = await response.json();
+    expect(body).toMatchObject({ orgId: 'org-a', previewOnly: true, deletionEnabled: false });
+    expect(body.counts.find((row: Row) => row.table === 'products').count).toBe(1);
+    expect(JSON.stringify(body)).not.toContain('Private product body');
+    expect(writes).toHaveLength(0);
   });
   it('does not mutate another organization product or accept invalid prices', async () => {
     tables.products.push({ id: 'foreign-product', org_id: 'org-b' });
