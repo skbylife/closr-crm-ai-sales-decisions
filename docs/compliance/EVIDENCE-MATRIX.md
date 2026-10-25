@@ -1,4 +1,6 @@
-# Control evidence matrix
+# Enterprise Compliance Evidence Matrix
+
+## Evidence Matrix
 
 | Control | Implementation | Executable evidence | Limit |
 |---|---|---|---|
@@ -12,3 +14,7 @@
 | Release hygiene | Tracked-source scan and documented checkout/build | Exact commit, scan triage, build/test logs, clean Compose verification | A failed or skipped deployment check cannot be replaced by prior-version evidence |
 
 For native verification set `CLOSR_DATABASE_BACKEND=postgres`. Live checks need an explicitly chosen database; never point them at a real tenant merely to obtain a passing report. Tests requiring a disposable database enforce their own test-name guards. Keep resulting logs free of credentials and real customer payloads.
+
+## Required Before Formal Enterprise Production Use
+
+Review the [go-live checklist](ENTERPRISE-GO-LIVE-CHECKLIST.md), actual external controls and a complete recovery drill. Source markers and synthetic tests do not certify a customer environment. Keep live-data approvals and legal/provider commitments separate from source publication.

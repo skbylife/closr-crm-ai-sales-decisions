@@ -70,6 +70,8 @@ function selfHostedSupabaseConnectSrc() {
 const supabaseConnectSrc = 'https://*.supabase.co wss://*.supabase.co' + selfHostedSupabaseConnectSrc();
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
+  outputFileTracingIncludes: { '/*': ['./node_modules/@llamaindex/liteparse/**/*'] },
   allowedDevOrigins: [
     ...getLocalLanHosts(),
     ...getLocalLanOrigins().map((origin) => origin.replace(/^https?:\/\//, '').replace(/^wss?:\/\//, '')),

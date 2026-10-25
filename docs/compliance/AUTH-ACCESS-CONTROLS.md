@@ -1,4 +1,4 @@
-# Authentication and access controls
+# Authentication And Access Controls
 
 This document describes implementation and verification, not a security certification.
 
@@ -10,7 +10,9 @@ MFA factors are stored in **auth.native_mfa**, with encrypted TOTP secrets and r
 
 The optional legacy Supabase implementation uses **auth.mfa_factors**. It is not required by native deployment. `scripts/verify-mfa-posture-controls.mjs` selects the correct factor table from the same backend selector as the application; selecting a backend is not permission to connect to a production database.
 
-## MFA Posture Gate
+## Current MFA Posture
+
+### MFA Posture Gate
 
 Owner/Admin users should enroll through **Settings > Security**. `/api/security/mfa-posture` requires authenticated admin access and summarizes privileged members' verified factors. This is a posture report, not automatic global MFA enforcement. A new private installation initially has an owner without an enrolled factor; a live posture gate must fail until enrollment is complete.
 
@@ -22,7 +24,7 @@ Browser database requests execute under `closr_app` with transaction-local, serv
 
 `get-org-id.ts` still selects the first membership. Organization-wide cleanup therefore rejects multiple memberships and remains **preview-only**. Do not enable destructive cleanup based on this implicit selection. See `docs/ORGANIZATION_CLEANUP_DESIGN.md`.
 
-## Audit coverage and limits
+## Current Auth Audit Coverage
 
 The authenticated auth-event endpoint accepts a fixed event vocabulary including `login_success`, `logout`, `password_reset_completed`, `mfa_enabled` and `mfa_disabled`. Some UI events use the compatibility audit helper, which is best-effort; client-originated event reporting is not tamper-proof evidence of every authentication attempt. Native recovery writes its completion event server-side. **Generic failed login** responses avoid disclosing whether an email exists, but do not imply a durable audit record for every rejected login.
 

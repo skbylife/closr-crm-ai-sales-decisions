@@ -7,7 +7,7 @@ export default function SetupPage() {
   const [setupRequired, setSetupRequired] = useState<boolean | null>(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
-  const [english, setEnglish] = useState(false);
+  const [english, setEnglish] = useState(true);
   useEffect(() => {
     fetch('/api/native/auth/setup-status').then(async response => {
       if (!response.ok) throw new Error('Setup service is unavailable');

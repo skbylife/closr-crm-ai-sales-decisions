@@ -47,6 +47,15 @@ curl --fail http://localhost:3000/api/health
 
 Use your chosen port for curl. `db` and `app` should be healthy; `migrate` should exit with code 0 after applying migrations and importing knowledge. An exited successful migration container is normal. Wait for the first build/start to finish before opening the app.
 
+On a space-constrained VFS Docker host, after confirming that `migrate` exited with code 0 and saving its logs, you may remove **only the exited migration container**:
+
+```sh
+docker compose --env-file .env.self-hosted -f docker-compose.self-hosted.yml logs migrate > ../closr-migration-install.log
+docker compose --env-file .env.self-hosted -f docker-compose.self-hosted.yml rm -f migrate
+```
+
+This preserves images and named volumes. A later full `up` recreates the migration service and runs its idempotent startup again. Do not remove it while running or after a failed migration. For multiple isolated installations, consistently add `-p YOUR_PROJECT_NAME` to every Compose command; choose distinct host ports and private env files. This does not reduce the documented disk-space recommendation.
+
 Open `http://localhost:3000/setup` (or your configured origin). Create your workspace, first owner's email and password, then sign in. Setup closes after that owner exists. There is no shared login. Complete setup before making the installation publicly accessible. On a remote host, use a private SSH tunnel for initial localhost setup, or restrict your proxy to your IP until setup is complete.
 
 ### Verify without a model
@@ -114,7 +123,7 @@ dc exec -T db pg_dump -U closr -d closr -Fc > "$BACKUP_DIR/database.dump"
 dc run --rm --no-deps -T --user root --entrypoint tar app -C /data/closr -czf - . > "$BACKUP_DIR/application-data.tar.gz"
 cp .env.self-hosted "$BACKUP_DIR/env.self-hosted"
 git rev-parse HEAD > "$BACKUP_DIR/source-commit.txt"
-dc start app
+dc up -d --no-deps --no-build app
 ```
 
 Check every command succeeded and test restoration on an isolated host before relying on a backup. A plain copy of a running PostgreSQL volume is not an equivalent consistent database backup.
@@ -126,7 +135,9 @@ cp "$BACKUP_DIR/env.self-hosted" .env.self-hosted
 chmod 600 .env.self-hosted
 dc build
 dc up -d --wait db
-dc exec -T db pg_restore -U closr -d closr --exit-on-error < "$BACKUP_DIR/database.dump"
+# pg_dump excludes cluster roles. Recreate the application role without login.
+dc exec -T db psql -U closr -d closr -v ON_ERROR_STOP=1 -c 'CREATE ROLE closr_app NOLOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOBYPASSRLS;'
+dc exec -T db pg_restore -U closr -d closr --exit-on-error --single-transaction < "$BACKUP_DIR/database.dump"
 dc run --rm --no-deps -T --user root --entrypoint tar app -C /data/closr -xzf - < "$BACKUP_DIR/application-data.tar.gz"
 dc up -d --no-build
 ```
@@ -193,4 +204,4 @@ Read [the security control documentation](docs/compliance/README.md) before expo
 
 The native MFA verifier reads `auth.native_mfa`; the optional legacy path uses `auth.mfa_factors`. A newly registered owner without verified MFA fails the live posture gate until enrollment. The default no-model quickstart does not provision a WAF or external alert destination. Configure and verify those separately if required by your deployment target.
 
-The Docker build installs and removes build-only dependencies in one layer, then installs production dependencies and assembles the runtime in one layer. This reduces intermediate duplication, at the cost of reinstalling dependencies when application source changes. Docker's VFS driver also copies container filesystems; budget for the database, migration and application containers as well as images. A successful image build alone does not verify Compose startup or persistence.
+The Docker build installs and removes build-only dependencies in one layer, then copies Next.js's traced standalone runtime in one layer. The Docker entrypoint is `node server.js`; static assets and operator migration/recovery scripts are included explicitly. This reduces intermediate duplication, at the cost of reinstalling dependencies when application source changes. Docker's VFS driver also copies container filesystems; budget for the database, migration and application containers as well as images. A successful image build alone does not verify Compose startup or persistence.
