@@ -58,6 +58,8 @@ async function verifyLivePosture() {
     return;
   }
 
+  const native = (process.env.CLOSR_DATABASE_BACKEND ?? process.env.NEXT_PUBLIC_CLOSR_DATABASE_BACKEND) === 'postgres';
+  const factorTable = native ? 'auth.native_mfa' : 'auth.mfa_factors';
   const allowSelfSignedSsl = process.env.CLOSR_DB_SSL_NO_VERIFY === '1';
   let normalizedConnectionString = connectionString;
   if (allowSelfSignedSsl) {
@@ -82,7 +84,7 @@ async function verifyLivePosture() {
         "  where role in ('owner', 'admin')",
         '), verified_factors as (',
         '  select user_id, count(*)::int as verified_factor_count',
-        '  from auth.mfa_factors',
+        '  from ' + factorTable,
         "  where status = 'verified'",
         '  group by user_id',
         ')',

@@ -185,3 +185,12 @@ The image tag is the exact one used by both `migrate` and `app`. `--no-build` is
 | Attachments or MFA unavailable after restore | Restore the full application-data archive paired with that database, including the encryption key and ownership. |
 
 Before reporting a problem, record the source commit, Docker/Compose versions and failing step. Share only redacted logs; env files, recovery links, session cookies, database dumps and attachments are private.
+
+
+## Security verification and its limits
+
+Read [the security control documentation](docs/compliance/README.md) before exposing an installation. In a source checkout with dependencies installed, `CLOSR_DATABASE_BACKEND=postgres npm run verify:security` checks the native implementation and documentation. Without an explicit database URL, live MFA and RLS checks report skipped; a static pass is not a production posture result. Use disposable synthetic databases for negative tests. Never disable policies or fabricate MFA factors on a real installation to exercise a test.
+
+The native MFA verifier reads `auth.native_mfa`; the optional legacy path uses `auth.mfa_factors`. A newly registered owner without verified MFA fails the live posture gate until enrollment. The default no-model quickstart does not provision a WAF or external alert destination. Configure and verify those separately if required by your deployment target.
+
+The Docker build installs and removes build-only dependencies in one layer, then installs production dependencies and assembles the runtime in one layer. This reduces intermediate duplication, at the cost of reinstalling dependencies when application source changes. Docker's VFS driver also copies container filesystems; budget for the database, migration and application containers as well as images. A successful image build alone does not verify Compose startup or persistence.

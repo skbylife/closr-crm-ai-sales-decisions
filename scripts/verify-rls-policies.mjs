@@ -33,7 +33,21 @@ const migrationFiles = [
   'src/lib/migrations/017_knowledge_base_org_rls.sql',
 ];
 
+const native = (process.env.CLOSR_DATABASE_BACKEND ?? process.env.NEXT_PUBLIC_CLOSR_DATABASE_BACKEND) === 'postgres';
 const failures = [];
+if (native) {
+  const schema = readFileSync('database/native/020-schema.sql', 'utf8');
+  const policy = readFileSync('database/native/030-rls.sql', 'utf8');
+  for (const table of criticalTables) {
+    if (!schema.includes(`public.${table}`)) failures.push(`${table}: native schema declaration missing`);
+    // Server-only tables intentionally receive no browser grants. Behavioral
+    // isolation is separately covered by the native PostgreSQL integration suites.
+    if (!policy.includes(`public.${table}`) && !policy.includes(`-- ${table}: server-only`)) failures.push(`${table}: native authorization classification missing`);
+  }
+  for (const marker of ['SET LOCAL ROLE', 'request.jwt.claim.sub']) {
+    if (!readFileSync('src/lib/native-db/executor.ts', 'utf8').includes(marker)) failures.push(`native executor: ${marker} missing`);
+  }
+} else {
 const migrationText = migrationFiles.map((file) => readFileSync(file, 'utf8')).join('\n');
 
 for (const table of migrationProtectedTables) {
@@ -56,6 +70,8 @@ if (migrationText.includes('CREATE POLICY "knowledge_base_authenticated"')) {
   if (fixPolicy < lastKnowledgePolicy) {
     failures.push('knowledge_base: authenticated-only policy appears after org isolation fix');
   }
+}
+
 }
 
 async function verifyLiveRls() {
