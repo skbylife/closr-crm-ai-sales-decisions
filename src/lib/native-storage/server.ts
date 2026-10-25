@@ -84,10 +84,16 @@ export function createFileService(options: { root?: string; query?: Query } = {}
       // Authorize the complete batch before changing anything.
       const records = await Promise.all(paths.map(path => storedObject(bucket, path, userId, true)));
       for (const record of records) {
-        await db('UPDATE public.native_file_objects SET deleted_at = now() WHERE id = $1::uuid', [record.id]);
+        // Persist intent before touching bytes. A failed audit write blocks removal.
+        await db(`INSERT INTO public.audit_log(org_id,user_id,action,object_type,record_id,changes)
+          VALUES($1::uuid,$2::uuid,'attachment_delete_started','attachment',$3,$4::jsonb)`,
+          [record.org_id, userId, record.id, JSON.stringify({ task_id: record.task_id, byte_size: record.byte_size })]);
+        await db('UPDATE public.native_file_objects SET deleted_at = now() WHERE id = $1::uuid AND org_id = $2::uuid', [record.id, record.org_id]);
         try { await unlink(join(root, record.disk_name)); }
         catch (error) { if ((error as { code?: string }).code !== 'ENOENT') throw error; }
-        await db('DELETE FROM public.native_file_objects WHERE id = $1::uuid', [record.id]);
+        await db('DELETE FROM public.native_file_objects WHERE id = $1::uuid AND org_id = $2::uuid', [record.id, record.org_id]);
+        await db(`INSERT INTO public.audit_log(org_id,user_id,action,object_type,record_id,changes)
+          VALUES($1::uuid,$2::uuid,'attachment_delete_completed','attachment',$3,'{}'::jsonb)`, [record.org_id, userId, record.id]);
       }
       return records.map(record => ({ name: record.logical_path }));
     },

@@ -11,10 +11,10 @@ The review compared the original application source snapshot `594a5cf6c24015647f
 | Navigation | Full application sidebar | Retained | Sidebar and unrelated routes unchanged |
 | Products | Table with description, SKU, price, category, active status and editing; sample catalog embedded in page | Real database CRUD, reduced card presentation, missing active-state controls | Table and active-state controls restored; existing catalog API persists status; missing status is labelled, not fabricated |
 | Quotes | Table with account, opportunity, status, amount, expiry and deletion | Real draft creation/status persistence, reduced cards | Table restored, existing forms and persistence retained; no claim of line-item editing or sending |
-| Pool | Cards with related-record counts, sample values/history, fixed quota/rule claims and local claim state | Real scoped pool and atomic native handoff | Cards retained with actual accessible contact/opportunity counts, detail links, search and sorting; claim continues through the existing guarded API |
+| Pool | Cards with related-record counts, sample values/history, fixed quota/rule claims and local claim state | Real scoped pool and atomic native handoff | Cards retained with actual accessible contact/opportunity counts and values grouped by currency; latest reclaim owner/reason uses persisted history under the existing history permission; detail links/search/sort and guarded claim remain |
 | Organization cleanup | Settings entry invoking a mixed seed/reset route; first-membership tenant selection and partial-delete risks | Route/entry removed | Settings entry restored as an explicitly read-only, owner-only inventory preview. Bulk deletion is **not implemented or enabled** |
 
-Search and sorting are usability additions to the pool cards, not claims about the original pool layout. Pool monetary totals, previous-owner names and reclamation reasons are not fabricated from the old embedded examples. They remain absent pending an appropriately scoped history/valuation implementation. Automatic recycling, quotas and cooldown rules are not implemented by this page and are labelled accordingly.
+Search and sorting are usability additions to the pool cards, not claims about the original pool layout. Pool amounts use `opportunities.value/currency`, grouped by currency without conversion. Missing/invalid valuation is counted separately. Latest reclaim data uses `ownership_transfers.from_user/to_user/reason` and current same-organization member display names. History uses the same permission check as the existing transfer-history endpoint; restricted, missing, and no-longer-current history are not fabricated from old embedded examples. Automatic recycling, quotas and cooldown rules are not implemented by this page and are labelled accordingly.
 
 ## Cleanup safety gap
 
@@ -35,6 +35,15 @@ This checklist records bounded parity work; it does not certify every applicatio
 
 ## 中文说明
 
-本次仅修复正常可编辑的自部署正式版，不加入 Demo 模式、匿名登录或演示数据。产品/报价恢复表格展示，产品启停状态真实持久化；公海保留真实认领接口，补充实际可见联系人/商机数量、详情跳转、搜索及排序。未伪造旧页面中的金额、前任负责人、回收原因、额度与自动回收规则。
+本次仅修复正常可编辑的自部署正式版，不加入 Demo 模式、匿名登录或演示数据。产品/报价恢复表格展示，产品启停状态真实持久化；公海保留真实认领接口，补充实际可见联系人/商机数量、详情跳转、搜索及排序。金额按真实商机币种分别汇总；前任负责人及回收原因读取权限允许的最新回收记录，缺失或受限均明确标注，不伪造额度与自动回收规则。
 
 设置页恢复“组织数据清理”入口，但目前仅提供所有者专用的五类记录数量预览；多组织身份会被拒绝。清空执行仍未完成且保持禁用，因为当前组织解析仍取第一条成员关系。须完成明确租户选择、重新认证、可恢复备份、事务删除与恢复验证后，才能恢复真正的批量清理。此限制不是已完成的清空功能，也不会操作生产数据。
+
+## Follow-up release gates
+
+- Native attachment DELETE now rejects null/array request bodies as 400 and persists scoped intent before deleting bytes; failed intent audit prevents removal. Completion is separately audited. The existing route classifier recognizes the delegated storage audit implementation.
+- Keep normal authenticated editable deployment; no Demo paths, fixtures or anonymous-mode switches are added.
+- Run the catalog/pool, file HTTP boundary, file service and request-size suites; run the file PostgreSQL integration suite only against a disposable database named `closr_storage_test`.
+- Build the candidate; inspect English/Chinese pool values and history using two synthetic tenants. Confirm ordinary members cannot obtain owner-restricted reclaim history.
+- Scan changed files before publication. Preserve the previous commit and do not push until review is complete.
+- Bulk cleanup remains design-only: see [ORGANIZATION_CLEANUP_DESIGN.md](ORGANIZATION_CLEANUP_DESIGN.md). Single-file physical deletion is not recoverable bulk cleanup and is not filesystem/database atomic.

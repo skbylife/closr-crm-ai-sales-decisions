@@ -69,7 +69,7 @@ export async function DELETE(request: Request) {
     const text = new TextDecoder().decode(await readBoundedBody(request, 16 * 1024));
     let body: { bucket?: unknown; paths?: unknown };
     try { body = JSON.parse(text); } catch { throw new StorageError(400, 'Invalid JSON'); }
-    if (typeof body.bucket !== 'string' || !Array.isArray(body.paths) || !body.paths.every(p => typeof p === 'string')) {
+    if (!body || typeof body !== 'object' || Array.isArray(body) || typeof body.bucket !== 'string' || !Array.isArray(body.paths) || !body.paths.every(p => typeof p === 'string')) {
       throw new StorageError(400, 'Invalid attachment selection');
     }
     const data = await createFileService().remove(body.bucket, body.paths, userId);

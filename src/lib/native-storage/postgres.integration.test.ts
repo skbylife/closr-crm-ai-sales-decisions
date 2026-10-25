@@ -28,6 +28,7 @@ suite('native files with real PostgreSQL and a temporary filesystem', () => {
       CREATE TABLE auth.users(id uuid PRIMARY KEY);
       CREATE TABLE public.organizations(id uuid PRIMARY KEY);
       CREATE TABLE public.org_memberships(user_id uuid, org_id uuid, role text, job_level integer, team_id uuid);
+      CREATE TABLE public.audit_log(org_id uuid,user_id uuid,action text,object_type text,record_id text,changes jsonb);
       CREATE TABLE public.tasks(id text PRIMARY KEY, org_id uuid, user_id uuid, assigned_to text);
       INSERT INTO auth.users VALUES ('${a}'), ('${b}'), ('${colleague}');
       INSERT INTO public.organizations VALUES ('${orgA}'), ('${orgB}');
@@ -60,6 +61,10 @@ suite('native files with real PostgreSQL and a temporary filesystem', () => {
     } finally { await client.query('RESET ROLE'); client.release(); }
     await restarted.remove('task-attachments', [path], a);
     expect(await readdir(root)).toEqual([]);
+    expect((await pool.query('SELECT action,org_id,user_id FROM audit_log ORDER BY action')).rows).toEqual([
+      { action: 'attachment_delete_completed', org_id: orgA, user_id: a },
+      { action: 'attachment_delete_started', org_id: orgA, user_id: a },
+    ]);
     expect((await pool.query('SELECT count(*)::int AS n FROM native_file_objects')).rows[0].n).toBe(0);
   });
 });

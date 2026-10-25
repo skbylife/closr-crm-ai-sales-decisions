@@ -66,6 +66,28 @@ describe('real catalog persistence and guarded pool routes', () => {
     expect(data.accounts[0]).toMatchObject({ contact_count: 1, opportunity_count: 1 });
     expect(writes).toHaveLength(0);
   });
+  it('groups real opportunity amounts by currency and keeps reclaim history behind its existing permission', async () => {
+    tables.accounts.push({ id: 'pool', org_id: 'org-a', owner_id: null, user_id: null });
+    tables.opportunities.push(
+      { id: 'usd1', org_id: 'org-a', account_id: 'pool', value: 10, currency: 'USD' },
+      { id: 'usd2', org_id: 'org-a', account_id: 'pool', value: '20.5', currency: 'USD' },
+      { id: 'cny', org_id: 'org-a', account_id: 'pool', value: 100, currency: 'CNY' },
+      { id: 'missing', org_id: 'org-a', account_id: 'pool', value: null, currency: 'USD' },
+      { id: 'foreign', org_id: 'org-b', account_id: 'pool', value: 99999, currency: 'USD' });
+    tables.ownership_transfers = [
+      { org_id: 'org-a', object_type: 'account', record_id: 'pool', from_user: 'former', to_user: null, reason: 'Synthetic manual reclaim' },
+      { org_id: 'org-b', object_type: 'account', record_id: 'pool', from_user: 'other', to_user: null, reason: 'Foreign reason' }];
+    tables.org_memberships.push({ user_id: 'former', org_id: 'org-a', display_name: 'Synthetic former owner' });
+    let row = (await (await poolGet()).json()).accounts[0];
+    expect(row).toMatchObject({ opportunity_totals: { USD: 30.5, CNY: 100 }, unvalued_opportunities: 1, history_visible: false, previous_owner: null, reclaim_reason: null });
+    vi.mocked(requireAuth).mockResolvedValue({ ...ctx, orgRole: 'owner' });
+    row = (await (await poolGet()).json()).accounts[0];
+    expect(row).toMatchObject({ history_visible: true, previous_owner: 'Synthetic former owner', reclaim_reason: 'Synthetic manual reclaim' });
+    tables.ownership_transfers[0].to_user = 'assigned';
+    row = (await (await poolGet()).json()).accounts[0];
+    expect(row.reclaim_reason).toBeNull(); expect(row.previous_owner).toBeNull();
+    expect(writes).toHaveLength(0);
+  });
   it('management preview rejects members/admins and ambiguous owner memberships without writes', async () => {
     expect((await dataPreview()).status).toBe(403);
     vi.mocked(requireAuth).mockResolvedValue({ ...ctx, orgRole: 'admin' });

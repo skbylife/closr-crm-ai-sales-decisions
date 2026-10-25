@@ -3,6 +3,7 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 const classifiedDeleteRoutes = {
+  'src/app/api/native/files/route.ts': 'task-authorized attachment deletion with service-level audit evidence',
   'src/app/api/accounts/[id]/knowledge/route.ts': 'resource-owner collaboration delete',
   'src/app/api/channels/route.ts': 'org-scoped collaboration delete',
   'src/app/api/comments/route.ts': 'org-scoped collaboration delete',
@@ -48,7 +49,14 @@ const stale = classified.filter((path) => {
     return true;
   }
 });
-const missingAudit = deleteRoutes.filter((path) => !readFileSync(path, 'utf8').includes('recordComplianceAudit'));
+const missingAudit = deleteRoutes.filter((path) => {
+  if (path === 'src/app/api/native/files/route.ts') {
+    const route = readFileSync(path, 'utf8');
+    const service = readFileSync('src/lib/native-storage/server.ts', 'utf8');
+    return !route.includes('createFileService().remove') || !service.includes('INSERT INTO public.audit_log') || !service.includes('attachment_delete_started') || !service.includes('attachment_delete_completed');
+  }
+  return !readFileSync(path, 'utf8').includes('recordComplianceAudit');
+});
 
 if (missing.length || stale.length || missingAudit.length) {
   if (missing.length) console.error('Unclassified DELETE routes:\n' + missing.join('\n'));

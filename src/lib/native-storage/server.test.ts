@@ -15,11 +15,14 @@ describe('native attachment service', () => {
   let root: string;
   let records: Row[];
   let failInsert: boolean;
+  let failAudit: boolean;
+  let audits: unknown[][];
   async function query<T>(sql: string, args: unknown[] = []): Promise<T[]> {
     if (sql.includes('FROM public.tasks')) {
       const [taskId, caller] = args;
       return (caller === userId && taskId === 'task_1' ? [{ id: 'task_1', org_id: orgId, user_id: userId, assigned_to: null, role: 'member', job_level: 0, team_id: null }] : []) as T[];
     }
+    if (sql.includes('INSERT INTO public.audit_log')) { if (failAudit) throw new Error('audit unavailable'); audits.push(args); return []; }
     if (sql.includes('INSERT INTO')) {
       if (failInsert) throw new Error('database unavailable');
       const [id, bucket, path, org, task, owner, disk, filename, type, size] = args;
@@ -35,7 +38,7 @@ describe('native attachment service', () => {
     if (sql.includes('DELETE FROM')) records = records.filter(r => r.id !== args[0]);
     return [];
   }
-  beforeEach(async () => { root = await mkdtemp(join(tmpdir(), 'closr-storage-test-')); records = []; failInsert = false; });
+  beforeEach(async () => { root = await mkdtemp(join(tmpdir(), 'closr-storage-test-')); records = []; failInsert = false; failAudit = false; audits = []; });
   afterEach(async () => { await rm(root, { recursive: true, force: true }); });
   const file = () => ({ type: 'text/plain', bytes: new TextEncoder().encode('Fictional attachment') });
 
@@ -51,6 +54,14 @@ describe('native attachment service', () => {
     await service.remove('task-attachments', [logicalPath], userId);
     expect(await readdir(root)).toEqual([]);
     expect(records).toEqual([]);
+    expect(audits).toHaveLength(2);
+    expect(audits[0].slice(0,2)).toEqual([orgId,userId]);
+  });
+  it('does not delete bytes or metadata when the intent audit cannot be persisted', async () => {
+    const service = createFileService({ root, query });
+    await service.upload('task-attachments', logicalPath, userId, file()); failAudit = true;
+    await expect(service.remove('task-attachments', [logicalPath], userId)).rejects.toThrow('audit unavailable');
+    expect(await readdir(root)).toHaveLength(1); expect(records[0].deleted_at).toBeNull();
   });
   it('rejects cross-tenant reads, deletes and forged upload owners', async () => {
     const service = createFileService({ root, query });
