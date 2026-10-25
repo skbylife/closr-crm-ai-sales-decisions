@@ -1,21 +1,23 @@
 import { randomUUID } from 'node:crypto';
 import { mkdir, writeFile, readFile, unlink } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
-import { query } from '@/lib/postgres';
+import { query, withTransaction } from '@/lib/postgres';
 import {
   ATTACHMENT_BUCKET, StorageError, parseAttachmentPath, validateAttachment,
   hasDirectTaskAccess, type TaskAccessRow,
 } from './policy';
 
 type Query = <T = Record<string, unknown>>(sql: string, params?: unknown[]) => Promise<T[]>;
+type Transaction = <T>(fn: (query: Query) => Promise<T>) => Promise<T>;
 interface StoredObject {
   id: string; org_id: string; task_id: string; owner_id: string; logical_path: string;
   disk_name: string; filename: string; mime_type: string; byte_size: number;
   deleted_at: string | null;
 }
 
-export function createFileService(options: { root?: string; query?: Query } = {}) {
+export function createFileService(options: { root?: string; query?: Query; transaction?: Transaction } = {}) {
   const db = options.query ?? query;
+  const transaction: Transaction = options.transaction ?? (options.query ? async fn => fn(db) : withTransaction);
   const root = resolve(options.root ?? process.env.CLOSR_STORAGE_DIR ?? './.local/uploads');
 
   async function authorizeTask(taskId: string, userId: string): Promise<TaskAccessRow> {
@@ -91,9 +93,13 @@ export function createFileService(options: { root?: string; query?: Query } = {}
         await db('UPDATE public.native_file_objects SET deleted_at = now() WHERE id = $1::uuid AND org_id = $2::uuid', [record.id, record.org_id]);
         try { await unlink(join(root, record.disk_name)); }
         catch (error) { if ((error as { code?: string }).code !== 'ENOENT') throw error; }
-        await db('DELETE FROM public.native_file_objects WHERE id = $1::uuid AND org_id = $2::uuid', [record.id, record.org_id]);
-        await db(`INSERT INTO public.audit_log(org_id,user_id,action,object_type,record_id,changes)
-          VALUES($1::uuid,$2::uuid,'attachment_delete_completed','attachment',$3,'{}'::jsonb)`, [record.org_id, userId, record.id]);
+        // Keep the tombstone if finalization fails: retries can still locate it.
+        // Bytes are already gone; this transaction is not a filesystem rollback.
+        await transaction(async tx => {
+          await tx(`INSERT INTO public.audit_log(org_id,user_id,action,object_type,record_id,changes)
+            VALUES($1::uuid,$2::uuid,'attachment_delete_completed','attachment',$3,'{}'::jsonb)`, [record.org_id, userId, record.id]);
+          await tx('DELETE FROM public.native_file_objects WHERE id = $1::uuid AND org_id = $2::uuid', [record.id, record.org_id]);
+        });
       }
       return records.map(record => ({ name: record.logical_path }));
     },

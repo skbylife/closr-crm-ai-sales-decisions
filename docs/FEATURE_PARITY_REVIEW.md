@@ -47,3 +47,13 @@ This checklist records bounded parity work; it does not certify every applicatio
 - Build the candidate; inspect English/Chinese pool values and history using two synthetic tenants. Confirm ordinary members cannot obtain owner-restricted reclaim history.
 - Scan changed files before publication. Preserve the previous commit and do not push until review is complete.
 - Bulk cleanup remains design-only: see [ORGANIZATION_CLEANUP_DESIGN.md](ORGANIZATION_CLEANUP_DESIGN.md). Single-file physical deletion is not recoverable bulk cleanup and is not filesystem/database atomic.
+
+## Pre-publication gate (2026-10-25)
+
+Publication is on hold. The complete ordinary suite passed 931 tests; its 29 environment-gated tests were then run separately in six disposable PostgreSQL databases and all 29 passed. Attachment completion-audit failure retains a hidden tombstone for retry; bytes are not recoverable from the audit.
+
+A fresh clone of the public GitHub repository was overlaid with the unpublished candidate patch for deployment validation. Private configuration initialized with Node 22. The documented corporate-CA Docker build installed dependencies but failed while preparing a build layer with `ResourceExhausted: no space left on device`. Candidate Compose startup, first-owner setup, persistence/restart and restore have therefore **not** passed this clean-install gate. Earlier deployment evidence is not a substitute.
+
+The aggregate `verify:security` command also stops at a missing `docs/compliance/AUTH-ACCESS-CONTROLS.md`. Other legacy verifier references include missing compliance evidence/edge-protection documents, and the live MFA checker still targets `auth.mfa_factors` rather than native `auth.native_mfa`. These checks need a native-backend review; adding keywords to documentation is not evidence of security coverage.
+
+This follow-up adds no migration or environment variable: it uses the existing file metadata/audit schema and database transaction helper. Normal authenticated operation is retained; bulk organization cleanup stays preview-only. The independent website Demo is outside this repository change.

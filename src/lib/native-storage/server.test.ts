@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mkdtemp, readdir, rm, stat } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-vi.mock('@/lib/postgres', () => ({ query: vi.fn() }));
+vi.mock('@/lib/postgres', () => ({ query: vi.fn(), withTransaction: vi.fn() }));
 import { createFileService } from './server';
 
 const userId = '11111111-1111-4111-8111-111111111111';
@@ -16,13 +16,14 @@ describe('native attachment service', () => {
   let records: Row[];
   let failInsert: boolean;
   let failAudit: boolean;
+  let failCompletion: boolean;
   let audits: unknown[][];
   async function query<T>(sql: string, args: unknown[] = []): Promise<T[]> {
     if (sql.includes('FROM public.tasks')) {
       const [taskId, caller] = args;
       return (caller === userId && taskId === 'task_1' ? [{ id: 'task_1', org_id: orgId, user_id: userId, assigned_to: null, role: 'member', job_level: 0, team_id: null }] : []) as T[];
     }
-    if (sql.includes('INSERT INTO public.audit_log')) { if (failAudit) throw new Error('audit unavailable'); audits.push(args); return []; }
+    if (sql.includes('INSERT INTO public.audit_log')) { if (failAudit || (failCompletion && sql.includes('attachment_delete_completed'))) throw new Error('audit unavailable'); audits.push(args); return []; }
     if (sql.includes('INSERT INTO')) {
       if (failInsert) throw new Error('database unavailable');
       const [id, bucket, path, org, task, owner, disk, filename, type, size] = args;
@@ -38,7 +39,7 @@ describe('native attachment service', () => {
     if (sql.includes('DELETE FROM')) records = records.filter(r => r.id !== args[0]);
     return [];
   }
-  beforeEach(async () => { root = await mkdtemp(join(tmpdir(), 'closr-storage-test-')); records = []; failInsert = false; failAudit = false; audits = []; });
+  beforeEach(async () => { root = await mkdtemp(join(tmpdir(), 'closr-storage-test-')); records = []; failInsert = false; failAudit = false; failCompletion = false; audits = []; });
   afterEach(async () => { await rm(root, { recursive: true, force: true }); });
   const file = () => ({ type: 'text/plain', bytes: new TextEncoder().encode('Fictional attachment') });
 
@@ -62,6 +63,15 @@ describe('native attachment service', () => {
     await service.upload('task-attachments', logicalPath, userId, file()); failAudit = true;
     await expect(service.remove('task-attachments', [logicalPath], userId)).rejects.toThrow('audit unavailable');
     expect(await readdir(root)).toHaveLength(1); expect(records[0].deleted_at).toBeNull();
+  });
+  it('retains a hidden tombstone after completion audit failure and permits a safe retry', async () => {
+    const service = createFileService({ root, query });
+    await service.upload('task-attachments', logicalPath, userId, file()); failCompletion = true;
+    await expect(service.remove('task-attachments', [logicalPath], userId)).rejects.toThrow('audit unavailable');
+    expect(await readdir(root)).toEqual([]); expect(records).toHaveLength(1); expect(records[0].deleted_at).not.toBeNull();
+    await expect(service.download('task-attachments', logicalPath, userId)).rejects.toMatchObject({ status: 404 });
+    failCompletion = false; await service.remove('task-attachments', [logicalPath], userId);
+    expect(records).toEqual([]);
   });
   it('rejects cross-tenant reads, deletes and forged upload owners', async () => {
     const service = createFileService({ root, query });

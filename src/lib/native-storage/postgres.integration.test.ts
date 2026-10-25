@@ -43,11 +43,17 @@ suite('native files with real PostgreSQL and a temporary filesystem', () => {
 
   it('persists metadata/bytes, denies cross-tenant and same-org unrelated access, and deletes cleanly', async () => {
     const db = async <T>(sql: string, params?: unknown[]) => (await pool.query(sql, params)).rows as T[];
-    const service = createFileService({ root, query: db });
+    const transaction = async <T>(fn: (q: typeof db) => Promise<T>) => {
+      const client = await pool.connect(); try { await client.query('BEGIN');
+        const result = await fn(async <R>(sql: string, params?: unknown[]) => (await client.query(sql, params)).rows as R[]);
+        await client.query('COMMIT'); return result;
+      } catch (error) { await client.query('ROLLBACK'); throw error; } finally { client.release(); }
+    };
+    const service = createFileService({ root, query: db, transaction });
     await service.upload('task-attachments', path, a, { type: 'text/plain', bytes: new TextEncoder().encode('Fictional local record') });
     expect((await pool.query('SELECT count(*)::int AS n FROM native_file_objects')).rows[0].n).toBe(1);
     // A fresh instance sees the same persisted volume and database.
-    const restarted = createFileService({ root, query: db });
+    const restarted = createFileService({ root, query: db, transaction });
     expect((await restarted.download('task-attachments', path, a)).bytes.toString()).toBe('Fictional local record');
     await expect(restarted.download('task-attachments', path, b)).rejects.toMatchObject({ status: 404 });
     await expect(restarted.download('task-attachments', path, colleague)).rejects.toMatchObject({ status: 404 });
@@ -59,10 +65,17 @@ suite('native files with real PostgreSQL and a temporary filesystem', () => {
       await client.query('SET ROLE closr_app');
       await expect(client.query('SELECT * FROM public.native_file_objects')).rejects.toMatchObject({ code: '42501' });
     } finally { await client.query('RESET ROLE'); client.release(); }
+    await pool.query("CREATE FUNCTION fail_completion() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.action='attachment_delete_completed' THEN RAISE EXCEPTION 'Injected completion failure'; END IF; RETURN NEW; END $$; CREATE TRIGGER fail_completion BEFORE INSERT ON audit_log FOR EACH ROW EXECUTE FUNCTION fail_completion()");
+    await expect(restarted.remove('task-attachments', [path], a)).rejects.toThrow('Injected completion failure');
+    expect((await pool.query('SELECT deleted_at IS NOT NULL AS hidden FROM native_file_objects')).rows).toEqual([{ hidden: true }]);
+    expect(await readdir(root)).toEqual([]);
+    await expect(restarted.download('task-attachments', path, a)).rejects.toMatchObject({ status: 404 });
+    await pool.query('DROP TRIGGER fail_completion ON audit_log; DROP FUNCTION fail_completion()');
     await restarted.remove('task-attachments', [path], a);
     expect(await readdir(root)).toEqual([]);
     expect((await pool.query('SELECT action,org_id,user_id FROM audit_log ORDER BY action')).rows).toEqual([
       { action: 'attachment_delete_completed', org_id: orgA, user_id: a },
+      { action: 'attachment_delete_started', org_id: orgA, user_id: a },
       { action: 'attachment_delete_started', org_id: orgA, user_id: a },
     ]);
     expect((await pool.query('SELECT count(*)::int AS n FROM native_file_objects')).rows[0].n).toBe(0);
